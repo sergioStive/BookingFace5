@@ -91,8 +91,9 @@
                     </td>
                 </div>
             </div>
-
-           
+                    <center>
+                        <table>
+                        <tr>
                 <td colspan="4">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
@@ -101,6 +102,9 @@
                     </div>
                     <%}%>
                     <%}%> 
+                        </tr>
+                        </table>
+                    </center>  
            
 
             <div class="novedades">

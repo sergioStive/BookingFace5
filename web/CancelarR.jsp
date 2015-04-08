@@ -52,6 +52,8 @@
       misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
+<table>
+    <tr>
       <td colspan="4">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
@@ -60,9 +62,11 @@
                     </div>
                     <%}%>
                     <%}%> 
-      <div class="ba">
+      <div class="btn btn-success">
       <h1>Reservas</h1>
       </div>
+      </tr>
+  </table>
      <table border="6" class="paginated" id="divTabla">
     <tr>
         <th style="background: #0C4391;">idReserva</th>

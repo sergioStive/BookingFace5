@@ -45,19 +45,26 @@
 <br>
 <input name="submit10" class="btn btn-success"  type="submit" id="submit10" onClick= "rol()" value="Ingresar">
 </form>
-</table>
-
+     </table>
 </center>
+<br>
 
-<%
- if(request.getParameter("invalida") != null  ) {
-%>
-<div class="valido">
-    <b> sus datos no son validos</b>
-</div>
-<%
- }
-%>
+   <center>
+   <table>
+    <tr>
+    <td colspan="2">
+    <%
+     if(request.getParameter("invalida") != null  ) {
+     %>
+     <div  class="alert alert-danger"  role="alert">
+       <b> sus datos no son validos</b>
+    </div>
+     <%
+     }
+     %>
+     </tr>
+     </table>
+    </center>
  <div class="idioma">
         <span>Booking Routers &copy; 2015</span><br>
         Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
