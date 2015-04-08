@@ -5,7 +5,7 @@
  */
 package co.sena.edu.booking.DAO;
 
-import co.sena.edu.booking.DTO.reserDTO;
+
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;

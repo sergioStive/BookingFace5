@@ -42,10 +42,14 @@
 
 </nav>
 <center>
-    <%reserDTO  per= new reserDTO();
-      reserDAO pers = new reserDAO(); 
+    <%
+      HttpSession misesion = request.getSession(false);
+        
+        reserDTO  per= new reserDTO();
+      reserDAO pers = new reserDAO();
+      personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
       ArrayList<reserDTO> misReservas= new ArrayList();      
-      misReservas =(ArrayList<reserDTO>) pers.listarReservas();
+      misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
       <td colspan="4">

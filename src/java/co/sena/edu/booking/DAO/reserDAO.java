@@ -142,7 +142,7 @@ public class reserDAO {
             pstmt.setString(6, rdto.getFechaReserva());
             pstmt.setString(7, rdto.getHoraReserva());
             pstmt.setString(8, rdto.getDireccionDestino());
-            pstmt.setInt(9, rdto.getIdpersona());
+            pstmt.setLong(9, rdto.getIdpersona());
             resultado = pstmt.executeUpdate();
 
             if (resultado != 0) {
@@ -172,6 +172,36 @@ public class reserDAO {
             String query = " select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable,"
                     + " fechaReserva, horaReserva, direccionDestino from reservas ";
             pstmt = cnn.prepareStatement(query);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                reserDTO Rdao = new reserDTO();
+                Rdao.setIdReserva(rs.getInt("idReserva"));
+                Rdao.setIdEstadoReserva(rs.getInt("idEstadoReserva"));
+                Rdao.setIdServicio(rs.getInt("idServicio"));
+                Rdao.setIdTransporteLlegada(rs.getInt("idTransporteLlegada"));
+                Rdao.setResponsable(rs.getString("responsable"));
+                Rdao.setFechaReserva(rs.getString("fechaReserva"));
+                Rdao.setHoraReserva(rs.getString("horaReserva"));
+                Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                listarReservas.add(Rdao);
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return listarReservas;
+    }
+    public List<reserDTO> listarReservaPer(long id) throws SQLException {
+        ArrayList<reserDTO> listarReservas = new ArrayList();
+
+        try {
+            String query = " select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable,"
+                    + " fechaReserva, horaReserva, direccionDestino from reservas where idpersona=? ";
+            pstmt = cnn.prepareStatement(query);
+            pstmt.setLong(1, id);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -293,13 +323,13 @@ public class reserDAO {
         }
         return registros;
     }
-    public int validarReservas(int idpersona) throws SQLException {
+    public long validarReservas(long idpersona) throws SQLException {
        int clave=0;
        try {         
            
            String sql = " select count(idpersona) as clave from reservas where idpersona = ?";    
            pstmt=cnn.prepareStatement(sql);
-           pstmt.setInt(1, idpersona);
+           pstmt.setLong(1, idpersona);
                           
                rs = pstmt.executeQuery();
              

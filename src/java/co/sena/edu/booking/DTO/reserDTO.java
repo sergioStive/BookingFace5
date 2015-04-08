@@ -21,7 +21,7 @@ public class reserDTO {
     private String fechaReserva;
     private String horaReserva;
     private String direccionDestino;
-    private int idpersona;
+    private long idpersona;
     /**
      * @return the idReserva
      */
@@ -150,14 +150,14 @@ public class reserDTO {
     /**
      * @return the idpersona
      */
-    public int getIdpersona() {
+    public long getIdpersona() {
         return idpersona;
     }
 
     /**
      * @param idpersona the idpersona to set
      */
-    public void setIdpersona(int idpersona) {
+    public void setIdpersona(long idpersona) {
         this.idpersona = idpersona;
     }
 

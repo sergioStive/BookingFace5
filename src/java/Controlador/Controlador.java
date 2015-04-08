@@ -12,6 +12,7 @@ import co.sena.edu.booking.DTO.reserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -70,7 +71,7 @@ public class Controlador extends HttpServlet {
 
             if (x != 0 && x != 10301023) {
                 personasDTO per = new personasDTO();
-
+                
                 per = pert.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                 HttpSession misesion = request.getSession(true);
                 misesion.setAttribute("logueado", per);
@@ -82,7 +83,9 @@ public class Controlador extends HttpServlet {
 
             } else if (x == 10301023 && x != 0) {
                 personasDTO per = new personasDTO();
-
+                ArrayList<reserDTO> re= new ArrayList();
+                reserDAO no= new reserDAO();
+                re=(ArrayList)no.listarReservaPer(per.getIdPersona());
                 per = pert.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                 HttpSession misesion = request.getSession(true);
                 misesion.setAttribute("logueado", per);

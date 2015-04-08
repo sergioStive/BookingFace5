@@ -44,7 +44,7 @@ public class Reserva extends HttpServlet {
 
            reserDTO to = new reserDTO();
            reserDAO dao = new reserDAO();
-           int t =dao.validarReservas(Integer.parseInt(request.getParameter("doc")));
+           long t =dao.validarReservas(Integer.parseInt(request.getParameter("doc")));
            if(t>=3){
             response.sendRedirect("reserva.jsp?noo="+ t);  
            }else if(t<3){
