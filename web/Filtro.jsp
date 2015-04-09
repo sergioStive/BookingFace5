@@ -31,23 +31,59 @@
             <div class="banner"> 
                 <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
             </div>
+            
+            <nav>
+  <ul id="main">
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <ul class="submain">
+  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  </ul>
+  </div>  
+  </li>  
+  <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Registros</a> 
+  </li>
+ <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</li></a>
+ </ul>
+  </nav>
+            
             <br>
         
             <center>
-                <div class="col-md-6"><h2>Búsqueda de Usuarios</h2></div>
+                <div class="col-md-6" ><h2>Búsqueda de Usuarios</h2></div>
                
                 <form action="buscarPersona" method="post">
-
-                    <label>Pais</label>
-                    <input type="text" name="nombre">
-                    <label>Nombre</label>
-                    <input type="text" name="pais">
-                    <label>Ciudad</label>
-                    <input type="tex" placeholder="Ejem Bogota" name="ciudad">
-                    <br>
-                    <input type="submit" name="buscar" value="Buscar" class="btn btn-success">
+                    <table>
+        
+         <tr>
+            <td>
+                <br>
+                <strong>Nombre</strong><font color="#FF0000">*</font>
+                <br>
+            </td>
+            <td> <input type="text" name="nombre"  class="form-control inputtext"/></td>
+        </tr>
+         <tr>
+            <td>
+                <br>
+                <strong>Pais</strong><font color="#FF0000">*</font>
+                <br>
+            </td>
+            <td><input type="text" name="pais" class="form-control inputtext"/></td>
+        </tr>     
+        <tr>
+            <td>
+                <br>
+                <strong>Ciudad</strong><font color="#FF0000">*</font>
+                <br>
+            </td>
+            <td> <input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
+        </tr>   
+                    </table>
+                   
+        <input type="submit" name="buscar" value="Buscar" class="btn btn-success">
                    <input type="submit"name="generar"value="Generar Reporte"class="btn btn-success">
-               <br>
+               <br><br mofos>
                 </form>
                 <form action="exportarPDF.jsp" method="post">
                     <input type="submit" name="generar" value="Generar Reporte PDF" class="btn btn-success">
@@ -68,13 +104,16 @@
 
             <br>
             <br>
+            <center>
             <div class="row text-right">
                 <div class="col-md-6 alert alert-info"><h2 class="text-center">Lo sentimos, no hay resultados</h2></div>
 
-            </div>    
+            </div>  
+         
             <%
             } else {
-            %>    
+            %> 
+            </center>
             <center>    
 
                 <%
@@ -94,9 +133,7 @@
                 %>
 
                 <center>
-                    <div class="row text-right">
-                        <div class="col-md-6"><h2 class="text-center">Resultados de la búsqueda</h2></div>                         
-                    </div>
+                        <div class="col-md-6"><h2>Resultados de la búsqueda</h2></div>                         
                 </center>
                 <br>
                 <table class="table table-bordered table-striped table-hover"> 
@@ -160,9 +197,15 @@
 
 
 
-            <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left">
-                <img src="imagenes/dddd.png"><a href="verificarRegistro1.jsp">English</a> ||  <img src="imagenes/original.jpg"><a href="verificarRegistro.jsp">Spanish</a>
-            </div>
+         <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
+        <span>Booking Routers &copy; 2015</span><br>
+        Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
+        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbina
+        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
+        <img src="imagenes/dddd.png"><a href="CreaRuta1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="CreaRuta.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+
+</div>
 
 
 

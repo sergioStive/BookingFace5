@@ -130,10 +130,10 @@ $(document).ready(function(){
                 </div>
             </div>
 
-           
+               <center>
                <table>
                    <tr>
-                <td colspan="">
+                <td colspan="2">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
                     <div class="alert exito mensajes" role="alert">
@@ -144,7 +144,7 @@ $(document).ready(function(){
                 </td>
                    </tr>
                </table>
-         
+         </center>
 
             <div class="novedades">
                 <h4>Novedades</h4>

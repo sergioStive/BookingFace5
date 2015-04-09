@@ -259,7 +259,7 @@ public class personasDAO {
 
             per = pstmt.executeUpdate();
             if (per > 0) {
-                msgSalida = "se eliminaron (" + per + ") registros";
+                msgSalida = "El usuario ha sido eliminado";
             } else {
                 msgSalida = "NO se pudo eliminar  el registro";
             }
@@ -382,7 +382,7 @@ public String EnviarCorreo(String correo) {
         String clave = "";
         try {
 
-            pstmt = cnn.prepareStatement("select contrasenia as clave from personas where correoElectronico = ?");
+            pstmt = cnn.prepareStatement("select contraseña as clave from personas where correoElectronico = ?");
             
             pstmt.setString(1, correo);
             rs = pstmt.executeQuery();

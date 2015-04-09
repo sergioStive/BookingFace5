@@ -1,5 +1,5 @@
 /*
- * Funcion para validar una fecha segÃºn un intervalo o rango de aceptacion
+ * Funcion para validar una fecha según un intervalo o rango de aceptacion
 	Autor: Rodrigo Aranda Fernandez
 	V1.0
  */
@@ -13,22 +13,22 @@ function validarFecha() {
     var fechaActual = new Date();   //Fecha actual
     var ftemp = new Date(); // Variable con la fecha actual
      var ftemp2 = new Date();
-    var fechaMinima = new Date(ftemp.getTime() + (5 * 24 * 3600 * 1000));   //Sumo 5 dias a la fecha actual para obtener la fecha mÃ­nima
-    var fechaMaxima = new Date (ftemp2.getTime() + (30 * 24 * 3600 * 1000));  // sumo 30 dÃ­as a la fecha actual para
+    var fechaMinima = new Date(ftemp.getTime() + (5 * 24 * 3600 * 1000));   //Sumo 5 dias a la fecha actual para obtener la fecha mínima
+    var fechaMaxima = new Date (ftemp2.getTime() + (30 * 24 * 3600 * 1000));  // sumo 30 días a la fecha actual para
 
-   //alert("Actual  : "+fechaActual + "  fecha calendario : "+fechaSolicitud+ "la fecha mÃ­nima es : "+fechaMinima);
+   //alert("Actual  : "+fechaActual + "  fecha calendario : "+fechaSolicitud+ "la fecha mínima es : "+fechaMinima);
 
     if (fechaSolicitud < fechaActual){
-        alert ('Esta seleccionando una fecha anterior a la actual');
+        alert ('ESTA SELECCIONANDO UNA FECHA ANTERIOR A LA ACTUAL');
         document.getElementById("fecNac").focus();
     } else if (fechaSolicitud >= fechaActual && fechaSolicitud <fechaMinima){
-        alert ('En ese tiempo no se alcanzaa tenr el pedido');
+        alert ('EN ESE TIEMPO NO SE ALCANZA A TENER  EL PEDIDO');
         document.getElementById("fecNac").focus();
     }else if (fechaSolicitud >= fechaMaxima) {
-        alert('NO hacemos pedidos con tanta anticipaciÃ³n');
+        alert('NO HAEMOS PEDIDOS CON TANTA ANTICIPACION');
         document.getElementById("fecNac").focus();
     }else {
-        alert('ok');
+        alert('FECHA VALIDA');
     }
 
 }

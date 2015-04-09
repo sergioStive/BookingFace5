@@ -11,6 +11,43 @@
 <link rel="stylesheet" type="text/css" href="engine1//style.css" media="screen" />
 	<script type="text/javascript" src="engine1//jquery.js"></script>
 <!-- End WOWSlider.com HEAD section -->
+<style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('img/exito.png');
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
 
 </head>
 
@@ -38,7 +75,21 @@
 
 <br>
 <input name="submit10" class="btn btn-success"  type="submit" id="submit10"  value="Enviar">
-
+<center>
+    <table>      
+    <tr>
+    <td colspan="2">
+                    <% if (request.getParameter("ms") != null) {%>
+                    <% if (!request.getParameter("ms").equals("")) {%> 
+                    <div class="exito mensajes" role="alert">
+                        <%= request.getParameter("ms")%>
+                    </div>
+                    <%}%>
+                    <%}%> 
+      </td>
+  </tr>
+  </table>
+ </center>     
 </form>
 </center>
     

@@ -183,7 +183,7 @@ $(document).ready(function(){
     </tr>
     <tr>
         <td colspan="2">
-            <input class="btn btn-success" name="btnCrea" type="submit" value="Crear Ruta" /> 
+            <input class="btn btn-success " name="btnCrea" type="submit" value="Crear Ruta" /> 
         </td>
     </tr>
     <tr>

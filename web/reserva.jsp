@@ -1,7 +1,4 @@
  
-
-
-
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%> 	 	
 
@@ -64,15 +61,11 @@ $(document).ready(function(){
     <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
             <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
-                                <li><a href="reserva.jsp" style="text-decoration: none;">Solicitar Reserva</a></li>
-                                <li><a href="CancelarR.jsp" style="text-decoration: none;">Mis Reservas</a> </li>
+                                <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
+                                <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>
                                 </ul>
                         </li>
                         <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list-alt"></span> Menu</a>
-                            <ul class="submain">
-                                <li><a href="actualizarDatos1.jsp" style="text-decoration: none;">Mis Datos</a></li>
-                                <li><a href="cambiarContraseña.jsp" style="text-decoration: none;">Cambiar Contraseña</a> </li>
-                                </ul>
                         
         </ul>
     </nav> 
@@ -102,7 +95,7 @@ $(document).ready(function(){
                         if(request.getParameter("noo") != null) {
                         %>
                         <div>
-                            <b <div class="alert alert-danger mensajes" role="alert">Usted no puede realizar mas de 3 reservas.</b>
+                            <b <div class="alert alert-danger mensajes" role="alert">Usted no puede realizar mas de 5 reservas.</b>
                       </div>
                         <%
                          }
@@ -110,36 +103,38 @@ $(document).ready(function(){
                         </center>
                         <br>
 <tr>    
-<td><label for="doc" class="labele"><strong>Documento<font color="#FF0000">*</strong></label></font></td>
+<td><label for="doc" class="labele"><strong>Documento del usuario<font color="#FF0000">*</strong></label></font></td>
 <td><input name="doc" type="text" id="res" style="width:250px; height:25px" placeholder="Cedula" autofocus  required class="form-control inputtext"></td>
 </tr>
 <tr>
 <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></font></td>
 <td>   
       <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">     
-      <option value="1">Airport and Jet Aviation Centers</option>
-      <option value="2">Port and Cruise Ship Transportation</option>
-      <option value="3">Transfer</option>
-      <option value="4">By the Hour</option>
-      <option value="5">Events</option>
-      <option value="6">Tours</option>
-      <option value="7">Atraccions Vacation Ideas</option>
+<option value="">Escoja su el servicio que decea ---></option>      
+      <option value="1">Aeropuerto y Centros de aviación Jet</option>
+      <option value="2">Puerto y barco de cruceros de Transporte</option>
+      <option value="3">Hotel y museo</option>
+      <option value="4">Trabajo</option>
+      <option value="5">Eventos</option>
+      <option value="6">Turs</option>
+      <option value="7">Vacaciones </option>
       </select> 
  </td>
 </select>                                        
 <td><label for="aer" class="labele"><strong>Aerolineas<font color="#FF0000">*</strong></label></font></td>
 <td>   
       <select name="aer" id="aer" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
-      <option value="1">Avianca</option>
-      <option value="2">LAN</option>
-      <option value="3">US Airways</option>
-      <option value="4">American Airline</option>
+          <option value="">Elija su aerolinea ---></option>
+          <option value="1">Avianca</option>
+          <option value="2">LAN</option>
+          <option value="3">US Airways</option>
+          <option value="4">American Airline</option>
       </select> 
  </td>
 </tr>
 
 <tr>    
-<td><label for="res" class="labele"><strong>Responsable<font color="#FF0000">*</strong></label></font></td>
+<td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></font></td>
 <td><input name="res" type="text" id="res" style="width:250px; height:25px" placeholder="Responsable" autofocus  required class="form-control inputtext"></td>   
 <td><label for="fecNac"><strong>Fecha Reserva<font color="#FF0000">*</strong></label></td>
 <td><input type="date" id="fecNac" name="fecNac" style="width:250px; height:25px"  required="" value="30-12-1900" class="form-control inputtext" tabindex="4" onblur="javascript:validarFecha()"><br></td>
@@ -150,7 +145,9 @@ $(document).ready(function(){
 <td><input type="time" name="hora" id="hora" style="width:250px; height:25px" class="form-control" required></td>
 <td><label for="aerop" class="labele">Aeropuesto Destino</label></td>
 <td><select type="time" name="aerop" id="aerop" style="width:250px; height:30px"  autofocus  required class="form-control inputtext">
+<option>Escoja su aeropuerto destino --></option>
 <option>Fort Louderdale</option>
+<option>Miami International Airport</option>
     </select>
 
 </td>

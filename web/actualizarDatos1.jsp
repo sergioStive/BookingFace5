@@ -26,8 +26,8 @@
                     <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                     <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Gestion Reserva</a>
                             <ul class="submain">
-                                <li><a href="#" style="text-decoration: none;">Solicitar Reservas </a></li>
-                                <li><a href="#" style="text-decoration: none;">Modificar Reserva</a> </li>
+                                <li><a href="reserva.jsp" style="text-decoration: none;">Solicitar Reservas </a></li>
+                                <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
                             </ul>
                     </li>                        

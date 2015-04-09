@@ -56,7 +56,7 @@ public class EnviarCorreos extends HttpServlet {
             boolean sal
                     = Correo.sendMail("Recuperacion de Contraseña Booking Routers", clave, correo);
             if (sal) {
-                response.sendRedirect("RecuperarContra.jsp?ms=enviado");
+                response.sendRedirect("RecuperarContra.jsp?ms=Su contraseña ha sido enviada , revise el correo");
             } else {
                 response.sendRedirect("RecuperarContra.jsp?ms=noenviado");
             }

@@ -45,9 +45,9 @@ public class Reserva extends HttpServlet {
            reserDTO to = new reserDTO();
            reserDAO dao = new reserDAO();
            long t =dao.validarReservas(Integer.parseInt(request.getParameter("doc")));
-           if(t>=3){
+           if(t>=5){
             response.sendRedirect("reserva.jsp?noo="+ t);  
-           }else if(t<3){
+           }else if(t<5){
            to.setIdpersona(Integer.parseInt(request.getParameter("doc")));
            to.setIdEstadoReserva(1);
            to.setIdServicio(Integer.parseInt(request.getParameter("ser")));

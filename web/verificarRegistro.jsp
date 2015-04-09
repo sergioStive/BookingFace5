@@ -15,11 +15,59 @@
          <script src="scripts/ingreso.js" type="text/javascript"></script>
          <script src="scripts/paginacion.js" type="text/javascript"></script>
          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+         <style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('img/exito.png');
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
 <script type="text/javascript">
 			$(document).ready(function() {
 				$('#divTabla').buscoloquemesaledelospeones('inputFiltro');
 			});
 		</script>
+                <script type="text/javascript">
+    function comfirmar()
+    {
+        if(confirm('Esta seguro que desea eliminar este Usuario?'))
+            return true;
+        
+        else
+            return  false;
+    }
+    
+</script>
          <script src="scripts/jquery_table.js" type="text/javascript"></script>
 
          <script src="scripts/bookasp.js" type="text/javascript"></script>
@@ -33,32 +81,25 @@
 <div class="banner"> 
     <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
-    <nav>
-    <ul id="main">
-   <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
-   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
-   <ul class="submain">
-   <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
-   <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
-   </ul>
-   </div>
-       
-   </li>
-   
-   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a> 
-    <ul class="submain">
-    <li><div align="center"><a href="#" style="text-decoration: none;">Reservas</a> 
-    <li><div align="center"><a href="#" style="text-decoration: none;">Rutas</a>
-    <li><div align="center"><a href="#" style="text-decoration: none;">Conductores</a> 
-    <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a>
-    <li><div align="center"><a href="ReporteM.jsp" style="text-decoration: none;">Reporte Multicriterio</a> 
-    </div>
-     </li>
+<nav>
+  <ul id="main">
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <ul class="submain">
+  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  </ul>
+  </div>  
+  </li>  
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a> 
+  <ul class="submain">  
+  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a>  
+  </div>
+  </li>
   </ul>
 </li>
- <li><div align="center"><a href="Index.html" style="text-decoration: none;">Cerrar sesion</li></a>
+ <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Cerrar sesion</li></a>
  </ul>
-        </nav>
+  </nav>
 <center>
     <%
      personasDTO  per= new personasDTO();
@@ -130,7 +171,7 @@
         <td data-sortable="true"><%=so.getIdNacionalidad()%></td>
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
-        <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png" align="middle" width="32" height="32" title="Eliminar"></a></td>
+        <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
         <td><a href="Controlador?idPersona=<%=so.getIdPersona()%>"><img src="imagenes/user.jpg" align="middle" width="32" height="32" title="Verificar" onclick="contrase()"></a></td>
     </tr>
      </tbody>
@@ -138,6 +179,20 @@
 }
 %>
       </table>
+      
+      <center>
+  <table>  
+  <td colspan="4">
+  <% if (request.getParameter("msgSalida") != null) {%>
+  <% if (!request.getParameter("msgSalida").equals("")) {%> 
+  <div class="exito mensajes" role="alert">
+  <%= request.getParameter("msgSalida")%>
+  </div>
+  <%}%>
+  <%}%>  
+  </table>
+  </center>
+      
 <div class="pagination" id="">
      <%
      int adelanteA;
@@ -170,4 +225,4 @@
 
 </div>
 </body>
-<html>
+</html>

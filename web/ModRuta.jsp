@@ -38,6 +38,17 @@ $(document).ready(function(){
        background-image:url('img/exito.png');
 }
 
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+
 
 </style>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
@@ -129,7 +140,7 @@ $(document).ready(function(){
  if(request.getParameter("no") != null  ) {
 %>
 <div>
-    <b class="alert alert-danger"  role="alert" style="position:relative; left:10px"> Esta ruta ya ha sido asignada</b>
+    <b class="error mensajes"  role="alert" style="position:relative; left:10px"> Esta ruta ya ha sido asignada</b>
 </div>
 <%
  }

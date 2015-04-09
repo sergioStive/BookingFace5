@@ -22,15 +22,18 @@
 <div class="banner"> 
 <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
-        <nav>
-        <ul id="main">
-            
-        
-<li>
- <div align="center"> <a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio </a>
-</li>
-</ul>     
-            </nav>
+      <nav> 
+<ul id="main">
+  <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
+  <ul class="submain"> 
+  <li><a href="reserva.jsp" style="text-decoration: none;">Solicitar Reserva</a></li>
+  <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reservas</a></li>
+  </ul>
+  </li>
+  <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list-alt"></span> Menu</a>
+  </ul>
+  </nav>
 <center>
      
     <%

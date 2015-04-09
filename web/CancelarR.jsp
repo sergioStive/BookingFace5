@@ -1,3 +1,5 @@
+
+<%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -15,7 +17,7 @@
 <script type="text/javascript">
     function comfirmar()
     {
-        if(confirm('Esta seguro que Decea Eliminar Esta Reserva'))
+        if(confirm('Esta seguro que desea eliminar esta reserva'))
             return true;
         
         else
@@ -77,15 +79,10 @@ $(document).ready(function(){
         <li><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="reserva.jsp" style="text-decoration: none;">Solicita Reserva</a></li>
-                                <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reservas</a> </li>
-                                <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>
+                                <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>                               
                                 </ul>
                         </li>
                           <li><a href="menuCliente.jsp"><span class="glyphicon glyphicon-list-alt"></span> Mi Cuenta</a>
-                            <ul class="submain">
-                                <li><a href="actualizarDatos1.jsp" style="text-decoration: none;">Mis Datos</a></li>
-                                <li><a href="cambiarContraseña.jsp" style="text-decoration: none;">Cambiar Contraseña</a> </li>
-                                </ul>
                         </li>
       
         </ul>
@@ -102,7 +99,10 @@ $(document).ready(function(){
       misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
-      <td colspan="4">
+<center>
+    <table>      
+    <tr>
+    <td colspan="2">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
                     <div class="exito mensajes" role="alert">
@@ -111,20 +111,22 @@ $(document).ready(function(){
                     <%}%>
                     <%}%> 
       </td>
+  </tr>
+  </table>
+ </center>     
       <div class="ba">
-      <h1>Reservas</h1>
+      <h1>Cancelar Reservas</h1>
       </div>
-     <table border="6" class="paginated" id="divTabla">
+     <table border="1" class="paginated" id="divTabla">
     <tr>
-        <th style="background: #0C4391;">idReserva</th>
-       
-        <th style="background: #0C4391;">idServicio</th>
-        <th style="background: #0C4391;">idTrasnporteLlegada</th>
-        <th style="background: #0C4391;">responsable</th>
-        <th style="background: #0C4391;">fechaReserva</th>
-        <th style="background: #0C4391;">horaReserva</th>
-        <th style="background: #0C4391;">direccionDestino</th>
-        <th style="background: #0C4391;">Eliminar</th>
+        <th st-ratio="20" st-sort="idReserva">idReserva</th>
+        <th st-ratio="20" st-sort="idServicio">idServicio</th>
+        <th st-ratio="20" st-sort="idTrasnporteLlegada">idTrasnporteLlegada</th>
+        <th st-ratio="20" st-sort="responsable">responsable</th>
+        <th st-ratio="20" st-sort="fechaReserva">fechaReserva</th>
+        <th st-ratio="20" st-sort="horaReserva">horaReserva</th>
+        <th st-ratio="20" st-sort="direccionDestino">direccionDestino</th>
+        <th st-ratio="20" st-sort="Modificar">Eliminar</th>
     </tr>
     <%
       for(reserDTO so: misReservas){

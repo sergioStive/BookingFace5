@@ -73,14 +73,14 @@
                     <td>
 
                        <select  id="servis" name="ser" value="" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">     
-                            
-                           <option value="1" <% if (miReserva.getIdServicio() == 1) out.print("selected"); %>>Airport and Jet Aviation Centers</option>
-                            <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %> >Port and Cruise Ship Transportation</option>
-                            <option value="3"<% if (miReserva.getIdServicio() == 3) out.print("selected"); %> >Transfer</option>
-                            <option value="4" <% if (miReserva.getIdServicio() == 4) out.print("selected"); %>>By the Hour</option>
-                            <option value="5"<% if (miReserva.getIdServicio() == 5) out.print("selected"); %> >Events</option>
-                            <option value="6"<% if (miReserva.getIdServicio() == 6) out.print("selected"); %> >Tours</option>
-                            <option value="7" <% if (miReserva.getIdServicio() == 7) out.print("selected"); %>>Atraccions Vacation Ideas</option>
+                           <option value="">Escoja su el servicio que decea ---></option>      
+                           <option value="1" <% if (miReserva.getIdServicio() == 1) out.print("selected"); %>>Aeropuerto y Centros de aviación Jet</option>
+                            <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %> >Puerto y barco de cruceros de Transporte</option>
+                            <option value="3"<% if (miReserva.getIdServicio() == 3) out.print("selected"); %> >Hotel y museor</option>
+                            <option value="4" <% if (miReserva.getIdServicio() == 4) out.print("selected"); %>>Trabajo</option>
+                            <option value="5"<% if (miReserva.getIdServicio() == 5) out.print("selected"); %> >Eventos</option>
+                            <option value="6"<% if (miReserva.getIdServicio() == 6) out.print("selected"); %> >Turs</option>
+                            <option value="7" <% if (miReserva.getIdServicio() == 7) out.print("selected"); %>>Vacaciones</option>
                         </select> 
                     </td>
                     </select>                                        
@@ -88,6 +88,7 @@
                     <td>
 
                         <select  name="aer" value="" id="aer" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
+                            <option value="">Escoja la aerolinea ---></option>      
                             <option value="1" <% if (miReserva.getIdTransporteLlegada() == 1) out.print("selected"); %>>Avianca</option>
                             <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %>>LAN</option>
                             <option value="3"<% if (miReserva.getIdServicio() == 3) out.print("selected"); %>>US Airways</option>
@@ -96,7 +97,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="res" class="labele"><strong>Responsable<font color="#FF0000">*</strong></label></font></td>
+                    <td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></font></td>
                     <td><input name="res" type="text" id="res" value="<%= miReserva.getResponsable()%>" style="width:250px; height:25px" placeholder="Responsable" autofocus  required class="form-control inputtext"></td>   
                     <td><label for="fec" class="labele"><strong>Fecha Reserva<font color="#FF0000">* </strong></label></font></td>
                     <td><input name="fec" type="date" id="fec" value="<%= miReserva.getFechaReserva()%>" style="width:250px; height:25px" required class="form-control inputtext" tabindex="4" onChange="edad()"></td>    
@@ -106,7 +107,9 @@
                     <td><input type="time" name="hora" id="hora" value="<%= miReserva.getHoraReserva()%>" style="width:250px; height:25px" class="form-control" required></td>
                     <td><label for="aerop" class="labele">Aeropuesto Destino</label></td>
                     <td><select type="time" name="aerop" id="aerop" value="<%= miReserva.getDireccionDestino()%>" style="width:250px; height:30px" placeholder="Aeropuerto" autofocus  required class="form-control inputtext">
+                            <option>Escoja su aeropuerto destino --></option>
                             <option>Fort Louderdale</option>
+                            <option>Miami International Airport</option>
                         </select>
                     </td>
                 </tr>
