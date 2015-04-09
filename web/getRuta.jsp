@@ -48,7 +48,7 @@
                 <strong>Placa Vehículo</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td><input id="Placa" name="Placa" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  value="<%=ruDTO.getPlacaVehiculo() %>" /> </td>
+            <td><input id="Placa" readonly="readonly" name="Placa" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  value="<%=ruDTO.getPlacaVehiculo() %>" /> </td>
         </tr>
         <tr>
             <td>
@@ -72,7 +72,7 @@
                <br>
             </td>
             <td>
-                <select id="Cliente" name ="Cliente" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
+                <select id="Cliente"  readonly="readonly" name ="Cliente" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
                     <%= 
                        pdao.getHTMLAll(ruDTO.getIdPersona())
                     %>
