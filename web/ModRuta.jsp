@@ -16,6 +16,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
+<style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('img/exito.png');
+}
+
+
+</style>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 	<script  src="jquery/jquery.js"></script>
@@ -89,7 +113,7 @@
         <td colspan="2">
              <% if(request.getParameter("msj") != null) {%>
             <% if(!request.getParameter("msj").equals("")) { %> 
-            <div class="alert alert-success" role="alert">
+            <div class="exito mensajes" role="alert">
             <%= request.getParameter("msj") %>
             </div>
              <% }%>

@@ -22,6 +22,44 @@
             }
 
         </script>
+        <style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image: url('img/exito.png');
+       width: 1050px;
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="imagenes/br.ico" />
         <title>..::Booking Routers::..</title>
@@ -91,21 +129,22 @@
                     </td>
                 </div>
             </div>
-                    <center>
-                        <table>
-                        <tr>
-                <td colspan="4">
+
+           
+               <table>
+                   <tr>
+                <td colspan="">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert exito mensajes" role="alert">
                         <%= request.getParameter("msgSalida")%>
                     </div>
                     <%}%>
                     <%}%> 
-                        </tr>
-                        </table>
-                    </center>  
-           
+                </td>
+                   </tr>
+               </table>
+         
 
             <div class="novedades">
                 <h4>Novedades</h4>
@@ -135,7 +174,7 @@
             } else {
                 misesion.removeAttribute("logueado");
                 misesion.invalidate();
-                response.sendRedirect("Index.html?msg= Sesion cerrada");
+                response.sendRedirect("Index.html");
             }
         %>
     </body>

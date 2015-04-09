@@ -23,6 +23,43 @@
 <meta charset="utf-8">
 <title>..::Booking Routers::..</title>
 <link rel="shortcut icon" href="img/br.ico" />
+<style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('img/exito.png');
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
 </head>
 <body>
 <div class ="contenedor">
@@ -153,7 +190,7 @@
         <td colspan="2">
             <% if(request.getParameter("msj") != null) {%>
             <% if(!request.getParameter("msj").equals("")) { %> 
-            <div class="alert alert-success" role="alert">
+            <div class="exito mensajes" role="alert">
             <%= request.getParameter("msj") %>
             </div>
              <% }%>   
@@ -161,19 +198,23 @@
         </td>
     </tr>
     </table>
+        <br>
+        <table>
+            
         <tr>
          <td colspan="2">
         <%
  if(request.getParameter("no") != null  ) {
 %>
 <div>
-    <b class="alert alert-danger"  role="alert" style="position:relative; left:60px"> Esta ruta ya ha sido asignada</b>
+    <b class="error mensajes"  role="alert" style="position:relative; left:60px"> Esta ruta ya ha sido asignada</b>
 </div>
 <%
  }
 %>  
         </td>
     </tr>
+        </table>
                 <br>
     </center> 
 </form>

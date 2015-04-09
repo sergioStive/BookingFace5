@@ -1,6 +1,7 @@
  
 
 
+
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%> 	 	
 
@@ -43,7 +44,12 @@
 
 }
 </script>
-
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 3500); 
+});
+</script>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="imagenes/br.ico" />
 <title>..::Booking Routers::..</title>
@@ -96,7 +102,7 @@
                         if(request.getParameter("noo") != null) {
                         %>
                         <div>
-                            <b <div class="alert alert-danger" role="alert">Usted no puede realizar mas de 3 reservas.</b>
+                            <b <div class="alert alert-danger mensajes" role="alert">Usted no puede realizar mas de 3 reservas.</b>
                       </div>
                         <%
                          }

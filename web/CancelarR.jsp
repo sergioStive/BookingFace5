@@ -12,9 +12,59 @@
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 <script src="scripts/registro.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function comfirmar()
+    {
+        if(confirm('Esta seguro que Decea Eliminar Esta Reserva'))
+            return true;
+        
+        else
+            return  false;
+    }
+    
+</script>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="imagenes/br.ico" />
 <title>..::Booking Routers::..</title>
+<style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image:url('img/exito.png');
+       width: 1200px;
+       
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
 </head>
 <body>
 <div class ="contenedor">
@@ -26,7 +76,7 @@
     <li><a href="Index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
         <li><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
-                                <li><a href="reserva.jsp" style="text-decoration: none;">Solicitarrrrrr Reservas</a></li>
+                                <li><a href="reserva.jsp" style="text-decoration: none;">Solicita Reserva</a></li>
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reservas</a> </li>
                                 <li><a href="ModificarReservas.jsp" style="text-decoration: none;">Modificar Reserva</a> </li>
                                 </ul>
@@ -52,21 +102,18 @@
       misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
-<table>
-    <tr>
       <td colspan="4">
                     <% if (request.getParameter("msgSalida") != null) {%>
                     <% if (!request.getParameter("msgSalida").equals("")) {%> 
-                    <div class="alert alert-success" role="alert">
+                    <div class="exito mensajes" role="alert">
                         <%= request.getParameter("msgSalida")%>
                     </div>
                     <%}%>
                     <%}%> 
-      <div class="btn btn-success">
+      </td>
+      <div class="ba">
       <h1>Reservas</h1>
       </div>
-      </tr>
-  </table>
      <table border="6" class="paginated" id="divTabla">
     <tr>
         <th style="background: #0C4391;">idReserva</th>
@@ -94,7 +141,7 @@
         <td><%=so.getHoraReserva()%></td>
         <td><%=so.getDireccionDestino()%></td>
         
-        <td><a href="Controlador?idReserva=<%=so.getIdReserva()%>"><img src="imagenes/Eliminar.png" align="middle" width="32" height="32" title="Eliminar"></a></td>
+        <td><a href="Controlador?idReserva=<%=so.getIdReserva()%>"><img src="imagenes/Eliminar.png" align="middle" width="32" height="32" title="Eliminar" onclick="return comfirmar()"></a></td>
     
     </tr>
     <%
