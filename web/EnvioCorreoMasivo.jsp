@@ -43,7 +43,7 @@ and open the template in the editor.
                 </div>
             </div>
             <br>
-            <form method="get" action="GestionCorreo">
+            <form method="get" action="GestionCorreos">
                 <div class="row">                
                     <div class="col-md-4">
                         <legend class="text-center">Correo másivo</legend>
@@ -66,8 +66,7 @@ and open the template in the editor.
                                     <th>Code</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
-                                    <th>Correo</th>
-                                    <th>Sexo</th>
+                                    <th>Correo</th>                                    
                                     <th>Seleccionar</th>
                                 </tr>
                             </thead>
@@ -86,9 +85,7 @@ and open the template in the editor.
                                     <td><%= p.getIdPersona()%></td>
                                     <td><%= p.getNombres()%></td>
                                     <td><%= p.getApellidos()%></td>
-                                    <td><%= p.getCorreoElectronico()%></td>
-                                    <td class="text-center"><% if (p.getSexo() == 1) { out.print("M"); } else  { out.print("H");}%></td>
-                                    <td><a href="#">Suspender</a></td>
+                                    <td><%= p.getCorreoElectronico()%></td>                                  
                                     <td class="text-center">
                                         <div class="checkbox <% if (p.getIdestadousuarios()== 0 || p.getActivarCorreo() == 0) { out.print("disabled");} %>">
                                             <label>

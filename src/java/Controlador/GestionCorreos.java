@@ -3,29 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Controlador;
 
-/**
- *
- * @author user
- */
-import Controlador.Correo;
+import co.sena.edu.booking.DAO.personasDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import co.sena.edu.booking.DAO.personasDAO;
 
 /**
  *
- * @author kennross
+ * @author fabian
  */
-public class GestionCorreo extends HttpServlet {
+public class GestionCorreos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,9 +30,8 @@ public class GestionCorreo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String asunto = request.getParameter("cAsunto");
         String mensaje = request.getParameter("cCuerpo");
         int size = Integer.parseInt(request.getParameter("contador"));
@@ -60,7 +52,7 @@ public class GestionCorreo extends HttpServlet {
         if (Correo.sendMail(asunto, mensaje, correos.toString())) {
             response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + correos.toString());
         } else {
-            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-remove'></i> <strong>Envio Fallido</strong> No se logró el envío");
+            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-remove'></i> <strong>Envio Fallido</strong> No se logro el envio");
         }
     }
 
@@ -76,11 +68,7 @@ public class GestionCorreo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionCorreo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -94,11 +82,7 @@ public class GestionCorreo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionCorreo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -112,4 +96,3 @@ public class GestionCorreo extends HttpServlet {
     }// </editor-fold>
 
 }
-

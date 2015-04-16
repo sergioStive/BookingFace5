@@ -526,7 +526,7 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return Paginacion2;
     }
- public String obtenerCorreoPorId(long personaID) {
+ public String obtenerCorreoPorId(int personaID) {
         sqlTemp = "SELECT `correoElectronico` FROM `personas` WHERE  `idpersona` = ?";
         try {
             pstmt = cnn.prepareStatement(sqlTemp);
