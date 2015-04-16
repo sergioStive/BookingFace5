@@ -35,6 +35,8 @@ public class personasDAO {
     ResultSet rs = null;
     String msgSalida;
     int per;
+        String sqlTemp = "";
+
 
     public personasDAO() {
         //cnn = Conexion.getConnection();
@@ -79,7 +81,7 @@ public class personasDAO {
         try {
 
             int resultado = 0;
-            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pstmt = cnn.prepareStatement("INSERT INTO personas VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)");
             pstmt.setLong(1, newPersona.getIdPersona());
             pstmt.setString(2, newPersona.getCorreoElectronico());
             pstmt.setInt(3, newPersona.getIdCiudad());
@@ -91,6 +93,8 @@ public class personasDAO {
             pstmt.setString(9, newPersona.getContraseña());
             pstmt.setInt(10, newPersona.getIdestadousuarios());
             pstmt.setString(11, newPersona.getObservaciones());
+            pstmt.setInt(12, newPersona.getSexo());
+            pstmt.setInt(13, newPersona.getActivarCorreo());
            
             
             resultado = pstmt.executeUpdate();
@@ -102,7 +106,7 @@ public class personasDAO {
 
             }
         } catch (SQLException sqle) {
-            msgSalida = "Ocurrió la siguiente exception : " + sqle.getMessage();
+            msgSalida = "Ocurrió la siguiente exception popo : " + sqle.getMessage();
         } finally {
             try {
                 pstmt.close();
@@ -521,5 +525,21 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
 
         }
         return Paginacion2;
+    }
+ public String obtenerCorreoPorId(long personaID) {
+        sqlTemp = "SELECT `correoElectronico` FROM `personas` WHERE  `idpersona` = ?";
+        try {
+            pstmt = cnn.prepareStatement(sqlTemp);
+            pstmt.setLong(1, personaID);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                msgSalida = rs.getString("correoElectronico");
+            }
+
+        } catch (SQLException ex) {
+            msgSalida = "Error, detalle: " + ex.getMessage();
+        }
+        return msgSalida;
     }
 }

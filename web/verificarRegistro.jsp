@@ -92,9 +92,9 @@ $(document).ready(function(){
   </li>  
   <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a> 
   <ul class="submain">  
-  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a>  
-  </div>
-  </li>
+  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
+  <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
+
   </ul>
 </li>
  <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Cerrar sesion</li></a>

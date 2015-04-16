@@ -3,32 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador;
 
-
-import co.sena.edu.booking.DAO.personasDAO;
-import co.sena.edu.booking.DAO.reserDAO;
-import co.sena.edu.booking.DTO.personasDTO;
-
-import co.sena.edu.booking.DTO.reserDTO;
+/**
+ *
+ * @author user
+ */
+import Controlador.Correo;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import co.sena.edu.booking.DAO.personasDAO;
 
 /**
  *
- * @author fabian
+ * @author kennross
  */
-@WebServlet(name = "Reserva", urlPatterns = {"/Reserva"})
-public class Reserva extends HttpServlet {
+public class GestionCorreo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,37 +37,31 @@ public class Reserva extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException, SQLException {
-           response.setContentType("text/html;charset=UTF-8");
-           if (request.getParameter("registroR") != null) {
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
 
-           reserDTO to = new reserDTO();
-           reserDAO dao = new reserDAO();
-           long t =dao.validarReservas(Integer.parseInt(request.getParameter("doc")));
-           if(t>=5){
-            response.sendRedirect("reserva.jsp?noo="+ t);  
-           }else if(t<5){
-           to.setIdpersona(Integer.parseInt(request.getParameter("doc")));
-           to.setIdEstadoReserva(1);
-           to.setIdServicio(Integer.parseInt(request.getParameter("ser")));
-           to.setIdTransporteLlegada(Integer.parseInt(request.getParameter("aer")));
-           to.setResponsable(request.getParameter("res"));
-           to.setFechaReserva(request.getParameter("fecNac"));
-           to.setHoraReserva(request.getParameter("hora"));
-           to.setDireccionDestino(request.getParameter("aerop"));
-            
-           
-            String mensaje = dao.insertar(to);
-            personasDAO persona = new personasDAO();
-            personasDTO pdto = new personasDTO();
-            pdto = persona.ListarUnaPersona(Long.parseLong(request.getParameter("doc")));
-            String asunto = "Datos Reserva";
-            String cuerpomsj = "Señor(a)"+pdto.getNombres()+" "+pdto.getApellidos()+"ha hecho una reserva para el dia "+request.getParameter("fecNac");
-            String para = pdto.getCorreoElectronico();
-            Correo.sendMail(asunto, cuerpomsj, para);
-            response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
+        String asunto = request.getParameter("cAsunto");
+        String mensaje = request.getParameter("cCuerpo");
+        int size = Integer.parseInt(request.getParameter("contador"));
+        personasDAO pdao = new personasDAO();
+
+        StringBuilder correos = new StringBuilder("");
+        PrintWriter out = response.getWriter();
+
+        for (int i = 0; i < size + 1; i++) {
+            if (request.getParameter("idPersona[" + i + "]") != null) {
+                correos.append(pdao.obtenerCorreoPorId(Integer.parseInt(request.getParameter("idPersona[" + i + "]"))));
+                if (i != size - 1 && size > 0) {
+                    correos.append(", ");
+                }
+            }
         }
-    }
+
+        if (Correo.sendMail(asunto, mensaje, correos.toString())) {
+            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + correos.toString());
+        } else {
+            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-remove'></i> <strong>Envio Fallido</strong> No se logró el envío");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,7 +79,7 @@ public class Reserva extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionCorreo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -106,7 +97,7 @@ public class Reserva extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Reserva.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionCorreo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -121,3 +112,4 @@ public class Reserva extends HttpServlet {
     }// </editor-fold>
 
 }
+

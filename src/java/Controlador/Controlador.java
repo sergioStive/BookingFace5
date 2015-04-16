@@ -51,6 +51,12 @@ public class Controlador extends HttpServlet {
             pdto.setFechaNto(request.getParameter("date"));
             pdto.setIdNacionalidad(Integer.parseInt(request.getParameter("paisnac")));
             pdto.setIdCiudad(Integer.parseInt(request.getParameter("ciunac")));
+            pdto.setSexo(Integer.parseInt(request.getParameter("pSexo")));
+            if (request.getParameter("pActivarCorreo") != null) {
+                pdto.setActivarCorreo(1);
+            } else {
+                pdto.setActivarCorreo(0);
+            }
             pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
             pdto.setContraseña(request.getParameter("con"));
             pdto.setIdestadousuarios(1);

@@ -97,6 +97,24 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                     </tr>
+                    <tr>
+                        <td><label for="pSexo" class="labele"><strong>Sexo<font color="#FF0000">* </strong></label></font></td>
+                        <td>
+                            <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
+                            <select name="pSexo" required id="pSexo" class="form-control">
+                                    <option value="">Seleccione su sexo</option>
+                                    <option value="1">Mujer</option>
+                                    <option value="0">Hombre</option>
+                                </select>
+                        </td>
+                                       
+                    
+                                    <label>
+                                        <input name="pActivarCorreo" id="pActivarCorreo" type="checkbox" value="1"> Permitir Enviar Correos
+                                    </label>
+                    </tr>
+                    
+                          
                     <tr> 
                         <td><label for="con" class="labele"><strong>Contraseña<font color="#FF0000">*</strong></label></font></td>  
                         <td><input name="con" type="password" id="con" style="width:250px; height:25px" tabindex="17" autofocus required class="form-control inputtext">

@@ -22,6 +22,25 @@ public class personasDTO {
     private String contraseña;
     private int idestadousuarios;
     private String observaciones;
+    private int ActivarCorreo = 0;
+    private int Sexo = 0 ;
+    
+    public int getSexo() {
+        return Sexo;
+    }
+
+    public void setSexo(int Sexo) {
+        this.Sexo = Sexo;
+    }
+    
+
+    public int getActivarCorreo() {
+        return ActivarCorreo;
+    }
+
+    public void setActivarCorreo(int ActivarCorreo) {
+        this.ActivarCorreo = ActivarCorreo;
+    }
    
     /**
      * @return the idPersona

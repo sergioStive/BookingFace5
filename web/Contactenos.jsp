@@ -51,7 +51,7 @@
                     </div>
             
             
-            <form name="" action="Controlador" method="post" id="form1" class="contacto"> 
+            <form name="" action="GestionCorreo" method="post" id="form1" class="contacto"> 
 
                 <table width="744" align="center"><br>
                 
@@ -65,13 +65,13 @@
                         <td><input name="emal" type="email" style="width:250px; height:30px" autofocus id="doc" placeholder="Correo" required class="form-control inputtext"  minlenght=8 tabindex="2"></td>    
                     </tr>
                     <tr>
-                        <td><label for="asunto" class="labele"><strong>Asunto :<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="asunto" type="text" style="width:250px; height:25px " autofocus id="Asunto" placeholder="Asunto" required class="form-control" tabindex="3">
+                        <td><label for="cAsunto" class="labele"><strong>Asunto :<font color="#FF0000">*</strong></label></font></td>
+                        <td><input name="cAsunto" type="text" style="width:250px; height:25px " autofocus id="Asunto" placeholder="Asunto" required class="form-control" tabindex="3">
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="mensaje" class="labele"><strong>Mensaje<font color="#FF0000" >* </strong></label></font></td>
-                        <td><textarea rows="6" tabindex="4"></textarea></td>    
+                        <td><label for="cCuerpo" class="labele"><strong>Mensaje<font color="#FF0000" >* </strong></label></font></td>
+                        <td><textarea rows="6" name="cCuerpo" tabindex="4"></textarea></td>    
                     </tr>
                     <tr>
                         <td><input type="submit" name="enviar"  id="enviar" class="btn btn-success"  value="Enviar" style="position:relative; left:280px" tabindex="5">

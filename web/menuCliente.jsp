@@ -169,7 +169,6 @@ $(document).ready(function(){
             <img src="imagenes/dddd.png"><a href="menu1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="menu.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
         </div>
-
         <%
             } else {
                 misesion.removeAttribute("logueado");
