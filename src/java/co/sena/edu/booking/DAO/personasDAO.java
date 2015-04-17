@@ -542,4 +542,31 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return msgSalida;
     }
+  public listarPerDTO ListarTodasPersona(Long cedula) throws SQLException {
+        listarPerDTO Rdao = null;
+        try {
+            pstmt = cnn.prepareStatement("select p.idPersona, p.nombres, p.apellidos, p.correoElectronico, a.Ciudad, c.nacionalidad,c.idioma "
+                    + "from personas p inner join "
+                    + "nacionalidades c on p.idNacionalidad = c.idNacionalidad "
+                    + "inner join ciudades a on p.idCiudad = a.idCiudad where p.idPersona=?;");
+            pstmt.setLong(1, cedula);
+            pstmt.executeQuery();
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                Rdao = new listarPerDTO();
+                Rdao.setIdPersona(rs.getLong("idPersona"));
+                Rdao.setNombres(rs.getString("nombres"));
+                Rdao.setApellidos(rs.getString("apellidos"));
+                Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
+                Rdao.setCiudad(rs.getString("Ciudad"));
+                Rdao.setNacionalidad(rs.getString("nacionalidad"));
+                Rdao.setIdioma(rs.getString("idioma"));
+            }
+        } catch (SQLException ex) {
+            msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
+        }
+        return Rdao;
+    }
 }

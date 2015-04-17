@@ -11,16 +11,14 @@ package co.sena.edu.booking.DTO;
  */
 public class listarPerDTO {
 
-    
+   
+    private long idPersona;
     private String nombres;
     private String apellidos;
     private String correoElectronico;
     private String ciudad;
     private String nacionalidad;
-    private String idioma;
-
-   
-    
+    private String idioma; 
     
     
     
@@ -108,9 +106,18 @@ public class listarPerDTO {
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
+     public long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(long idPersona) {
+        this.idPersona = idPersona;
+    }
+
 @Override
     public String toString() {
         return "listarPerDTO{" 
+                + "idPerona=" + idPersona
                 + "nombres=" + nombres 
                 + ",apellidos=" + apellidos 
                 + ",correoElectronico=" + correoElectronico 
