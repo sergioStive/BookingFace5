@@ -333,8 +333,7 @@ public class reserDAO {
                           
                rs = pstmt.executeQuery();
              
-               while(rs.next()){
-                
+               while(rs.next()){                
                clave=rs.getInt("clave");
                }
            }catch (SQLException ex){

@@ -23,7 +23,27 @@ public class personasDTO {
     private int idestadousuarios;
     private String observaciones;
     private int ActivarCorreo = 0;
-    private int Sexo = 0 ;
+    private int Sexo = 0;
+    private ciudadesDTO ciu;
+    private nacionalidadesDTO nac;
+    
+    
+    public ciudadesDTO getCiu() {
+        return ciu;
+    }
+
+    public void setCiu(ciudadesDTO ciu) {
+        this.ciu = ciu;
+    }
+
+    public nacionalidadesDTO getNac() {
+        return nac;
+    }
+
+    public void setNac(nacionalidadesDTO nac) {
+        this.nac = nac;
+    }
+  
     
     public int getSexo() {
         return Sexo;
@@ -196,5 +216,8 @@ public class personasDTO {
         this.observaciones = observaciones;
     }
 
-    
+    @Override
+    public String toString() {
+        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", ActivarCorreo=" + ActivarCorreo + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + '}';
+    }
 }

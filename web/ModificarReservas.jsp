@@ -54,13 +54,13 @@
 </div>
 <table border="1" class="paginated" id="divTabla">
     <tr>
-        <th st-ratio="20" st-sort="idReserva">idReserva</th>
-        <th st-ratio="20" st-sort="idServicio">idServicio</th>
-        <th st-ratio="20" st-sort="idTrasnporteLlegada">idTrasnporteLlegada</th>
-        <th st-ratio="20" st-sort="responsable">responsable</th>
-        <th st-ratio="20" st-sort="fechaReserva">fechaReserva</th>
-        <th st-ratio="20" st-sort="horaReserva">horaReserva</th>
-        <th st-ratio="20" st-sort="direccionDestino">direccionDestino</th>
+        <th st-ratio="20" st-sort="idReserva">Reserva</th>
+        <th st-ratio="20" st-sort="idServicio">Servicio</th>
+        <th st-ratio="20" st-sort="idTrasnporteLlegada">TrasnporteLlegada</th>
+        <th st-ratio="20" st-sort="responsable">Responsable</th>
+        <th st-ratio="20" st-sort="fechaReserva">FechaReserva</th>
+        <th st-ratio="20" st-sort="horaReserva">HoraReserva</th>
+        <th st-ratio="20" st-sort="direccionDestino">DireccionDestino</th>
         <th st-ratio="20" st-sort="Modificar">Modificar</th>
     </tr>
     <%

@@ -106,7 +106,7 @@ $(document).ready(function(){
      personasDAO pers = new personasDAO();
      personasDTO persona = null;
      ArrayList<personasDTO> misPersonas= new ArrayList();
-     persona = pers.ListarUnaPersona(per.getIdPersona());                                       
+     persona = pers.listarVerificarPersonas(per.getIdPersona());                                       
      int numreg = pers.contarRegistros();
      int numpg = numreg/5;  
      int pg =0; //pagona a mostrar
@@ -167,8 +167,8 @@ $(document).ready(function(){
         <td data-sortable="true"><%=so.getIdPersona()%></td>
         <td data-sortable="true"><%=so.getNombres()%></td>
         <td data-sortable="true"><%=so.getApellidos()%></td>
-        <td data-sortable="true"><%=so.getIdCiudad()%></td>
-        <td data-sortable="true"><%=so.getIdNacionalidad()%></td>
+        <td data-sortable="true"><%=so.getCiu()%></td>
+        <td data-sortable="true"><%=so.getNac()%></td>
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
         <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>

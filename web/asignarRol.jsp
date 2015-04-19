@@ -42,10 +42,13 @@
                                 <li><a align="center"  href="#" style="text-decoration: none;">Reservations</a> </li>
                             </ul>
                         </li>                        
-                        <li><div align="center"><a href="menu1.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list"></span> Main</a> 
+                        <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list"></span> Main</a> 
                             </div>
                         </li>
-                        
+                       
+   		<li>
+			<a href="index.html"><span class="glyphicon glyphicon-remove-sign"></span> Exit</a>
+        </li>
                   
                     
       <%

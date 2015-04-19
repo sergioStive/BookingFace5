@@ -52,13 +52,14 @@ $(document).ready(function(){
 <title>..::Booking Routers::..</title>
 </head>
 <body>
+   
 <div class ="contenedor">
 <div class="banner"> 
 <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
 <ul id="main">
-    <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
+    <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
             <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
@@ -82,14 +83,16 @@ $(document).ready(function(){
 
 
         %>
-
-
-<form name="form1" action="Reserva" method="post" > 
-<table width="744" align="center" id="registro">
 <div class="ba">
     <h1><center>Generar Reservas</center></h1>
 </div>
+<br>
+ <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
+<form name="form1" action="Reserva" method="post" > 
+<table width="744" align="center" id="registro">
+
     <br>
+   
     <center>
     <%
                         if(request.getParameter("noo") != null) {
@@ -103,13 +106,13 @@ $(document).ready(function(){
                         </center>
                         <br>
 <tr>    
-<td><label for="doc" class="labele"><strong>Documento del usuario<font color="#FF0000">*</strong></label></font></td>
-<td><input name="doc" type="text" id="res" style="width:250px; height:25px" placeholder="Cedula" autofocus  required class="form-control inputtext"></td>
+<td><label for="doc" class="labele"><strong>Documento del usuario</strong></label></font></td>
+<td><input name="doc" type="text" id="res" value="<%=persona.getIdPersona()%>" style="width:250px; height:25px" readonly="readonly" autofocus required class="form-control inputtext"></td>
 </tr>
 <tr>
-<td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></font></td>
+<td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>
 <td>   
-      <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">     
+    <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
 <option value="">Escoja su el servicio que decea ---></option>      
       <option value="1">Aeropuerto y Centros de aviación Jet</option>
       <option value="2">Puerto y barco de cruceros de Transporte</option>
@@ -121,7 +124,7 @@ $(document).ready(function(){
       </select> 
  </td>
 </select>                                        
-<td><label for="aer" class="labele"><strong>Aerolineas<font color="#FF0000">*</strong></label></font></td>
+<td><label for="aer" class="labele"><strong>Aerolineas<font color="#FF0000">*</strong></label></td>
 <td>   
       <select name="aer" id="aer" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
           <option value="">Elija su aerolinea ---></option>
@@ -134,16 +137,16 @@ $(document).ready(function(){
 </tr>
 
 <tr>    
-<td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></font></td>
+<td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></td>
 <td><input name="res" type="text" id="res" style="width:250px; height:25px" placeholder="Responsable" autofocus  required class="form-control inputtext"></td>   
-<td><label for="fecNac"><strong>Fecha Reserva<font color="#FF0000">*</strong></label></td>
+<td><label for="fechNac" class="labele">Fecha de Reserva<font color="#FF0000">*</label></td>
 <td><input type="date" id="fecNac" name="fecNac" style="width:250px; height:25px"  required="" value="30-12-1900" class="form-control inputtext" tabindex="4" onblur="javascript:validarFecha()"><br></td>
 <div id="result" class="mensajegError"></div>
 </tr> 
 <tr>
-<td><label for="hora" class="labele">Hora de Vuelo</label></td>
+<td><label for="hora" class="labele">Hora de Vuelo<font color="#FF0000">*</label></td>
 <td><input type="time" name="hora" id="hora" style="width:250px; height:25px" class="form-control" required></td>
-<td><label for="aerop" class="labele">Aeropuesto Destino</label></td>
+<td><label for="aerop" class="labele">Aeropuesto Destino<font color="#FF0000">*</label></td>
 <td><select type="time" name="aerop" id="aerop" style="width:250px; height:30px"  autofocus  required class="form-control inputtext">
 <option>Escoja su aeropuerto destino --></option>
 <option>Fort Louderdale</option>
@@ -154,8 +157,11 @@ $(document).ready(function(){
 </tr>
 <tr>
 <td><input type="submit" name="registroR"  id="registro" class="btn btn-success"  value="Generar Reserva" onclick="validar(registro)" style="position:relative; left:330px">
+</td>
+</tr>
 </table>
 </form>
+</div>
 </div>
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
                                 <span>Booking Routers &copy; 2015</span><br>
@@ -166,7 +172,6 @@ $(document).ready(function(){
                                 <img src="imagenes/dddd.png"><a href="reserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="reserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
                             </div>
-</main>
 <%
             } else {
                 misesion.removeAttribute("logueado");

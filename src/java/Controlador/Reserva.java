@@ -68,7 +68,7 @@ public class Reserva extends HttpServlet {
             String cuerpomsj = "Señor(a)"+pdto.getNombres()+" "+pdto.getApellidos()+"ha hecho una reserva para el dia "+request.getParameter("fecNac");
             String para = pdto.getCorreoElectronico();
             Correo.sendMail(asunto, cuerpomsj, para);
-            response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
+            response.sendRedirect("reservapersonas.jsp?msgSalida="+mensaje);
         }
     }
     }

@@ -10,6 +10,7 @@ package co.sena.edu.booking.DAO;
 
 import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
+import co.sena.edu.booking.DTO.ciudadesDTO;
 import co.sena.edu.booking.DTO.listarPerDTO;
 import co.sena.edu.booking.DTO.listarPersonasDTO;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
@@ -542,31 +543,35 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return msgSalida;
     }
-  public listarPerDTO ListarTodasPersona(Long cedula) throws SQLException {
-        listarPerDTO Rdao = null;
-        try {
-            pstmt = cnn.prepareStatement("select p.idPersona, p.nombres, p.apellidos, p.correoElectronico, a.Ciudad, c.nacionalidad,c.idioma "
-                    + "from personas p inner join "
-                    + "nacionalidades c on p.idNacionalidad = c.idNacionalidad "
-                    + "inner join ciudades a on p.idCiudad = a.idCiudad where p.idPersona=?;");
-            pstmt.setLong(1, cedula);
-            pstmt.executeQuery();
+ public personasDTO listarVerificarPersonas(Long cedula) throws SQLException {
+       personasDTO Rdao = null;
+       try {
+           pstmt = cnn.prepareStatement("select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
+           "inner join ciudades c on p.idCiudad = c.idCiudad inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad;");
+           pstmt.setLong(1, cedula);
+           pstmt.executeQuery();
 
-            rs = pstmt.executeQuery();
+           rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                Rdao = new listarPerDTO();
-                Rdao.setIdPersona(rs.getLong("idPersona"));
-                Rdao.setNombres(rs.getString("nombres"));
-                Rdao.setApellidos(rs.getString("apellidos"));
-                Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
-                Rdao.setCiudad(rs.getString("Ciudad"));
-                Rdao.setNacionalidad(rs.getString("nacionalidad"));
-                Rdao.setIdioma(rs.getString("idioma"));
-            }
-        } catch (SQLException ex) {
-            msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
-        }
-        return Rdao;
-    }
+           while (rs.next()) {
+               Rdao = new personasDTO();
+               Rdao.setIdPersona(rs.getLong("idPersona"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
+               ciudadesDTO ciudad = new ciudadesDTO();
+               ciudad.setCiudad(rs.getString("ciudad"));
+               nacionalidadesDTO nac = new nacionalidadesDTO();
+               nac.setNacionalidad(rs.getString("nacionalidad"));
+               Rdao.setCiu(ciudad);
+               Rdao.setNac(nac);
+               Rdao.setNombres(rs.getString("nombres"));
+               Rdao.setApellidos(rs.getString("apellidos"));
+               Rdao.setTelefono(rs.getInt("telefono"));
+
+           }
+       } catch (SQLException ex) {
+           msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
+       }
+       return Rdao;
+   }
+ 
 }
