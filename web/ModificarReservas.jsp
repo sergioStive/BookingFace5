@@ -39,24 +39,20 @@
     <%
         HttpSession misesion = request.getSession(false);
         
-        reserDTO  per= new reserDTO();
+      reserDTO  per= new reserDTO();
       reserDAO pers = new reserDAO();
       personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
       ArrayList<reserDTO> misReservas= new ArrayList();      
       misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
-
-      
-      
-      
-      %>    
+%>    
 <div class="ba">
       <h1> Mis Reservas</h1>
 </div>
 <table border="1" class="paginated" id="divTabla">
     <tr>
-        <th st-ratio="20" st-sort="idReserva">Reserva</th>
+        <th st-ratio="20" st-sort="idReserva">NumeroReserva</th>
         <th st-ratio="20" st-sort="idServicio">Servicio</th>
-        <th st-ratio="20" st-sort="idTrasnporteLlegada">TrasnporteLlegada</th>
+        <th st-ratio="20" st-sort="idTrasnporteLlegada">TransporteLlegada</th>
         <th st-ratio="20" st-sort="responsable">Responsable</th>
         <th st-ratio="20" st-sort="fechaReserva">FechaReserva</th>
         <th st-ratio="20" st-sort="horaReserva">HoraReserva</th>
@@ -67,10 +63,9 @@
       for(reserDTO so: misReservas){      
     %>
     <tr>
-        <td><%=so.getIdReserva()%></td>
-       
-        <td><%=so.getIdServicio()%></td>
-        <td><%=so.getIdTransporteLlegada()%></td>
+        <td><%=so.getIdReserva()%></td>       
+        <td><%=so.getSer()%></td>
+        <td><%=so.getEmpre()%></td>
         <td><%=so.getResponsable()%></td>
         <td><%=so.getFechaReserva()%></td>
         <td><%=so.getHoraReserva()%></td>

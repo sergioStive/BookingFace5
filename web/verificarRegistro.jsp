@@ -104,9 +104,8 @@ $(document).ready(function(){
     <%
      personasDTO  per= new personasDTO();
      personasDAO pers = new personasDAO();
-     personasDTO persona = null;
-     ArrayList<personasDTO> misPersonas= new ArrayList();
-     persona = pers.listarVerificarPersonas(per.getIdPersona());                                       
+     ArrayList<personasDTO> misPersonas= new ArrayList();     
+     misPersonas = (ArrayList) pers.listarTodasPersonas(per.getIdPersona());                                       
      int numreg = pers.contarRegistros();
      int numpg = numreg/5;  
      int pg =0; //pagona a mostrar

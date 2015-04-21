@@ -10,6 +10,8 @@ package co.sena.edu.booking.DTO;
  * @author Tomoko
  */
 public class personasDTO {
+
+    
    
     private long idPersona;
     private String correoElectronico;
@@ -215,9 +217,9 @@ public class personasDTO {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-
-    @Override
+@Override
     public String toString() {
         return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", ActivarCorreo=" + ActivarCorreo + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + '}';
     }
+   
 }

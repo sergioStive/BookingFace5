@@ -7,6 +7,7 @@
 package Controlador;
 
 import co.sena.edu.booking.DAO.personasDAO;
+import co.sena.edu.booking.DTO.personasDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,25 +33,14 @@ public class GestionCorreos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        personasDAO pdao = new personasDAO();
+                
         String asunto = request.getParameter("cAsunto");
         String mensaje = request.getParameter("cCuerpo");
-        int size = Integer.parseInt(request.getParameter("contador"));
-        personasDAO pdao = new personasDAO();
+        String para = pdao.obtenerCorreoPorId();       
 
-        StringBuilder correos = new StringBuilder("");
-        PrintWriter out = response.getWriter();
-
-        for (int i = 0; i < size + 1; i++) {
-            if (request.getParameter("idPersona[" + i + "]") != null) {
-                correos.append(pdao.obtenerCorreoPorId(Integer.parseInt(request.getParameter("idPersona[" + i + "]"))));
-                if (i != size - 1 && size > 0) {
-                    correos.append(", ");
-                }
-            }
-        }
-
-        if (Correo.sendMail(asunto, mensaje, correos.toString())) {
-            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + correos.toString());
+        if (Correo.sendMail(asunto, mensaje, para)) {
+            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + pdao.obtenerCorreoPorId());
         } else {
             response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-remove'></i> <strong>Envio Fallido</strong> No se logro el envio");
         }

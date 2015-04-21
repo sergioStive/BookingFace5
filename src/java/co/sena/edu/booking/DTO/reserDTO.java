@@ -22,6 +22,25 @@ public class reserDTO {
     private String horaReserva;
     private String direccionDestino;
     private long idpersona;
+    private serviciosDTO ser;
+    private empresatransportesDTO empre;
+
+    public serviciosDTO getSer() {
+        return ser;
+    }
+
+    public void setSer(serviciosDTO ser) {
+        this.ser = ser;
+    }
+
+    public empresatransportesDTO getEmpre() {
+        return empre;
+    }
+
+    public void setEmpre(empresatransportesDTO empre) {
+        this.empre = empre;
+    }
+   
     /**
      * @return the idReserva
      */

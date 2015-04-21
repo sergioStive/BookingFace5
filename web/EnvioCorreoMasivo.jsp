@@ -46,7 +46,7 @@ and open the template in the editor.
             <form method="get" action="GestionCorreos">
                 <div class="row">                
                     <div class="col-md-4">
-                        <legend class="text-center">Correo másivo</legend>
+                        <legend class="text-center">Envió Correos másivos</legend>
                         <div class="form-group">
                             <label for="cAsunto">Asunto:</label>
                             <input type="text" name="cAsunto" id="cAsunto" 
@@ -63,11 +63,11 @@ and open the template in the editor.
                         <table class="table table-striped table-hover table-condensed">
                             <thead>
                                 <tr>
-                                    <th>Code</th>
+                                    <th>Documento</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Correo</th>                                    
-                                    <th>Seleccionar</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,7 +77,7 @@ and open the template in the editor.
 
                                     ArrayList<personasDTO> misPersonas;
                                     misPersonas = (ArrayList<personasDTO>) pdao.listarPersonas();
-                                    int i = 0;
+                              
                                     for (personasDTO p : misPersonas) {
 
                                 %>
@@ -86,23 +86,17 @@ and open the template in the editor.
                                     <td><%= p.getNombres()%></td>
                                     <td><%= p.getApellidos()%></td>
                                     <td><%= p.getCorreoElectronico()%></td>                                  
-                                    <td class="text-center">
-                                        <div class="checkbox <% if (p.getIdestadousuarios()== 0 || p.getActivarCorreo() == 0) { out.print("disabled");} %>">
-                                            <label>
-                                                <input type="checkbox"  <% if (p.getIdestadousuarios()== 0 || p.getActivarCorreo() == 0) { out.print(" "); out.print("value='" + 0 +"'"); } else { %> value='<%= p.getIdPersona()%>' <%}%>name="idPersona[<%= i%>]">
-                                            </label>
-                                        </div>
-                                    </td>
+                                  
                                 </tr>                        
                                 <%
-                                        i++;
+                                       
                                     }
                                 %>
                             </tbody>
                         </table>                
                     </div>
                 </div>
-                <input type="hidden" name="contador" value="<%= i%>">                
+                             
             </form>
 
             <div class="row">

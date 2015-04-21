@@ -7,9 +7,12 @@ package co.sena.edu.booking.DAO;
 
 import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
-//import co.sena.edu.booking.DTO.personasDTO;
-//import co.sena.edu.booking.DTO.personaxreservasDTO;
+import co.sena.edu.booking.DTO.ciudadesDTO;
+import co.sena.edu.booking.DTO.empresatransportesDTO;
+import co.sena.edu.booking.DTO.nacionalidadesDTO;
+import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.reserDTO;
+import co.sena.edu.booking.DTO.serviciosDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,36 +43,6 @@ public class reserDAO {
        cnn = reserConex.getInstance();
     }
 
-//    public String actualizarRegistro(reserDTO resert) {
-//
-//        try {
-//
-//            pstmt = cnn.prepareStatement("UPDATE reservas SET idEstadoReserva= ?"
-//                    + ", idServicio=?, idTransporteLlegada=?, Responsable=?"
-//                    + ", horaReserva=?, fechaReserva=?"
-//                    + ",direccionDestino=?  WHERE IdReserva = ?; ");
-//
-//            pstmt.setInt(1, resert.getIdEstadoReserva());
-//            pstmt.setInt(2, resert.getIdServicio());
-//            pstmt.setInt(3, resert.getIdTransporteLlegada());
-//            pstmt.setString(4, resert.getResponsable());
-//            pstmt.setString(5, resert.getHoraReserva());
-//            pstmt.setString(6, resert.getFechaReserva());
-//            pstmt.setString(7, resert.getDireccionDestino());
-//            pstmt.setInt(8, resert.getIdReserva());
-//                        //
-//
-//            rtdo = pstmt.executeUpdate();
-//            if (rtdo > 0) {
-//                msgSalida = "se modificaron (" + rtdo + ") registros";
-//            } else {
-//                msgSalida = "NO se pudo actualizar el registro";
-//            }
-//        } catch (SQLException ex) {
-//            msgSalida = "Error al ejecutar la operación : " + ex.getSQLState() + " " + ex.getMessage();
-//        }
-//        return msgSalida;
-//    }
 
     public String actualizarReserva(reserDTO resert) {
 
@@ -198,18 +171,23 @@ public class reserDAO {
         ArrayList<reserDTO> listarReservas = new ArrayList();
 
         try {
-            String query = " select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable,"
-                    + " fechaReserva, horaReserva, direccionDestino from reservas where idpersona=? ";
+            String query = " select r.idreserva, s.servicio, t.nombreEmpresaTransporte, r.responsable, r.fechaReserva,\n" +
+           "r.horaReserva,r.direccionDestino from reservas r inner join servicios s on r.idServicio=s.idServicio\n" +
+            "inner join transportellegadas em on em.idTransporteLlegada=r.idTransporteLlegada\n" +
+            "inner join empresatransportes t on t.idEmpresaTransporte=em.idEmpresaTransporte where idpersona=? ";
             pstmt = cnn.prepareStatement(query);
             pstmt.setLong(1, id);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                reserDTO Rdao = new reserDTO();
-                Rdao.setIdReserva(rs.getInt("idReserva"));
-                Rdao.setIdEstadoReserva(rs.getInt("idEstadoReserva"));
-                Rdao.setIdServicio(rs.getInt("idServicio"));
-                Rdao.setIdTransporteLlegada(rs.getInt("idTransporteLlegada"));
+               reserDTO Rdao = new reserDTO();
+                Rdao.setIdReserva(rs.getInt("idreserva"));
+                serviciosDTO se =new serviciosDTO();
+                se.setServicio(rs.getString("servicio"));
+                empresatransportesDTO t = new empresatransportesDTO(); 
+                t.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte")); 
+                Rdao.setSer(se);
+                Rdao.setEmpre(t);
                 Rdao.setResponsable(rs.getString("responsable"));
                 Rdao.setFechaReserva(rs.getString("fechaReserva"));
                 Rdao.setHoraReserva(rs.getString("horaReserva"));
@@ -340,5 +318,5 @@ public class reserDAO {
                msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
            }
        return clave;
-       }
+       }       
 }

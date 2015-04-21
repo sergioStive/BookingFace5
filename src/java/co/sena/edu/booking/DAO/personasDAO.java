@@ -11,10 +11,13 @@ package co.sena.edu.booking.DAO;
 import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
 import co.sena.edu.booking.DTO.ciudadesDTO;
+import co.sena.edu.booking.DTO.empresatransportesDTO;
 import co.sena.edu.booking.DTO.listarPerDTO;
 import co.sena.edu.booking.DTO.listarPersonasDTO;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
 import co.sena.edu.booking.DTO.personasDTO;
+import co.sena.edu.booking.DTO.reserDTO;
+import co.sena.edu.booking.DTO.serviciosDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -527,11 +530,10 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return Paginacion2;
     }
- public String obtenerCorreoPorId(int personaID) {
-        sqlTemp = "SELECT `correoElectronico` FROM `personas` WHERE  `idpersona` = ?";
+ public String obtenerCorreoPorId() {
+        sqlTemp = "SELECT correoElectronico FROM personas;";
         try {
-            pstmt = cnn.prepareStatement(sqlTemp);
-            pstmt.setLong(1, personaID);
+            pstmt = cnn.prepareStatement(sqlTemp);          
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -543,35 +545,38 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return msgSalida;
     }
- public personasDTO listarVerificarPersonas(Long cedula) throws SQLException {
-       personasDTO Rdao = null;
-       try {
-           pstmt = cnn.prepareStatement("select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
-           "inner join ciudades c on p.idCiudad = c.idCiudad inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad;");
-           pstmt.setLong(1, cedula);
-           pstmt.executeQuery();
+  public List<personasDTO> listarTodasPersonas(long cedula) throws SQLException {
+        ArrayList<personasDTO> listarPersonas = new ArrayList();
 
-           rs = pstmt.executeQuery();
+        try {
+            String query = "select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
+"inner join ciudades c on p.idCiudad = c.idCiudad\n" +
+"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where idpersona=?";
+            pstmt = cnn.prepareStatement(query);
+            pstmt.setLong(1, cedula);
+            rs = pstmt.executeQuery();
 
-           while (rs.next()) {
-               Rdao = new personasDTO();
+            while (rs.next()) {
+               personasDTO Rdao = new personasDTO();
                Rdao.setIdPersona(rs.getLong("idPersona"));
-               Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
+               Rdao.setNombres(rs.getString("nombres"));
+               Rdao.setApellidos(rs.getString("apellidos"));
                ciudadesDTO ciudad = new ciudadesDTO();
                ciudad.setCiudad(rs.getString("ciudad"));
                nacionalidadesDTO nac = new nacionalidadesDTO();
                nac.setNacionalidad(rs.getString("nacionalidad"));
                Rdao.setCiu(ciudad);
                Rdao.setNac(nac);
-               Rdao.setNombres(rs.getString("nombres"));
-               Rdao.setApellidos(rs.getString("apellidos"));
                Rdao.setTelefono(rs.getInt("telefono"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico"));              
+               listarPersonas.add(Rdao);
+            }
 
-           }
-       } catch (SQLException ex) {
-           msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
-       }
-       return Rdao;
-   }
- 
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return listarPersonas;
+    }
 }
