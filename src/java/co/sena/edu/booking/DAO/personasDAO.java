@@ -226,24 +226,25 @@ public class personasDAO {
 
         try {
             
-            pstmt = cnn.prepareStatement("select idPersona, correoElectronico, idCiudad, idNacionalidad, "
-                    + " nombres, apellidos, fechaNto, telefono, contraseña, idestadousuarios, observaciones from personas order by Nombres asc limit "+(pg-1)*limited+","+limited+";");
+            pstmt = cnn.prepareStatement("select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
+"inner join ciudades c on p.idCiudad = c.idCiudad\n" +
+"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where p.idestadousuarios='1' order by Nombres asc limit "+(pg-1)*limited+","+limited+";");
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                personasDTO Rdao = new personasDTO();
-                Rdao.setIdPersona(rs.getLong("idPersona"));
-                Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
-                Rdao.setIdCiudad(rs.getInt("idCiudad"));
-                Rdao.setIdNacionalidad(rs.getInt("idNacionalidad"));
-                Rdao.setNombres(rs.getString("nombres"));
-                Rdao.setApellidos(rs.getString("apellidos"));
-                Rdao.setFechaNto(rs.getString("fechaNto"));
-                Rdao.setTelefono(rs.getInt("telefono"));
-                Rdao.setContraseña(rs.getString("contraseña"));
-                Rdao.setIdestadousuarios(rs.getInt("idestadousuarios"));
-                Rdao.setObservaciones(rs.getString("observaciones"));
-                Paginacion.add(Rdao);
+               personasDTO Rdao = new personasDTO(); 
+               nacionalidadesDTO nac = new nacionalidadesDTO();
+               ciudadesDTO ciudad = new ciudadesDTO();
+               Rdao.setIdPersona(rs.getLong("idPersona"));
+               Rdao.setNombres(rs.getString("nombres"));
+               Rdao.setApellidos(rs.getString("apellidos"));              
+               ciudad.setCiudad(rs.getString("ciudad"));             
+               nac.setNacionalidad(rs.getString("nacionalidad"));              
+               Rdao.setTelefono(rs.getInt("telefono"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico")); 
+               Rdao.setCiu(ciudad);
+               Rdao.setNac(nac);               
+               Paginacion.add(Rdao);
 
             }
 
@@ -369,7 +370,7 @@ public String getHTMLAll(String Id) throws SQLException {
 public int contarRegistros(){
         int registros = 0;
         try{
-            pstmt=cnn.prepareStatement("SELECT * FROM personas;");
+            pstmt=cnn.prepareStatement("SELECT * FROM personas where idestadousuarios='1';");
             rs = pstmt.executeQuery();
             
             if (rs!=null) {
@@ -530,20 +531,24 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return Paginacion2;
     }
- public String obtenerCorreoPorId() {
-        sqlTemp = "SELECT correoElectronico FROM personas;";
+    public List<String> obtenerCorreoPorId() throws SQLException{
+         ArrayList<String> listarcorreos = new ArrayList();        
         try {
-            pstmt = cnn.prepareStatement(sqlTemp);          
+            String query = "SELECT correoElectronico FROM personas;";
+            pstmt = cnn.prepareStatement(query);          
             rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-                msgSalida = rs.getString("correoElectronico");
-            }
+               while (rs.next()) {              
+               String correo= new String(rs.getString("correoElectronico")); 
+               listarcorreos.add(correo);
+               }
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
 
-        } catch (SQLException ex) {
-            msgSalida = "Error, detalle: " + ex.getMessage();
         }
-        return msgSalida;
+        return listarcorreos;    
+    
     }
   public List<personasDTO> listarTodasPersonas(long cedula) throws SQLException {
         ArrayList<personasDTO> listarPersonas = new ArrayList();
@@ -551,24 +556,24 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         try {
             String query = "select p.idPersona,p.nombres,p.apellidos,c.ciudad,n.nacionalidad,p.telefono,p.correoElectronico from personas p \n" +
 "inner join ciudades c on p.idCiudad = c.idCiudad\n" +
-"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where idpersona=?";
+"inner join nacionalidades n on p.idNacionalidad= n.idNacionalidad where p.idestadousuarios='1';";
             pstmt = cnn.prepareStatement(query);
             pstmt.setLong(1, cedula);
             rs = pstmt.executeQuery();
 
-            while (rs.next()) {
-               personasDTO Rdao = new personasDTO();
+               while (rs.next()) {
+               personasDTO Rdao = new personasDTO(); 
+               nacionalidadesDTO nac = new nacionalidadesDTO();
+               ciudadesDTO ciudad = new ciudadesDTO();
                Rdao.setIdPersona(rs.getLong("idPersona"));
                Rdao.setNombres(rs.getString("nombres"));
-               Rdao.setApellidos(rs.getString("apellidos"));
-               ciudadesDTO ciudad = new ciudadesDTO();
-               ciudad.setCiudad(rs.getString("ciudad"));
-               nacionalidadesDTO nac = new nacionalidadesDTO();
-               nac.setNacionalidad(rs.getString("nacionalidad"));
+               Rdao.setApellidos(rs.getString("apellidos"));              
+               ciudad.setCiudad(rs.getString("ciudad"));             
+               nac.setNacionalidad(rs.getString("nacionalidad"));              
+               Rdao.setTelefono(rs.getInt("telefono"));
+               Rdao.setCorreoElectronico(rs.getString("correoElectronico")); 
                Rdao.setCiu(ciudad);
                Rdao.setNac(nac);
-               Rdao.setTelefono(rs.getInt("telefono"));
-               Rdao.setCorreoElectronico(rs.getString("correoElectronico"));              
                listarPersonas.add(Rdao);
             }
 

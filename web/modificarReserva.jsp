@@ -73,14 +73,14 @@
                     <td>
 
                        <select  id="servis" name="ser" value="" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">     
-                           <option value="">Escoja su el servicio que decea ---></option>      
+                           <option value="">Escoja su el servicio que desea ---></option>      
                            <option value="1" <% if (miReserva.getIdServicio() == 1) out.print("selected"); %>>Aeropuerto y Centros de aviación Jet</option>
                             <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %> >Puerto y barco de cruceros de Transporte</option>
                             <option value="3"<% if (miReserva.getIdServicio() == 3) out.print("selected"); %> >Hotel y museor</option>
-                            <option value="4" <% if (miReserva.getIdServicio() == 4) out.print("selected"); %>>Trabajo</option>
+                            <option value="4"<% if (miReserva.getIdServicio() == 4) out.print("selected"); %>>Trabajo</option>
                             <option value="5"<% if (miReserva.getIdServicio() == 5) out.print("selected"); %> >Eventos</option>
                             <option value="6"<% if (miReserva.getIdServicio() == 6) out.print("selected"); %> >Turs</option>
-                            <option value="7" <% if (miReserva.getIdServicio() == 7) out.print("selected"); %>>Vacaciones</option>
+                            <option value="7"<% if (miReserva.getIdServicio() == 7) out.print("selected"); %>>Vacaciones</option>
                         </select> 
                     </td>
                     </select>                                        
@@ -89,10 +89,10 @@
 
                         <select  name="aer" value="" id="aer" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
                             <option value="">Escoja la aerolinea ---></option>      
-                            <option value="1" <% if (miReserva.getIdTransporteLlegada() == 1) out.print("selected"); %>>Avianca</option>
-                            <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %>>LAN</option>
-                            <option value="3"<% if (miReserva.getIdServicio() == 3) out.print("selected"); %>>US Airways</option>
-                            <option value="4"<% if (miReserva.getIdServicio() == 4) out.print("selected"); %>>American Airline</option>
+                            <option value="1"<% if (miReserva.getIdTransporteLlegada() == 1) out.print("selected"); %>>Avianca</option>
+                            <option value="2"<% if (miReserva.getIdTransporteLlegada() == 2) out.print("selected"); %>>LAN</option>
+                            <option value="3"<% if (miReserva.getIdTransporteLlegada() == 3) out.print("selected"); %>>US Airways</option>
+                            <option value="4"<% if (miReserva.getIdTransporteLlegada() == 4) out.print("selected"); %>>American Airline</option>
                         </select> 
                     </td>
                 </tr>
@@ -107,7 +107,8 @@
                     <td><input type="time" name="hora" id="hora" value="<%= miReserva.getHoraReserva()%>" style="width:250px; height:25px" class="form-control" required></td>
                     <td><label for="aerop" class="labele">Aeropuesto Destino</label></td>
                     <td><select type="time" name="aerop" id="aerop" value="<%= miReserva.getDireccionDestino()%>" style="width:250px; height:30px" placeholder="Aeropuerto" autofocus  required class="form-control inputtext">
-                            <option>Escoja su aeropuerto destino --></option>
+                            <option>Escoja su aeropuerto destino --></option>                         
+                            
                             <option>Fort Louderdale</option>
                             <option>Miami International Airport</option>
                         </select>

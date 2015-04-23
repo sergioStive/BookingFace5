@@ -1,3 +1,5 @@
+<%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
+<%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
@@ -102,6 +104,8 @@ $(document).ready(function(){
   </nav>
 <center>
     <%
+     ciudadesDTO ciudad = new ciudadesDTO();
+     nacionalidadesDTO nac = new nacionalidadesDTO();
      personasDTO  per= new personasDTO();
      personasDAO pers = new personasDAO();
      ArrayList<personasDTO> misPersonas= new ArrayList();     
@@ -166,8 +170,8 @@ $(document).ready(function(){
         <td data-sortable="true"><%=so.getIdPersona()%></td>
         <td data-sortable="true"><%=so.getNombres()%></td>
         <td data-sortable="true"><%=so.getApellidos()%></td>
-        <td data-sortable="true"><%=so.getCiu()%></td>
-        <td data-sortable="true"><%=so.getNac()%></td>
+        <td data-sortable="true"><%=so.getCiu().getCiudad()%></td>
+        <td data-sortable="true"><%=so.getNac().getNacionalidad()%></td>
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
         <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>

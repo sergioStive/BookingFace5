@@ -13,17 +13,77 @@ package co.sena.edu.booking.DTO;
  */
 public class reserDTO {
 
-    private int idReserva;
-    private int idEstadoReserva;
-    private int idServicio;
-    private int idTransporteLlegada;
-    private String responsable;    
-    private String fechaReserva;
-    private String horaReserva;
-    private String direccionDestino;
-    private long idpersona;
-    private serviciosDTO ser;
-    private empresatransportesDTO empre;
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public int getIdEstadoReserva() {
+        return idEstadoReserva;
+    }
+
+    public void setIdEstadoReserva(int idEstadoReserva) {
+        this.idEstadoReserva = idEstadoReserva;
+    }
+
+    public int getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(int idServicio) {
+        this.idServicio = idServicio;
+    }
+
+    public int getIdTransporteLlegada() {
+        return idTransporteLlegada;
+    }
+
+    public void setIdTransporteLlegada(int idTransporteLlegada) {
+        this.idTransporteLlegada = idTransporteLlegada;
+    }
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
+
+    public String getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public void setFechaReserva(String fechaReserva) {
+        this.fechaReserva = fechaReserva;
+    }
+
+    public String getHoraReserva() {
+        return horaReserva;
+    }
+
+    public void setHoraReserva(String horaReserva) {
+        this.horaReserva = horaReserva;
+    }
+
+    public String getDireccionDestino() {
+        return direccionDestino;
+    }
+
+    public void setDireccionDestino(String direccionDestino) {
+        this.direccionDestino = direccionDestino;
+    }
+
+    public long getIdpersona() {
+        return idpersona;
+    }
+
+    public void setIdpersona(long idpersona) {
+        this.idpersona = idpersona;
+    }
 
     public serviciosDTO getSer() {
         return ser;
@@ -40,144 +100,22 @@ public class reserDTO {
     public void setEmpre(empresatransportesDTO empre) {
         this.empre = empre;
     }
-   
-    /**
-     * @return the idReserva
-     */
-    public int getIdReserva() {
-        return idReserva;
-    }
-
-    /**
-     * @param idReserva the idReserva to set
-     */
-    public void setIdReserva(int idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    /**
-     * @return the idEstadoReserva
-     */
-    public int getIdEstadoReserva() {
-        return idEstadoReserva;
-    }
-
-    /**
-     * @param idEstadoReserva the idEstadoReserva to set
-     */
-    public void setIdEstadoReserva(int idEstadoReserva) {
-        this.idEstadoReserva = idEstadoReserva;
-    }
-
-    /**
-     * @return the idServicio
-     */
-    public int getIdServicio() {
-        return idServicio;
-    }
-
-    /**
-     * @param idServicio the idServicio to set
-     */
-    public void setIdServicio(int idServicio) {
-        this.idServicio = idServicio;
-    }
-
-    /**
-     * @return the idTransporteLlegada
-     */
-    public int getIdTransporteLlegada() {
-        return idTransporteLlegada;
-    }
-
-    /**
-     * @param idTransporteLlegada the idTransporteLlegada to set
-     */
-    public void setIdTransporteLlegada(int idTransporteLlegada) {
-        this.idTransporteLlegada = idTransporteLlegada;
-    }
-
-    /**
-     * @return the responsable
-     */
-    public String getResponsable() {
-        return responsable;
-    }
-
-    /**
-     * @param responsable the responsable to set
-     */
-    public void setResponsable(String responsable) {
-        this.responsable = responsable;
-    } 
-
-    /**
-     * @return the fechaReserva
-     */
-    public String getFechaReserva() {
-        return fechaReserva;
-    }
-
-    /**
-     * @param fechaReserva the fechaReserva to set
-     */
-    public void setFechaReserva(String fechaReserva) {
-        this.fechaReserva = fechaReserva;
-    }
-
-    /**
-     * @return the horaReserva
-     */
-    public String getHoraReserva() {
-        return horaReserva;
-    }
-
-    /**
-     * @param horaReserva the horaReserva to set
-     */
-    public void setHoraReserva(String horaReserva) {
-        this.horaReserva = horaReserva;
-    }
-
-    /**
-     * @return the direccionDestino
-     */
-    public String getDireccionDestino() {
-        return direccionDestino;
-    }
-
-    /**
-     * @param direccionDestino the direccionDestino to set
-     */
-    public void setDireccionDestino(String direccionDestino) {
-        this.direccionDestino = direccionDestino;
-    }
 
     @Override
     public String toString() {
-        return "idReserva " + idReserva 
-                + "\nidEstadoReserva " + idEstadoReserva
-                + "\nServicio " + idServicio
-                + "\nTransporteLlegada " + idTransporteLlegada 
-                + "\nreponsa\"ble " + responsable               
-                + "\nFechareserva " + fechaReserva
-                + "\nhoraReserva " + horaReserva
-                + "\ndireccionDestino " + direccionDestino
-                 + "\npersona " + idpersona;
+        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + '}';
     }
 
-    /**
-     * @return the idpersona
-     */
-    public long getIdpersona() {
-        return idpersona;
-    }
-
-    /**
-     * @param idpersona the idpersona to set
-     */
-    public void setIdpersona(long idpersona) {
-        this.idpersona = idpersona;
-    }
+    private int idReserva;
+    private int idEstadoReserva;
+    private int idServicio;
+    private int idTransporteLlegada;
+    private String responsable;    
+    private String fechaReserva;
+    private String horaReserva;
+    private String direccionDestino;
+    private long idpersona;
+    private serviciosDTO ser;
+    private empresatransportesDTO empre;
 
 }

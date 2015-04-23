@@ -1,4 +1,6 @@
 
+<%@page import="co.sena.edu.booking.DTO.empresatransportesDTO"%>
+<%@page import="co.sena.edu.booking.DTO.serviciosDTO"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
@@ -13,6 +15,13 @@
     
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
+
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="js/jquery.dataTables.min.css">
+<script>
+   $(document).ready(function(){  $("#divTabla").dataTables();}); 
+</script>
 <script src="scripts/registro.js" type="text/javascript"></script>
 <script type="text/javascript">
     function comfirmar()
@@ -91,8 +100,9 @@ $(document).ready(function(){
 <center>
     <%
       HttpSession misesion = request.getSession(false);
-        
-        reserDTO  per= new reserDTO();
+      empresatransportesDTO t = new empresatransportesDTO();
+      serviciosDTO se =new serviciosDTO(); 
+      reserDTO  per= new reserDTO();
       reserDAO pers = new reserDAO();
       personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
       ArrayList<reserDTO> misReservas= new ArrayList();      
@@ -119,13 +129,13 @@ $(document).ready(function(){
       </div>
      <table border="1" class="paginated" id="divTabla">
     <tr>
-        <th st-ratio="20" st-sort="idReserva">idReserva</th>
-        <th st-ratio="20" st-sort="idServicio">idServicio</th>
-        <th st-ratio="20" st-sort="idTrasnporteLlegada">idTrasnporteLlegada</th>
-        <th st-ratio="20" st-sort="responsable">responsable</th>
-        <th st-ratio="20" st-sort="fechaReserva">fechaReserva</th>
-        <th st-ratio="20" st-sort="horaReserva">horaReserva</th>
-        <th st-ratio="20" st-sort="direccionDestino">direccionDestino</th>
+        <th st-ratio="20" st-sort="idReserva">NumeroReserva</th>
+        <th st-ratio="20" st-sort="idServicio">Servicio</th>
+        <th st-ratio="20" st-sort="idTrasnporteLlegada">TrasnporteLlegada</th>
+        <th st-ratio="20" st-sort="responsable">Responsable</th>
+        <th st-ratio="20" st-sort="fechaReserva">FechaReserva</th>
+        <th st-ratio="20" st-sort="horaReserva">HoraReserva</th>
+        <th st-ratio="20" st-sort="direccionDestino">DireccionDestino</th>
         <th st-ratio="20" st-sort="Modificar">Eliminar</th>
     </tr>
     <%
@@ -134,10 +144,9 @@ $(document).ready(function(){
       
     %>
     <tr>
-        <td><%=so.getIdReserva()%></td>
-       
-        <td><%=so.getIdServicio()%></td>
-        <td><%=so.getIdTransporteLlegada()%></td>
+        <td><%=so.getIdReserva()%></td>       
+        <td><%=so.getSer().getServicio()%></td>
+        <td><%=so.getEmpre().getNombreEmpresaTransporte()%></td>
         <td><%=so.getResponsable()%></td>
         <td><%=so.getFechaReserva()%></td>
         <td><%=so.getHoraReserva()%></td>

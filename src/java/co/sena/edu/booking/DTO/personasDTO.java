@@ -26,8 +26,8 @@ public class personasDTO {
     private String observaciones;
     private int ActivarCorreo = 0;
     private int Sexo = 0;
-    private ciudadesDTO ciu;
-    private nacionalidadesDTO nac;
+    private ciudadesDTO ciu ;
+    private nacionalidadesDTO nac; 
     
     
     public ciudadesDTO getCiu() {

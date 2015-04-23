@@ -180,18 +180,18 @@ public class reserDAO {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-               reserDTO Rdao = new reserDTO();
-                Rdao.setIdReserva(rs.getInt("idreserva"));
+                reserDTO Rdao = new reserDTO();
+                empresatransportesDTO t = new empresatransportesDTO();
                 serviciosDTO se =new serviciosDTO();
-                se.setServicio(rs.getString("servicio"));
-                empresatransportesDTO t = new empresatransportesDTO(); 
-                t.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte")); 
-                Rdao.setSer(se);
-                Rdao.setEmpre(t);
+                Rdao.setIdReserva(rs.getInt("idreserva"));                
+                se.setServicio(rs.getString("servicio"));               
+                t.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte"));                
                 Rdao.setResponsable(rs.getString("responsable"));
                 Rdao.setFechaReserva(rs.getString("fechaReserva"));
                 Rdao.setHoraReserva(rs.getString("horaReserva"));
                 Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                Rdao.setSer(se);
+                Rdao.setEmpre(t);                
                 listarReservas.add(Rdao);
             }
 

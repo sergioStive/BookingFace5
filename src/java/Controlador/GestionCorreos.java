@@ -10,6 +10,10 @@ import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DTO.personasDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +35,23 @@ public class GestionCorreos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         personasDAO pdao = new personasDAO();
-                
+        ArrayList<String> correos = new ArrayList();  
         String asunto = request.getParameter("cAsunto");
         String mensaje = request.getParameter("cCuerpo");
-        String para = pdao.obtenerCorreoPorId();       
-
-        if (Correo.sendMail(asunto, mensaje, para)) {
-            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + pdao.obtenerCorreoPorId());
+        correos = (ArrayList) pdao.obtenerCorreoPorId();      
+            StringBuilder email = new StringBuilder("");     
+            for (int i = 0; i < correos.size(); i++) {
+                email.append(correos.get(i));
+                if (i != correos.size() -1 && correos.size() > 0) {
+                    email.append(" ,");
+                }
+            }
+         
+        if (Correo.sendMail(asunto, mensaje, email.toString())) {
+            response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-ok'></i> <strong>Envio Correctamente</strong> Se logró el envío, se le envió a los siguientes correos: " + email.toString());
         } else {
             response.sendRedirect("EnvioCorreoMasivo.jsp?info=<i class='glyphicon glyphicon-remove'></i> <strong>Envio Fallido</strong> No se logro el envio");
         }
@@ -57,8 +68,12 @@ public class GestionCorreos extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException{
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionCorreos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +87,11 @@ public class GestionCorreos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionCorreos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

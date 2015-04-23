@@ -1,3 +1,5 @@
+<%@page import="co.sena.edu.booking.DTO.serviciosDTO"%>
+<%@page import="co.sena.edu.booking.DTO.empresatransportesDTO"%>
 <%@page import="java.sql.Array"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
@@ -37,8 +39,9 @@
 <center>
      
     <%
-        HttpSession misesion = request.getSession(false);
-        
+      HttpSession misesion = request.getSession(false);
+      empresatransportesDTO t = new empresatransportesDTO();
+      serviciosDTO se =new serviciosDTO();  
       reserDTO  per= new reserDTO();
       reserDAO pers = new reserDAO();
       personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
@@ -64,8 +67,8 @@
     %>
     <tr>
         <td><%=so.getIdReserva()%></td>       
-        <td><%=so.getSer()%></td>
-        <td><%=so.getEmpre()%></td>
+        <td><%=so.getSer().getServicio()%></td>
+        <td><%=so.getEmpre().getNombreEmpresaTransporte()%></td>
         <td><%=so.getResponsable()%></td>
         <td><%=so.getFechaReserva()%></td>
         <td><%=so.getHoraReserva()%></td>
