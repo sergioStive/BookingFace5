@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  * @author User
  */
 public class Controlador extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
@@ -40,7 +40,7 @@ public class Controlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         if (request.getParameter("registro") != null) {
-
+           
             personasDTO pdto = new personasDTO();
             personasDAO pdao = new personasDAO();
 
@@ -62,23 +62,23 @@ public class Controlador extends HttpServlet {
             pdto.setIdestadousuarios(1);
             pdto.setObservaciones("Ninguna");
 
-            String mensaje = pdao.crearPersona(pdto);
+            String mensaje = facadeP.crearPersona(pdto);
             HttpSession misesion = request.getSession(true);
             misesion.setAttribute("logueado", pdto);
             response.sendRedirect("menuCliente.jsp?msgSalida=" + mensaje);
         } else if (request.getParameter("id") != null) {
             personasDAO pdao = new personasDAO();
-            String eliminado = pdao.eliminar(Long.parseLong(request.getParameter("id")));
+            String eliminado = facadeP.eliminar(Long.parseLong(request.getParameter("id")));
             response.sendRedirect("verificarRegistro.jsp?msgSalida=" + eliminado);
         } else if (request.getParameter("submit10") != null) {
             personasDAO pert = new personasDAO();
 
-            long x = pert.isAcountExists(request.getParameter("contraseña"), Long.parseLong(request.getParameter("idPersona")));
+            long x = facadeP.isAcountExists(request.getParameter("contraseña"), Long.parseLong(request.getParameter("idPersona")));
 
             if (x != 0 && x != 10301023) {
                 personasDTO per = new personasDTO();
                 
-                per = pert.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
+                per = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                 HttpSession misesion = request.getSession(true);
                 misesion.setAttribute("logueado", per);
                 response.sendRedirect("menuCliente.jsp");
@@ -91,20 +91,20 @@ public class Controlador extends HttpServlet {
                 personasDTO per = new personasDTO();
                 ArrayList<reserDTO> re= new ArrayList();
                 reserDAO no= new reserDAO();
-                re=(ArrayList)no.listarReservaPer(per.getIdPersona());
-                per = pert.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
+                re=(ArrayList)facadeP.listarReservaPer(per.getIdPersona());
+                per = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                 HttpSession misesion = request.getSession(true);
                 misesion.setAttribute("logueado", per);
                 response.sendRedirect("verificarRegistro.jsp");
             }
         } else if (request.getParameter("idReserva") != null) {
             reserDAO pdao = new reserDAO();
-            String eliminado = pdao.eliminar(Integer.parseInt(request.getParameter("idReserva")));
+            String eliminado = facadeP.EliminarReseva(Integer.parseInt(request.getParameter("idReserva")));
             response.sendRedirect("CancelarR.jsp?msgSalida=" + eliminado);
         } else if (request.getParameter("idPersona") != null) {
             personasDAO pdao = new personasDAO();
             personasDTO eliminado = new personasDTO();
-            eliminado = pdao.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
+            eliminado = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
             HttpSession misesion = request.getSession(true);
             misesion.setAttribute("logueado", eliminado);
             response.sendRedirect("asignarRol.jsp?eliminado=" + eliminado);

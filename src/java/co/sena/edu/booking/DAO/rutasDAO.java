@@ -5,10 +5,11 @@
  */
 package co.sena.edu.booking.DAO;
 
+import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
 import co.sena.edu.booking.DTO.reserDTO;
-import java.sql.Connection;
 import co.sena.edu.booking.DTO.rutasDTO;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,16 +24,16 @@ import java.util.logging.Logger;
  * @author Tomoko
  */
 public class rutasDAO {
-    private Connection cnn = null;
+   // private Connection cnn = null;
     private PreparedStatement pstmt;
     ResultSet rs = null;
     String msgSalida; 
     int rut; 
-public rutasDAO(){
-    cnn = reserConex.getInstance();
-    
-}
-public String actualizarRegistro( rutasDTO rutas) {
+//public rutasDAO(){
+    //cnn = reserConex.getInstance();
+     //cnn = Conexion.getConnection();
+//}
+public String actualizarRegistro( rutasDTO rutas, Connection cnn) {
 try {
 
     pstmt = cnn.prepareStatement("UPDATE rutas SET placaVehiculo=?,"
@@ -59,7 +60,7 @@ try {
         return msgSalida;
 
  }
-public String crearRuta(rutasDTO newRuta)throws SQLException{
+public String crearRuta(rutasDTO newRuta, Connection cnn)throws SQLException{
         String salida = "";
         try {
             int idNewRuta = 0;
@@ -104,7 +105,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<rutasDTO> getAll() throws SQLException {
+    public List<rutasDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<rutasDTO> listaRutas = new LinkedList<rutasDTO>();
         try {
 
@@ -133,7 +134,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
 
         return listaRutas;
 }
-    public rutasDTO ListarUnaRuta (int idRuta) throws SQLException{
+    public rutasDTO ListarUnaRuta (int idRuta, Connection cnn) throws SQLException{
           rutasDTO RDto = new rutasDTO();   
         try  {
              
@@ -161,7 +162,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
        }
 
 
-       public List <rutasDTO> listarRutas () throws SQLException{
+       public List <rutasDTO> listarRutas (Connection cnn) throws SQLException{
     ArrayList <rutasDTO> listarRutas = new ArrayList ();
     
     try {
@@ -189,7 +190,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
         
     }return listarRutas;
 } 
-       public String eliminar(rutasDTO rutass) {
+       public String eliminar(rutasDTO rutass, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre
@@ -223,7 +224,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
 
         return msgSalida;
     }
-       public String getHTMLAll() throws SQLException {
+       public String getHTMLAll(Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' selected > Seleccione una ruta </option>";   
      try {
 
@@ -244,7 +245,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
         return   HTMLTipos;
 
 }
-     public String getHTMLTableAll(String idioma) throws SQLException {
+     public String getHTMLTableAll(String idioma, Connection cnn) throws SQLException {
      String HTMLTipos = "";
      String HTMLButton = "";
      if(idioma=="es"){
@@ -296,7 +297,7 @@ public String crearRuta(rutasDTO newRuta)throws SQLException{
         return   HTMLTipos;
 
 }
-     public int validarruta(int idtipovehiculo){
+     public int validarruta(int idtipovehiculo, Connection cnn){
          
      int y=1;
      try {

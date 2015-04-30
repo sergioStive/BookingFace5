@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Reserva", urlPatterns = {"/Reserva"})
 public class Reserva extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,7 +46,7 @@ public class Reserva extends HttpServlet {
 
            reserDTO to = new reserDTO();
            reserDAO dao = new reserDAO();
-           long t =dao.validarReservas(Integer.parseInt(request.getParameter("doc")));
+           long t =facadeP.validarReservas(Integer.parseInt(request.getParameter("doc")));
            if(t>=5){
             response.sendRedirect("reserva.jsp?noo="+ t);  
            }else if(t<5){
@@ -60,12 +60,12 @@ public class Reserva extends HttpServlet {
            to.setDireccionDestino(request.getParameter("aerop"));
             
            
-            String mensaje = dao.insertar(to);
+            String mensaje = facadeP.insertar(to);
             personasDAO persona = new personasDAO();
             personasDTO pdto = new personasDTO();
-            pdto = persona.ListarUnaPersona(Long.parseLong(request.getParameter("doc")));
+            pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("doc")));
             String asunto = "Datos Reserva";
-            String cuerpomsj = "Señor(a)"+pdto.getNombres()+" "+pdto.getApellidos()+"ha hecho una reserva para el dia "+request.getParameter("fecNac");
+            String cuerpomsj ="<html>\"<body>\"<img src=\"imagenes/Logo.png\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "Señor(a)"+pdto.getNombres()+" "+pdto.getApellidos()+"ha hecho una reserva para el dia "+request.getParameter("fecNac");
             String para = pdto.getCorreoElectronico();
             Correo.sendMail(asunto, cuerpomsj, para);
             response.sendRedirect("reservapersonas.jsp?msgSalida="+mensaje);

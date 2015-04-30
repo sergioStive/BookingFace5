@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <!doctype html>
@@ -41,9 +42,9 @@
                                     if (misesion.getAttribute("logueado") != null) {
                                         personasDTO pdto = null;
                                         personasDTO persona = null;
-                                        personasDAO pdao = new personasDAO();
+                                        FacadePersonas facadeP = new FacadePersonas();
                                         pdto = (personasDTO) misesion.getAttribute("logueado");
-                                        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+                                        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
                                                 
 
                                 %>

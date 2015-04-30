@@ -5,6 +5,7 @@
  */
 package co.sena.edu.booking.DAO;
 
+import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
 import co.sena.edu.booking.DTO.paisesDTO;
 import java.sql.Connection;
@@ -29,10 +30,10 @@ public class personaxreservasDAO {
     String msgSalida; 
     int perreser; 
 public personaxreservasDAO(){
-    cnn = reserConex.getInstance();
-    
+    //cnn = reserConex.getInstance();
+    cnn = Conexion.getConnection();
 }
-public String actualizarRegistro( personaxreservasDTO personas) {
+public String actualizarRegistro( personaxreservasDTO personas, Connection cnn) {
 try {
      pstmt = cnn.prepareStatement ("UPDATE personaxreservas SET idReserva=?, nroMaletas=?, idPersona WHERE idPersonaXReservas=?;");
 
@@ -55,7 +56,7 @@ perreser = pstmt.executeUpdate();
         return msgSalida;
 
  }
-public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva)throws SQLException{
+public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -89,7 +90,7 @@ public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva)throws
 
     }
 
-    public List<personaxreservasDTO> getAll() throws SQLException {
+    public List<personaxreservasDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<personaxreservasDTO> listaPersonaxreservas = new LinkedList<personaxreservasDTO>();
         try {
 
@@ -116,7 +117,7 @@ public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva)throws
 
         return listaPersonaxreservas;
 }
- public String  ListarUnaPersonaReserva (personaxreservasDTO Rdao) throws SQLException{
+ public String  ListarUnaPersonaReserva (personaxreservasDTO Rdao, Connection cnn) throws SQLException{
            try  {
                pstmt = cnn.prepareStatement("select idPersonaXReservas, idReserva, nroMaletas, idPersona from personaxreservas where idPersonaXReservas=?;");
                pstmt.setString(1, Rdao.getIdPersonaXReservas());
@@ -137,7 +138,7 @@ public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva)throws
        }
 
 
-       public List <personaxreservasDTO> listarPersonasXReserva () throws SQLException{
+       public List <personaxreservasDTO> listarPersonasXReserva (Connection cnn) throws SQLException{
     ArrayList <personaxreservasDTO> listarPersonaXReserva = new ArrayList ();
     
     try {
@@ -160,7 +161,7 @@ public String crearPersonaXReserva(personaxreservasDTO newPersonaxreserva)throws
         
     }return listarPersonaXReserva;
 }
-       public String eliminar(personaxreservasDTO personas) {
+       public String eliminar(personaxreservasDTO personas, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre

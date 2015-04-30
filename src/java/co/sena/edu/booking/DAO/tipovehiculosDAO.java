@@ -6,6 +6,7 @@
 
 package co.sena.edu.booking.DAO;
 
+import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
 import co.sena.edu.booking.DTO.tipovehiculosDTO;
 import java.sql.Connection;
@@ -24,16 +25,16 @@ import java.util.logging.Logger;
  */
 public class tipovehiculosDAO {
     
-   private Connection cnn = null;
+   //private Connection cnn = null;
    private PreparedStatement pstmt;
    ResultSet rs = null;
    String msgSalida; 
    int tiposervi; 
-public tipovehiculosDAO(){
-   cnn = reserConex.getInstance();
-   
-}
-public String actualizarRegistro( tipovehiculosDTO vehi) {
+//public tipovehiculosDAO(){
+   //cnn = reserConex.getInstance();
+   //cnn = Conexion.getConnection();
+//}
+public String actualizarRegistro( tipovehiculosDTO vehi, Connection cnn) {
 try {
 
    pstmt = cnn.prepareStatement("UPDATE tipovehiculos SET TipoVehiculo=?, modelo=?, "
@@ -56,7 +57,7 @@ tiposervi = pstmt.executeUpdate();
        }
        return msgSalida;
  }
-        public String crearTipoVehiculo(tipovehiculosDTO newTipoVehiculo)throws SQLException{
+        public String crearTipoVehiculo(tipovehiculosDTO newTipoVehiculo, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -94,7 +95,7 @@ tiposervi = pstmt.executeUpdate();
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<tipovehiculosDTO> getAll() throws SQLException {
+    public List<tipovehiculosDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<tipovehiculosDTO>listaTipovehiculos = new LinkedList<tipovehiculosDTO>();
         try {
 
@@ -121,7 +122,7 @@ tiposervi = pstmt.executeUpdate();
         return   listaTipovehiculos;
 }
 
- public String eliminar(tipovehiculosDTO vehi) {
+ public String eliminar(tipovehiculosDTO vehi, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre
@@ -156,7 +157,7 @@ tiposervi = pstmt.executeUpdate();
         return msgSalida;
     }
  
- public String getHTMLAll(String Id) throws SQLException {
+ public String getHTMLAll(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +" > Seleccione Tipo </option>";   
      try {
 

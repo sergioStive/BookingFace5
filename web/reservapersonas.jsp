@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
@@ -93,9 +94,10 @@ $(document).ready(function(){
                 personasDTO pdto = null;
                 personasDTO persona = null;
                 personasDAO pdao = new personasDAO();
+                FacadePersonas facadeP = new FacadePersonas();
                 pdto =(personasDTO) misesion.getAttribute("logueado");
                //String mgs =misesion.getAttribute("logueado").toString();
-                persona = pdao.ListarUnaPersona(pdto.getIdPersona());
+                persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
 
 
         %>
@@ -128,9 +130,9 @@ $(document).ready(function(){
                                 <option value="0" >------</option>
 
                                 <%
-                                    nacionalidadesDAO cdao = new nacionalidadesDAO();
+                                    nacionalidadesDAO cdao = new nacionalidadesDAO();                                    
                                     ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList) cdao.listarNacionalidades();
+                                    Ciud = (ArrayList) facadeP.listarNacionalidades();
                                     for (nacionalidadesDTO cdto : Ciud) {
                                 %>   
                                 <option value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>

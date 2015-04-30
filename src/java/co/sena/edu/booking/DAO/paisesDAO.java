@@ -5,6 +5,7 @@
  */
 package co.sena.edu.booking.DAO;
 
+import cao.sena.edu.booking.util.Conexion;
 import cao.sena.edu.booking.util.reserConex;
 import java.sql.Connection;
 import co.sena.edu.booking.DTO.paisesDTO;
@@ -28,10 +29,10 @@ public class paisesDAO {
     String msgSalida; 
     int pais; 
 public paisesDAO(){
-    cnn = reserConex.getInstance();
-    
+   // cnn = reserConex.getInstance();
+     cnn = Conexion.getConnection();
 }
-public String actualizarRegistro( paisesDTO nacionali) {
+public String actualizarRegistro( paisesDTO nacionali, Connection cnn) {
 try {
 
     pstmt = cnn.prepareStatement ("UPDATE paises SET Pais=?,Idioma=? WHERE idPais=?; ");
@@ -52,7 +53,7 @@ try {
         }
         return msgSalida;
     }
-    public String crearPais(paisesDTO newPais)throws SQLException{
+    public String crearPais(paisesDTO newPais, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -88,7 +89,7 @@ try {
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<paisesDTO> getAll() throws SQLException {
+    public List<paisesDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<paisesDTO> listaPaises = new LinkedList<paisesDTO>();
         try {
 
@@ -113,7 +114,7 @@ try {
 
         return listaPaises;
 }
-    public String  ListarUnPais (paisesDTO Rdao) throws SQLException{
+    public String  ListarUnPais (paisesDTO Rdao, Connection cnn) throws SQLException{
            try  {
                pstmt = cnn.prepareStatement("select idPais,Pais,idioma from Paises where idPais=?;");
                pstmt.setString(1, Rdao.getIdPais());
@@ -134,7 +135,7 @@ try {
        }
 
 
-       public List <paisesDTO> listarPaises () throws SQLException{
+       public List <paisesDTO> listarPaises (Connection cnn) throws SQLException{
     ArrayList <paisesDTO> listarPaises = new ArrayList ();
     
     try {
@@ -157,7 +158,7 @@ try {
     }
     return listarPaises;
 }  
-public String eliminar(paisesDTO nacionali) {
+public String eliminar(paisesDTO nacionali, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Sena
  */
 public class EnviarCorreos extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -50,7 +50,7 @@ public class EnviarCorreos extends HttpServlet {
             String correo = request.getParameter("correo").trim();
 
             personasDAO pers = new personasDAO();
-            String clave = pers.EnviarCorreo(correo);
+            String clave = facadeP.EnviarCorreo(correo);
             out.println(correo +" -> "+clave);
             
             boolean sal

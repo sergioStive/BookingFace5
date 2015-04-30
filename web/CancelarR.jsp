@@ -1,4 +1,5 @@
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.empresatransportesDTO"%>
 <%@page import="co.sena.edu.booking.DTO.serviciosDTO"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
@@ -103,10 +104,10 @@ $(document).ready(function(){
       empresatransportesDTO t = new empresatransportesDTO();
       serviciosDTO se =new serviciosDTO(); 
       reserDTO  per= new reserDTO();
-      reserDAO pers = new reserDAO();
+      FacadePersonas facadeP = new FacadePersonas();
       personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
       ArrayList<reserDTO> misReservas= new ArrayList();      
-      misReservas = (ArrayList) pers.listarReservaPer(persona.getIdPersona());
+      misReservas = (ArrayList) facadeP.listarReservaPer(persona.getIdPersona());
 %> 
 <br>
 <center>

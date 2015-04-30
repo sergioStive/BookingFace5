@@ -4,6 +4,7 @@
     Author     : pipe0
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.rutasDAO"%>
 <%@page import="co.sena.edu.booking.DAO.estadorutasDAO"%>
 <%@page import="co.sena.edu.booking.DAO.conductoresDAO"%>
@@ -64,14 +65,13 @@
     if (misesion.getAttribute("logueado") != null) {
         personasDTO pdto = null;
         personasDTO persona = null;
-        personasDAO pdao = new personasDAO();
-        tipovehiculosDAO TVDao = new tipovehiculosDAO();
+        FacadePersonas facadeP = new FacadePersonas();
         reserDAO  RDao= new reserDAO();
         rutasDAO ruDao= new rutasDAO();
         conductoresDAO conDAO = new conductoresDAO();
         estadorutasDAO estadoDAO =new estadorutasDAO();
         pdto = (personasDTO) misesion.getAttribute("logueado");
-        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
 %>
 <div>
 <form name="Modificacion de Rutas"  action="ModRuta1" method="post" >
@@ -124,7 +124,7 @@
         <br>
         <br>
         
-        <%=ruDao.getHTMLTableAll("en") %>
+        <%=facadeP.getHTMLTableAll("en") %>
         
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
         <span>Booking Routers &copy; 2015</span><br>

@@ -4,6 +4,7 @@
     Author     : Usuraio
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.listarPerDTO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
@@ -118,9 +119,9 @@
 
                 <%
                     listarPerDTO per = new listarPerDTO();
-                    personasDAO pers = new personasDAO();
+                    FacadePersonas facadeP = new FacadePersonas();
                     ArrayList<listarPerDTO> perso = new ArrayList();
-                    int numreg = pers.contarNumerosdeRegistros();
+                    int numreg = facadeP.contarNumerosdeRegistros(null);
                     int numero = numreg / 5;
                     int pg = 0;
                     if (request.getParameter("pg") == null) {
@@ -128,7 +129,7 @@
                     } else {
                         pg = Integer.valueOf(request.getParameter("pg"));
                     }
-                    perso = (ArrayList<listarPerDTO>) pers.Paginacion2(pg, 5);
+                    perso = (ArrayList<listarPerDTO>) facadeP.Paginacio2(pg, 5);
 
                 %>
 

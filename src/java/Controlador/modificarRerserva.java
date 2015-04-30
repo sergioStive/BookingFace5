@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author fabian
  */
 public class modificarRerserva extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,14 +51,14 @@ public class modificarRerserva extends HttpServlet {
            to.setHoraReserva(request.getParameter("hora"));
            to.setDireccionDestino(request.getParameter("aerop"));
             
-            String mensaje = dao.actualizarReserva(to);
+            String mensaje = facadeP.actualizarReserva(to);
             
             response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
     }
           else if(request.getParameter("idReserva")!= null){
             reserDAO pdao = new reserDAO();
             reserDTO eliminado= new reserDTO();
-            eliminado= pdao.ListarUnaReserva(Integer.parseInt(request.getParameter("idReserva")));
+            eliminado= facadeP.ListarUnaReserva(Integer.parseInt(request.getParameter("idReserva")));
             HttpSession misesion =request.getSession(false);
             misesion.setAttribute("logueado", eliminado);
             response.sendRedirect("modificarReserva.jsp?msgSalida="+eliminado);

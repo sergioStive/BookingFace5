@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author fabian
  */
 public class GestionCorreos extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,13 +35,13 @@ public class GestionCorreos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+       throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         personasDAO pdao = new personasDAO();
         ArrayList<String> correos = new ArrayList();  
         String asunto = request.getParameter("cAsunto");
         String mensaje = request.getParameter("cCuerpo");
-        correos = (ArrayList) pdao.obtenerCorreoPorId();      
+        correos = (ArrayList)facadeP.obtenerCorreoPorId();
             StringBuilder email = new StringBuilder("");     
             for (int i = 0; i < correos.size(); i++) {
                 email.append(correos.get(i));

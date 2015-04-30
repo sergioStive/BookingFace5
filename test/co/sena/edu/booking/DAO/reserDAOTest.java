@@ -3,87 +3,87 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.sena.edu.booking.DAO;
-
-
-import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
-/**
- *
- * @author Sena
- */
-public class reserDAOTest {
-    
-    public reserDAOTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of actualizarRegistro method, of class reserDAO.
-     */
-//    @Test
-//    public void testActualizarRegistro() {
-//        System.out.println("actualizarRegistro");
-//        reserDTO resert = null;
-//        reserDAO instance = new reserDAO();
-//        String expResult = "";
-//        String result = instance.actualizarRegistro(resert);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//package co.sena.edu.booking.DAO;
+//
+//
+//import java.util.List;
+//import org.junit.After;
+//import org.junit.AfterClass;
+//import org.junit.Before;
+//import org.junit.BeforeClass;
+//import org.junit.Test;
+//import static org.junit.Assert.*;
+//
+///**
+// *
+// * @author Sena
+// */
+//public class reserDAOTest {
+//    
+//    public reserDAOTest() {
+//    }
+//    
+//    @BeforeClass
+//    public static void setUpClass() {
+//    }
+//    
+//    @AfterClass
+//    public static void tearDownClass() {
+//    }
+//    
+//    @Before
+//    public void setUp() {
+//    }
+//    
+//    @After
+//    public void tearDown() {
 //    }
 //
 //    /**
-//     * Test of actualizarReserva method, of class reserDAO.
+//     * Test of actualizarRegistro method, of class reserDAO.
+//     */
+////    @Test
+////    public void testActualizarRegistro() {
+////        System.out.println("actualizarRegistro");
+////        reserDTO resert = null;
+////        reserDAO instance = new reserDAO();
+////        String expResult = "";
+////        String result = instance.actualizarRegistro(resert);
+////        assertEquals(expResult, result);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+////    }
+////
+////    /**
+////     * Test of actualizarReserva method, of class reserDAO.
+////     */
+////    @Test
+////    public void testActualizarReserva() {
+////        System.out.println("actualizarReserva");
+////        reserDTO resert = null;
+////        reserDAO instance = new reserDAO();
+////        String expResult = "";
+////        String result = instance.actualizarReserva(resert);
+////        assertEquals(expResult, result);
+////        // TODO review the generated test code and remove the default call to fail.
+////        fail("The test case is a prototype.");
+////    }
+//
+//    /**
+//     * Test of eliminar method, of class reserDAO.
 //     */
 //    @Test
-//    public void testActualizarReserva() {
-//        System.out.println("actualizarReserva");
-//        reserDTO resert = null;
-//        reserDAO instance = new reserDAO();
-//        String expResult = "";
-//        String result = instance.actualizarReserva(resert);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//    public void testEliminar() {
+//      System.out.println("eliminarReserva");
+//      int idReserva = 2343433;
+//      reserDAO instance = new reserDAO();
+//      String expResult = "reserva eliminada";
+//      //String result = instance.eliminar(idReserva);
+//      //assertEquals(null,expResult, result);
+//      // TODO review the generated test code and remove the default call to fail.
+//      //fail("The test case is a prototype.");
 //    }
-
-    /**
-     * Test of eliminar method, of class reserDAO.
-     */
-    @Test
-    public void testEliminar() {
-      System.out.println("eliminarReserva");
-      int idReserva = 2343433;
-      reserDAO instance = new reserDAO();
-      String expResult = "reserva eliminada";
-      String result = instance.eliminar(idReserva);
-      assertEquals(null,expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      //fail("The test case is a prototype.");
-    }
-    
+//    
    
     /**
      * Test of insertar method, of class reserDAO.
@@ -174,4 +174,4 @@ public class reserDAOTest {
 //        fail("The test case is a prototype.");
 //    }
     
-}
+//}

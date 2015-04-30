@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author fabian
  */
 public class buscarPersona1 extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,7 +43,7 @@ public class buscarPersona1 extends HttpServlet {
             String producto = request.getParameter("producto");
             String categoria = request.getParameter("categoria");
             
-            productos = (ArrayList<listarPersonasDTO>) cDao.contarPersonas(producto, categoria);
+            productos = (ArrayList<listarPersonasDTO>) facadeP.contarPersonas(producto, categoria);
             request.setAttribute("productos", productos);
             RequestDispatcher rd = request.getRequestDispatcher("/listarPersonas.jsp");
             rd.forward(request, response);      

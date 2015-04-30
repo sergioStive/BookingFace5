@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <!doctype html>
@@ -41,9 +42,9 @@
                                     if (misesion.getAttribute("logueado") != null) {
                                         personasDTO pdto = null;
                                         personasDTO persona = null;
-                                        personasDAO pdao = new personasDAO();
+                                        FacadePersonas facadeP = new FacadePersonas();
                                         pdto = (personasDTO) misesion.getAttribute("logueado");
-                                        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+                                        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
                                                 
 
                                 %>
@@ -86,7 +87,7 @@
 
                                             
                                             <td><label for="ciunac" class="labele"><strong>City<font color="#FF0000">*</strong></label></font></td>
-                                            <td><input name="ciunac" id="ciunac"value="<%=persona.getPais()%>" style="width:250px; height:30px" placeholder="Select City" autofocus required class="form-control inputtext"  list="ciudades" tabindex="9">
+                                            <td><input name="ciunac" id="ciunac" value="<%=persona.getIdCiudad()%>" style="width:250px; height:30px" placeholder="Select City" autofocus required class="form-control inputtext"  list="ciudades" tabindex="9">
                                                 <datalist id="ciudades">
                                                     <option label="BOG">Bogota</option>
                                                     <option label="CLO">Cali</option>

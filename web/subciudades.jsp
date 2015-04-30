@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="co.sena.edu.booking.DAO.nacionalidadesDAO"%>
@@ -19,26 +20,27 @@
     <body>
 
         <%
+            FacadePersonas facadeP = new FacadePersonas();
             nacionalidadesDAO nao = new nacionalidadesDAO();
             LinkedList<ciudadesDTO> subciudades = new LinkedList<ciudadesDTO>();
 
             if (request.getParameter("idNacionalidad") != null) {
-                subciudades = nao.listarCiudades(Integer.parseInt(request.getParameter("idNacionalidad")));
+                subciudades = facadeP.ListarCiudades(Integer.parseInt(request.getParameter("idNacionalidad")));
                 if (subciudades.size() > 0) {
 
                     for (ciudadesDTO scdto : subciudades) {
                         
                         out.write("<option value = " + scdto.getIdCiudad()+ ">" + scdto.getCiudad()+ "</option>");
 
-                    }
-
-
                 }
 
-            }
+
+               }
+
+           }
 
 
-        %>
+       %>
 
 
     </body>

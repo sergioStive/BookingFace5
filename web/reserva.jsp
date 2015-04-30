@@ -1,4 +1,5 @@
  
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%> 	 	
 
@@ -76,10 +77,11 @@ $(document).ready(function(){
             if (misesion.getAttribute("logueado") != null) {
                 personasDTO pdto = null;
                 personasDTO persona = null;
+                FacadePersonas facadeP = new FacadePersonas();
                 personasDAO pdao = new personasDAO();
                 pdto =(personasDTO) misesion.getAttribute("logueado");
                //String mgs =misesion.getAttribute("logueado").toString();
-                persona = pdao.ListarUnaPersona(pdto.getIdPersona());
+                persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
 
 
         %>

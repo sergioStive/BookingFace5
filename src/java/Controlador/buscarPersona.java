@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  * @author fabian
  */
 public class buscarPersona extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,7 +51,7 @@ public class buscarPersona extends HttpServlet {
             String nacionalidad = request.getParameter("pais");
             String ciudad = request.getParameter("ciudad");
 
-            person = (ArrayList<listarPerDTO>) perdao.filtroPersonas(nombres,nacionalidad,ciudad);
+            person = (ArrayList<listarPerDTO>) facadeP.filtroPersonas(nombres,nacionalidad,ciudad);
             miseSession.setAttribute("nombres", person);
             response.sendRedirect("Filtro.jsp");
                  
@@ -66,7 +66,7 @@ public class buscarPersona extends HttpServlet {
             String nacionalidad = request.getParameter("pais");
             String ciudad = request.getParameter("ciudad");
 
-            person = (ArrayList<listarPerDTO>) perdao.filtroPersonas(nombres,nacionalidad,ciudad);
+            person = (ArrayList<listarPerDTO>) facadeP.filtroPersonas(nombres,nacionalidad,ciudad);
             request.setAttribute("personas", person);
             RequestDispatcher rd = request.getRequestDispatcher("ExportarExcel.jsp");
             rd.forward(request, response); 

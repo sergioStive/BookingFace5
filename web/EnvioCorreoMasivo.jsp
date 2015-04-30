@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
@@ -68,10 +69,10 @@
                             <tbody>
 
                                 <%
-                                    personasDAO pdao = new personasDAO();
+                                    FacadePersonas facadeP = new FacadePersonas();
 
                                     ArrayList<personasDTO> misPersonas;
-                                    misPersonas = (ArrayList<personasDTO>) pdao.listarPersonas();
+                                  misPersonas = (ArrayList<personasDTO>) facadeP.listarPersonas(null);
                               
                                     for (personasDTO p : misPersonas) {
 

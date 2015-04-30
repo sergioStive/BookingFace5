@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Reserva1", urlPatterns = {"/Reserva1"})
 public class Reserva1 extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,9 +41,6 @@ public class Reserva1 extends HttpServlet {
         if (request.getParameter("registro") != null) {
 
            reserDTO to = new reserDTO();
-           reserDAO dao = new reserDAO();
-           
-           
            to.setIdEstadoReserva (1);
            to.setIdServicio(Integer.parseInt(request.getParameter("ser")));
            to.setIdTransporteLlegada(Integer.parseInt(request.getParameter("aer")));
@@ -52,8 +49,7 @@ public class Reserva1 extends HttpServlet {
            to.setHoraReserva(request.getParameter("hora"));
            to.setDireccionDestino(request.getParameter("aerop"));
             
-            String mensaje = dao.insertar(to);
-            
+            String mensaje = facadeP.insertar(to);            
             response.sendRedirect("menu1.jsp?msg="+mensaje);
         }
     }

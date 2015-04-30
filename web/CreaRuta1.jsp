@@ -3,6 +3,7 @@
     Created on : Jan 21, 2015, 9:23:56 AM
     Author     : Andres Felipe Guerrero Rodriguez
 --%>
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.estadorutasDAO"%>
 <%@page import="co.sena.edu.booking.DAO.conductoresDAO"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
@@ -62,13 +63,13 @@
     if (misesion.getAttribute("logueado") != null) {
         personasDTO pdto = null;
         personasDTO persona = null;
-        personasDAO pdao = new personasDAO();
+        FacadePersonas facadeP = new FacadePersonas();
         tipovehiculosDAO TVDao = new tipovehiculosDAO();
         reserDAO  RDao= new reserDAO();
         conductoresDAO conDAO = new conductoresDAO();
         estadorutasDAO estadoDAO =new estadorutasDAO();
         pdto = (personasDTO) misesion.getAttribute("logueado");
-        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
 %>
 <div>
 <form name="CreaRuta"  action="CreaRuta" method="post" >
@@ -111,7 +112,7 @@
             <td>
                 <select id="Cliente" name ="Cliente" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext" >
                     <%= 
-                       pdao.getHTMLAll("0")
+                       facadeP.getHTMLAll("0")
                     %>
                 </select>
             </td>
@@ -126,7 +127,7 @@
                 <td> 
                 <select id="Conductor" name="Conductor" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext"  >
                     <%= 
-                     conDAO.getHTMLAll("0")
+                     facadeP.getHTMLAll("0")
                     %>
                 </select>
             </td>
@@ -140,7 +141,7 @@
                 <td> 
                 <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" >
                     <%= 
-                        RDao.getHTMLAll("0")
+                       facadeP.getHTMLAll("0")
                     %>
                 </select>
             </td>

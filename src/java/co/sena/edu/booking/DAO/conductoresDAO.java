@@ -5,7 +5,8 @@
  */
 package co.sena.edu.booking.DAO;
 
-import cao.sena.edu.booking.util.reserConex;
+
+import cao.sena.edu.booking.util.Conexion;
 import co.sena.edu.booking.DTO.ciudadesDTO;
 import co.sena.edu.booking.DTO.conductoresDTO;
 import co.sena.edu.booking.DTO.reserDTO;
@@ -24,16 +25,17 @@ import java.util.logging.Logger;
  * @author Tomoko
  */
 public class conductoresDAO {
-     private Connection cnn = null;
+     //private Connection cnn = null;
     private PreparedStatement pstm;
     ResultSet rs = null;
     String mgSalida; 
     int conduc; 
     
-     public conductoresDAO  () {
-        cnn = reserConex.getInstance();
-      }
-public String actualizarRegistro(conductoresDTO conductores) {
+    // public conductoresDAO  () {
+        //cnn = reserConex.getInstance();
+          //cnn = Conexion.getConnection();
+     // }
+public String actualizarRegistro(conductoresDTO conductores, Connection cnn) {
 
         try {
             /*
@@ -70,7 +72,7 @@ public String actualizarRegistro(conductoresDTO conductores) {
         return mgSalida;
     }
 
-   public String crearConductor(conductoresDTO newConductor)throws SQLException{
+   public String crearConductor(conductoresDTO newConductor, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -109,7 +111,7 @@ public String actualizarRegistro(conductoresDTO conductores) {
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<conductoresDTO> getAll() throws SQLException {
+    public List<conductoresDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<conductoresDTO> listaconductores = new LinkedList<conductoresDTO>();
         try {
 
@@ -134,7 +136,7 @@ public String actualizarRegistro(conductoresDTO conductores) {
 
         return listaconductores;
 }
-    public String  ListarUno (conductoresDTO Rdao) throws SQLException{
+    public String  ListarUno (conductoresDTO Rdao, Connection cnn) throws SQLException{
            try  {
                pstm = cnn.prepareStatement(" select idConductor, idPersona,telContacto from conductores where idConductor=?;");
                pstm.setInt(1, Rdao.getIdConductor());
@@ -156,7 +158,7 @@ public String actualizarRegistro(conductoresDTO conductores) {
        return "" + Rdao;
        }
 
-public List <conductoresDTO> listarCoductores () throws SQLException{
+public List <conductoresDTO> listarCoductores (Connection cnn) throws SQLException{
     ArrayList <conductoresDTO> listarConductores = new ArrayList ();
     
     try {
@@ -179,7 +181,7 @@ public List <conductoresDTO> listarCoductores () throws SQLException{
         
     }return listarConductores;
 }  
- public String eliminar(conductoresDTO conductores) {
+ public String eliminar(conductoresDTO conductores, Connection cnn) {
         try {
            
             pstm = cnn.prepareStatement("DELETE FROM conductores WHERE idConductor = ?; ");      
@@ -209,7 +211,7 @@ public List <conductoresDTO> listarCoductores () throws SQLException{
 
         return mgSalida;
     }
- public String getHTMLAll(String Id) throws SQLException {
+ public String getHTMLAll(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +"> Seleccione Conductor </option>";   
      try {
 

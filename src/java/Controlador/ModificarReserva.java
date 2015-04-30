@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+
 import co.sena.edu.booking.DAO.reserDAO;
 import co.sena.edu.booking.DTO.reserDTO;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author Sena
  */
 public class ModificarReserva extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
@@ -48,7 +49,7 @@ public class ModificarReserva extends HttpServlet {
            to.setHoraReserva(request.getParameter("hora"));
            to.setDireccionDestino(request.getParameter("aerop"));
             
-            String mensaje = dao.actualizarReserva(to);
+            String mensaje = facadeP.actualizarReserva(to);
             response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
             
         }

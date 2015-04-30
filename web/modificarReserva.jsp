@@ -4,6 +4,7 @@
     Author     : fabian
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
 <%@page import="co.sena.edu.booking.DTO.reserDTO"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
@@ -60,7 +61,8 @@
         <%
             reserDAO queryReser = new reserDAO();
             reserDTO miReserva = new reserDTO();
-            miReserva = queryReser.ListarUnaReserva(Integer.parseInt(request.getParameter("idReserva")));
+            FacadePersonas facadeP = new FacadePersonas();
+            miReserva = facadeP.ListarUnaReserva(Integer.parseInt(request.getParameter("idReserva")));
         %>
         <form name="form1" action="ModificarReserva" method="post" > 
             <table width="744" align="center" id="registro">

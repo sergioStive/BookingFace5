@@ -4,6 +4,7 @@
     Author     : pipe0
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.rutasDAO"%>
 <%@page import="co.sena.edu.booking.DAO.estadorutasDAO"%>
 <%@page import="co.sena.edu.booking.DAO.conductoresDAO"%>
@@ -16,6 +17,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+          <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setDateHeader("Expires", 0);
+        %>
         <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -85,8 +91,10 @@ $(document).ready(function(){
                             <ul class="submain">
                                 <li><a href="actualizarDatos1.jsp" style="text-decoration: none;">Mis Datos</a></li>
                                 <li><a href="cambiarContraseña.jsp" style="text-decoration: none;">Cambiar Contraseña</a> </li>
-                                </ul>
-                        </li>
+                            </ul>
+                              </li>
+                            <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li> 
+                       
       
         </ul>
 
@@ -99,14 +107,14 @@ $(document).ready(function(){
     if (misesion.getAttribute("logueado") != null) {
         personasDTO pdto = null;
         personasDTO persona = null;
-        personasDAO pdao = new personasDAO();
+        FacadePersonas facadeP = new FacadePersonas();
         tipovehiculosDAO TVDao = new tipovehiculosDAO();
         reserDAO  RDao= new reserDAO();
         rutasDAO ruDao= new rutasDAO();
         conductoresDAO conDAO = new conductoresDAO();
         estadorutasDAO estadoDAO =new estadorutasDAO();
         pdto = (personasDTO) misesion.getAttribute("logueado");
-        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
 %>
 <div>
 <form name="Modificacion de Rutas"  action="ModRuta" method="post" >
@@ -163,7 +171,7 @@ $(document).ready(function(){
         <br>
         <br>
         
-        <%=ruDao.getHTMLTableAll("es") %>
+        <%=facadeP.getHTMLTableAll("es") %>
                
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
         <span>Booking Routers &copy; 2015</span><br>
@@ -175,7 +183,11 @@ $(document).ready(function(){
 
 </div>
  <%
-   }
+   }else {
+                misesion.removeAttribute("logueado");
+                misesion.invalidate();
+                response.sendRedirect("Index.html");
+            }
  %>
     </body>
 </html>

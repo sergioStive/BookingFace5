@@ -4,6 +4,7 @@
     Author     : pipe0
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DTO.rutasDTO"%>
 <%@page import="co.sena.edu.booking.DAO.estadorutasDAO"%>
@@ -33,12 +34,12 @@
         personasDAO pdao = new personasDAO();
         tipovehiculosDAO TVDao = new tipovehiculosDAO();
         reserDAO  RDao= new reserDAO();
-        rutasDAO ruDao= new rutasDAO();
-        rutasDTO ruDTO = ruDao.ListarUnaRuta(Integer.parseInt(request.getParameter("id")));
+        FacadePersonas facadeP = new FacadePersonas();
+        rutasDTO ruDTO = facadeP.ListarUnaRuta(Integer.parseInt(request.getParameter("id")));
         conductoresDAO conDAO = new conductoresDAO();
         estadorutasDAO estadoDAO =new estadorutasDAO();
         pdto = (personasDTO) misesion.getAttribute("logueado");
-        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
 %>
         <center> 
     <table id="Modifica">
@@ -59,7 +60,7 @@
             <td> 
                 <select id="Tipo" name="Tipo" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  >
                     <%= 
-                        TVDao.getHTMLAll(Integer.toString( ruDTO.getIdtipoVehiculo()))
+                        facadeP.getTMLAll(Integer.toString( ruDTO.getIdtipoVehiculo()))
                     %>
                 </select>
             </td>
@@ -74,7 +75,7 @@
             <td>
                 <select id="Cliente"  readonly="readonly" name ="Cliente" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
                     <%= 
-                       pdao.getHTMLAll(ruDTO.getIdPersona())
+                       facadeP.getHTMLAll(ruDTO.getIdPersona())
                     %>
                 </select>
             </td>
@@ -89,7 +90,7 @@
                 <td> 
                 <select id="Conductor" name="Conductor" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  >
                     <%= 
-                     conDAO.getHTMLAll(ruDTO.getIdConductor())
+                     facadeP.getHTMLAl(ruDTO.getIdConductor())
                     %>
                 </select>
             </td>
@@ -103,7 +104,7 @@
                 <td> 
                 <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
                     <%= 
-                        RDao.getHTMLAll(Integer.toString( ruDTO.getidReserva()))
+                       facadeP.getHTMLAll(Integer.toString( ruDTO.getidReserva()))
                     %>
                 </select>
             </td>

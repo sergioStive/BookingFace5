@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "modificar", urlPatterns = {"/modificar"})
 public class modificar extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,7 +53,7 @@ public class modificar extends HttpServlet {
             pdto.setObservaciones(request.getParameter("info"));
          
             
-            String mensaje = pdao.actualizarRegistro(pdto);
+            String mensaje = facadeP.actualizarRegistro(pdto);
             response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
     }
     }

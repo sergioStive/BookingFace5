@@ -1,3 +1,5 @@
+
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
 <%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -7,6 +9,11 @@
 <!doctype html>
 <html>
 <head>
+      <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setDateHeader("Expires", 0);
+        %>
 
     
     <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
@@ -99,26 +106,27 @@ $(document).ready(function(){
 
   </ul>
 </li>
- <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Cerrar sesion</li></a>
+  <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li> 
  </ul>
   </nav>
 <center>
     <%
      ciudadesDTO ciudad = new ciudadesDTO();
      nacionalidadesDTO nac = new nacionalidadesDTO();
+     FacadePersonas facadeP = new FacadePersonas();
      personasDTO  per= new personasDTO();
      personasDAO pers = new personasDAO();
      ArrayList<personasDTO> misPersonas= new ArrayList();     
-     misPersonas = (ArrayList) pers.listarTodasPersonas(per.getIdPersona());                                       
-     int numreg = pers.contarRegistros();
-     int numpg = numreg/5;  
+     misPersonas = (ArrayList) facadeP.listarTodasPersonas(per.getIdPersona());                                       
+     int numreg = facadeP.contarRegistros();
+     int numpg = numreg/5;   
      int pg =0; //pagona a mostrar
      if(request.getParameter("pg")==null){
      pg=1;
      }else{
      pg=Integer.valueOf(request.getParameter("pg"));
      }
-     misPersonas =(ArrayList<personasDTO>) pers.Paginacion(pg,3);      
+     misPersonas =(ArrayList<personasDTO>) facadeP.Paginacion(pg,3);      
      %>  
       
 
@@ -214,8 +222,10 @@ $(document).ready(function(){
        <a href="?pg=<%=j+1%>"><%=j+1 %></a>
  <%
      }
- %> 
+ %>
+
 <a href="?pg=<%=adelanteA+1%>">&raquo</a>
+  
 </div>
 </center>
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">

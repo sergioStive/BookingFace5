@@ -109,4 +109,10 @@
         <error-code>500</error-code>
         <location>/error500.jsp</location>
     </error-page>
+    <resource-ref>
+        <res-ref-name>jdbc/pool</res-ref-name>
+        <res-type>javax.sql.ConnectionPoolDataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

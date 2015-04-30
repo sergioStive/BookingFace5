@@ -5,7 +5,8 @@
  */
 package co.sena.edu.booking.DAO;
 
-import cao.sena.edu.booking.util.reserConex;
+
+import cao.sena.edu.booking.util.Conexion;
 import co.sena.edu.booking.DTO.ciudadesDTO;
 import java.sql.Connection;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
@@ -23,16 +24,16 @@ import java.util.logging.Logger;
  * @author Tomoko
  */
 public class nacionalidadesDAO {
-    private Connection cnn = null;
+   // private Connection cnn = null;
     private PreparedStatement pstmt;
     ResultSet rs = null;
     String msgSalida; 
     int nacio; 
-public nacionalidadesDAO(){
-    cnn = reserConex.getInstance();
-    
-}
-public String actualizarRegistro( nacionalidadesDTO nacionali) {
+//public nacionalidadesDAO(){
+    //cnn = reserConex.getInstance();
+     //cnn = Conexion.getConnection();
+//}
+public String actualizarRegistro( nacionalidadesDTO nacionali, Connection cnn) {
 try {
 
 pstmt = cnn.prepareStatement ("UPDATE nacionalidades SET Nacionalidad=? WHERE idNacionalidad=?;");
@@ -54,7 +55,7 @@ nacio = pstmt.executeUpdate();
         return msgSalida;
     }
 
-public String crearNacionalidad(nacionalidadesDTO newNacionalidad)throws SQLException{
+public String crearNacionalidad(nacionalidadesDTO newNacionalidad, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -89,7 +90,7 @@ public String crearNacionalidad(nacionalidadesDTO newNacionalidad)throws SQLExce
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<nacionalidadesDTO> getAll() throws SQLException {
+    public List<nacionalidadesDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<nacionalidadesDTO> listaNacionalidades = new LinkedList<nacionalidadesDTO>();
         try {
 
@@ -114,7 +115,7 @@ public String crearNacionalidad(nacionalidadesDTO newNacionalidad)throws SQLExce
 
         return listaNacionalidades;
 }
-    public String  ListarUnaNacionalidad (nacionalidadesDTO Rdao) throws SQLException{
+    public String  ListarUnaNacionalidad (nacionalidadesDTO Rdao, Connection cnn) throws SQLException{
            try  {
                pstmt = cnn.prepareStatement("select idNacionalidad, nacionalidad from nacionalidades where idNacionalidad=?;");
                pstmt.setInt(1, Rdao.getIdNacionalidad());
@@ -133,7 +134,7 @@ public String crearNacionalidad(nacionalidadesDTO newNacionalidad)throws SQLExce
        return "" + Rdao;
        }
 
-public List <nacionalidadesDTO> listarNacionalidades () throws SQLException{
+public List <nacionalidadesDTO> listarNacionalidades (Connection cnn) throws SQLException{
     ArrayList <nacionalidadesDTO> listarNacionalidades = new ArrayList ();
     
     try {
@@ -156,7 +157,7 @@ public List <nacionalidadesDTO> listarNacionalidades () throws SQLException{
     }return listarNacionalidades;
 }  
 
- public LinkedList<ciudadesDTO> listarCiudades(int Nacionalidad)  {
+ public LinkedList<ciudadesDTO> listarCiudades(int Nacionalidad, Connection cnn)  {
         LinkedList<ciudadesDTO> listaCiu = new LinkedList<>();
         try {
             String query = "SELECT  idCiudad , Ciudad , idNacionalidad  "                    
@@ -182,7 +183,7 @@ public List <nacionalidadesDTO> listarNacionalidades () throws SQLException{
         return listaCiu;
     }
 
-public String eliminar(nacionalidadesDTO nacionali) {
+public String eliminar(nacionalidadesDTO nacionali, Connection cnn) {
         try {
             
             pstmt = cnn.prepareStatement("DELETE FROM nacionalidades WHERE idNacionalidad = ?; ");           

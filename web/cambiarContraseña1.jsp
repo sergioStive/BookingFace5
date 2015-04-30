@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <!doctype html>
@@ -18,7 +19,7 @@
 <nav> 
     <ul id="main">
 <li><div align="center"><a href="Index1.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Home</li></a>
-<li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservations</a>
+        <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservations</li></a>
 <ul class="submain">
 <li><a href="reserva1.jsp" style="text-decoration: none;">New Reservation </a></li>
 <li><a href="" style="text-decoration: none;">My Reservations</a></li>
@@ -39,9 +40,9 @@
                                     if (misesion.getAttribute("logueado") != null) {
                                         personasDTO pdto = null;
                                         personasDTO persona = null;
-                                        personasDAO pdao = new personasDAO();
+                                        FacadePersonas facadeP = new FacadePersonas();
                                         pdto = (personasDTO) misesion.getAttribute("logueado");
-                                        persona = pdao.ListarUnaPersona(pdto.getIdPersona());                                       
+                                        persona = facadeP.ListarUnaPersona(pdto.getIdPersona());                                       
                                                 
 
                                 %>

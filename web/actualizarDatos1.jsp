@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
 <%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
@@ -42,9 +43,9 @@
                 if (misesion.getAttribute("logueado") != null) {
                     personasDTO pdto = null;
                     personasDTO persona = null;
-                    personasDAO pdao = new personasDAO();
+                    FacadePersonas facadeP = new FacadePersonas();
                     pdto = (personasDTO) misesion.getAttribute("logueado");
-                    persona = pdao.ListarUnaPersona(pdto.getIdPersona());
+                    persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
 
 
             %>
@@ -84,7 +85,7 @@
                                 <%
                                     nacionalidadesDAO cdao = new nacionalidadesDAO();
                                     ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList) cdao.listarNacionalidades();
+                                    Ciud = (ArrayList)facadeP.ListarNacionalidades();
                                     for (nacionalidadesDTO cdto : Ciud) {
                                 %>   
                                 <option value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>

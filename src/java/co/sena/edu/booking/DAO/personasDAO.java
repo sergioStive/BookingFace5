@@ -8,8 +8,9 @@
  */
 package co.sena.edu.booking.DAO;
 
+
+
 import cao.sena.edu.booking.util.Conexion;
-import cao.sena.edu.booking.util.reserConex;
 import co.sena.edu.booking.DTO.ciudadesDTO;
 import co.sena.edu.booking.DTO.empresatransportesDTO;
 import co.sena.edu.booking.DTO.listarPerDTO;
@@ -34,21 +35,21 @@ import java.util.logging.Logger;
  */
 public class personasDAO {
 
-    private Connection cnn = null;
+    //private Connection cnn = null;
     private PreparedStatement pstmt;
     ResultSet rs = null;
     String msgSalida;
     int per;
-        String sqlTemp = "";
+    String sqlTemp = "";
 
 
-    public personasDAO() {
+   
         //cnn = Conexion.getConnection();
-     cnn = reserConex.getInstance();
+       //cnn = reserConex.getInstance();
 
-    }
+    
 
-    public String actualizarRegistro(personasDTO personas) {
+    public String actualizarRegistro(personasDTO personas, Connection cnn) {
         try {
 
             pstmt = cnn.prepareStatement("UPDATE personas SET correoElectronico=?,idCiudad=?,"
@@ -80,7 +81,7 @@ public class personasDAO {
 
     }
 
-    public String crearPersona(personasDTO newPersona) throws SQLException {
+    public String crearPersona(personasDTO newPersona, Connection cnn) throws SQLException {
         //String salida = "";
         try {
 
@@ -124,7 +125,7 @@ public class personasDAO {
     }
 
    
-    public List<personasDTO> getAll() throws SQLException {
+    public List<personasDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<personasDTO> listaPersonas = new LinkedList<personasDTO>();
         try {
 
@@ -157,7 +158,7 @@ public class personasDAO {
         return listaPersonas;
     }
 
-    public personasDTO ListarUnaPersona(Long cedula) throws SQLException {
+    public personasDTO ListarUnaPersona(Long cedula, Connection cnn) throws SQLException {
         personasDTO Rdao = null;
         try {
             pstmt = cnn.prepareStatement("select idPersona, correoElectronico, idCiudad, idNacionalidad, "
@@ -187,7 +188,7 @@ public class personasDAO {
         return Rdao;
     }
 
-    public List<personasDTO> listarPersonas() throws SQLException {
+    public List<personasDTO> listarPersonas(personasDTO p, Connection cnn) throws SQLException {
         ArrayList<personasDTO> listarPersonas = new ArrayList();
 
         try {
@@ -221,7 +222,7 @@ public class personasDAO {
         return listarPersonas;
     }
     
-      public List<personasDTO> Paginacion(int pg , int limited) throws SQLException {
+      public List<personasDTO> Paginacion(int pg , int limited, Connection cnn) throws SQLException {
         ArrayList<personasDTO> Paginacion = new ArrayList();
 
         try {
@@ -256,7 +257,7 @@ public class personasDAO {
         return Paginacion;
     }
 
-    public String eliminar(Long idPersona) {
+    public String eliminar(Long idPersona, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre
@@ -289,7 +290,7 @@ public class personasDAO {
 
         return msgSalida;
     }
- public String actualizarContraseña(personasDTO personas) {
+ public String actualizarContraseña(personasDTO personas, Connection cnn) {
         try {
 
             pstmt = cnn.prepareStatement("UPDATE personas SET contraseña=? WHERE idPersona=?");
@@ -309,7 +310,7 @@ public class personasDAO {
         return msgSalida;
 
     }
-public long isAcountExists(String contraseña, Long idPersona) throws SQLException {
+public long isAcountExists(String contraseña, Long idPersona, Connection cnn) throws SQLException {
        
        long y = 1;
        
@@ -348,7 +349,7 @@ public long isAcountExists(String contraseña, Long idPersona) throws SQLExcepti
        }
 return y;
    }
-public String getHTMLAll(String Id) throws SQLException {
+public String getHTMLAll(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +" > Seleccione Cliente </option>";   
      try {
 
@@ -367,10 +368,11 @@ public String getHTMLAll(String Id) throws SQLException {
         }
         return   HTMLTipos;
 }
-public int contarRegistros(){
+public int contarRegistros(Connection cnn){
         int registros = 0;
         try{
             pstmt=cnn.prepareStatement("SELECT * FROM personas where idestadousuarios='1';");
+            
             rs = pstmt.executeQuery();
             
             if (rs!=null) {
@@ -387,7 +389,7 @@ public int contarRegistros(){
         return registros;
     }
 
-public String EnviarCorreo(String correo) {
+public String EnviarCorreo(String correo, Connection cnn) {
         String clave = "";
         try {
 
@@ -404,7 +406,7 @@ public String EnviarCorreo(String correo) {
        
         return  clave;
 }
-public List<listarPersonasDTO> contarPersonas(String  nacionalidad, String nombres) {
+public List<listarPersonasDTO> contarPersonas(String  nacionalidad, String nombres, Connection cnn) {
         ArrayList<listarPersonasDTO> productos = new ArrayList();
         try {
             StringBuilder sb = new StringBuilder("select p.nombres, p.apellidos, c.nacionalidad "
@@ -434,7 +436,7 @@ public List<listarPersonasDTO> contarPersonas(String  nacionalidad, String nombr
         }
         return productos;
     }
-public List<listarPerDTO> filtroPersonas(String nacionalidad, String nombres, String ciudad ) throws SQLException{
+public List<listarPerDTO> filtroPersonas(String nacionalidad, String nombres, String ciudad, Connection cnn ) throws SQLException{
         ArrayList<listarPerDTO> filtroPersonas = new ArrayList();
 
         try {
@@ -480,7 +482,7 @@ public List<listarPerDTO> filtroPersonas(String nacionalidad, String nombres, St
         }
         return filtroPersonas;
     }
-public int contarNumerosdeRegistros(){
+public int contarNumerosdeRegistros(Connection cnn){
         int registros = 0;
         try{
             pstmt=cnn.prepareStatement("select p.nombres, p.apellidos, p.correoElectronico, "
@@ -502,7 +504,7 @@ public int contarNumerosdeRegistros(){
         return registros;
     }
 
-public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException {
+public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) throws SQLException {
         ArrayList<listarPerDTO> Paginacion2 = new ArrayList();
 
         try {
@@ -531,7 +533,7 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         }
         return Paginacion2;
     }
-    public List<String> obtenerCorreoPorId() throws SQLException{
+    public List<String> obtenerCorreoPorId(Connection cnn) throws SQLException{
          ArrayList<String> listarcorreos = new ArrayList();        
         try {
             String query = "SELECT correoElectronico FROM personas;";
@@ -550,7 +552,7 @@ public List<listarPerDTO> Paginacion2(int pg , int limited) throws SQLException 
         return listarcorreos;    
     
     }
-  public List<personasDTO> listarTodasPersonas(long cedula) throws SQLException {
+  public List<personasDTO> listarTodasPersonas(long cedula, Connection cnn) throws SQLException {
         ArrayList<personasDTO> listarPersonas = new ArrayList();
 
         try {

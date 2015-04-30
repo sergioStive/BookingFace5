@@ -5,7 +5,7 @@
  */
 package co.sena.edu.booking.DAO;
 
-import cao.sena.edu.booking.util.reserConex;
+import cao.sena.edu.booking.util.Conexion;
 import co.sena.edu.booking.DTO.ciudadesDTO;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,18 +22,18 @@ import java.util.logging.Logger;
  * @author Tomoko
  */
 public class ciudadesDAO {
-    private Connection cnn = null;
+   // private Connection cnn = null;
     private PreparedStatement pstm;
     ResultSet rs = null;
     
     String mgSalida; // almacena el msg de salida al usuario
     int ciu; // almacena el resultado de la ejecución en la BD
     
-    public ciudadesDAO() {
-        cnn = reserConex.getInstance();
-        
-    }
-     public String actualizarRegistro(ciudadesDTO ciudad) {
+   // public ciudadesDAO() {
+        //cnn = Conexion.getConnection();
+         //cnn = Conexion.getConnection();
+    //}
+     public String actualizarRegistro(ciudadesDTO ciudad, Connection cnn) {
 
         try {
     pstm = cnn.prepareStatement("UPDATE ciudades SET  ciudad =?, idNacionalidad=?  where idciudad=?;");
@@ -67,7 +67,7 @@ public class ciudadesDAO {
         return mgSalida;
  
   } 
-     public String crearCiudad(ciudadesDTO newCiudad)throws SQLException{
+     public String crearCiudad(ciudadesDTO newCiudad, Connection cnn)throws SQLException{
         String salida = "";
         try {
 
@@ -103,7 +103,7 @@ public class ciudadesDAO {
      * Este método permite listar los profesores disponibles en la tabla
      *
      */
-    public List<ciudadesDTO> getAll() throws SQLException {
+    public List<ciudadesDTO> getAll(Connection cnn) throws SQLException {
         LinkedList<ciudadesDTO> listaciudades = new LinkedList<ciudadesDTO>();
         try {
 
@@ -128,7 +128,7 @@ public class ciudadesDAO {
 
         return listaciudades;
 }
-    public ArrayList <ciudadesDTO> listarTodo () throws SQLException{
+    public ArrayList <ciudadesDTO> listarCiudades(Connection cnn) throws SQLException{
     ArrayList <ciudadesDTO> listarCiudades = new ArrayList ();
     
     try {
@@ -152,7 +152,7 @@ public class ciudadesDAO {
 
 }  
 
-public String  ListarUno (ciudadesDTO Rdao) throws SQLException{
+public String  ListarUno (ciudadesDTO Rdao, Connection cnn) throws SQLException{
            try  {
                pstm = cnn.prepareStatement("select idCiudad, Ciudad, idPais from ciudades where idCiudad=?;");
                pstm.setString(1, Rdao.getIdCiudad());
@@ -172,7 +172,7 @@ public String  ListarUno (ciudadesDTO Rdao) throws SQLException{
            }
        return "" + Rdao;
        }
-public String eliminar(ciudadesDTO ciudad) {
+public String eliminar(ciudadesDTO ciudad, Connection cnn) {
       
         try {
           

@@ -1,3 +1,4 @@
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
 <%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -71,8 +72,9 @@
 
                                 <%
                                     nacionalidadesDAO cdao = new nacionalidadesDAO();
+                                    FacadePersonas facadeP = new FacadePersonas();
                                     ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList) cdao.listarNacionalidades();
+                                    Ciud = (ArrayList) facadeP.listarNacionalidades();
                                     for (nacionalidadesDTO cdto : Ciud) {
                                 %>   
                                 <option value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>
@@ -107,11 +109,6 @@
                                     <option value="0">Hombre</option>
                                 </select>
                         </td>
-                                       
-                    
-                                    <label>
-                                        <input name="pActivarCorreo" id="pActivarCorreo" type="checkbox" value="1"> Permitir Enviar Correos
-                                    </label>
                     </tr>
                     
                           

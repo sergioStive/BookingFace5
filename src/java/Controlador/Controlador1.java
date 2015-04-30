@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Controlador1", urlPatterns = {"/Controlador1"})
 public class Controlador1 extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -56,14 +56,14 @@ public class Controlador1 extends HttpServlet {
             pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
             pdto.setContraseña(request.getParameter("con"));
             
-            String mensaje = pdao.crearPersona(pdto);
+            String mensaje = facadeP.crearPersona(pdto);
             HttpSession misesion = request.getSession(true);
             misesion.setAttribute("logueado", pdto);
             response.sendRedirect("menu1.jsp?msg="+mensaje);
         }
         else if(request.getParameter("id")!= null){
             personasDAO pdao = new personasDAO();
-            String eliminado= pdao.eliminar(Long.parseLong(request.getParameter("id")));
+            String eliminado= facadeP.eliminar(Long.parseLong(request.getParameter("id")));
             response.sendRedirect("verificarRegistro1.jsp?eliminado="+eliminado);
             }
         
@@ -72,12 +72,12 @@ public class Controlador1 extends HttpServlet {
            
           
            
-        long x =   pert.isAcountExists(request.getParameter("contraseña"),Long.parseLong(request.getParameter("idPersona")));
+        long x =   facadeP.isAcountExists(request.getParameter("contraseña"),Long.parseLong(request.getParameter("idPersona")));
            
            if ( x != 0 && x != 10301023) {
                personasDTO per = new personasDTO();
                
-               per= pert.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
+               per= facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("idPersona")));
                HttpSession misesion =request.getSession(true);
                misesion.setAttribute("logueado", per);
                response.sendRedirect("menu1.jsp");
@@ -93,7 +93,7 @@ public class Controlador1 extends HttpServlet {
            }
        }else if(request.getParameter("idReserva")!= null){
             reserDAO pdao = new reserDAO();
-            String eliminado= pdao.eliminar(Integer.parseInt(request.getParameter("idReserva")));
+            String eliminado= facadeP.eliminar(Integer.parseInt(request.getParameter("idReserva")));
             response.sendRedirect("CancelarR1.jsp?eliminado="+eliminado);
             }
         }}

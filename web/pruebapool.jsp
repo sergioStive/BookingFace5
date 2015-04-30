@@ -4,6 +4,7 @@
     Author     : Sena
 --%>
 
+<%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.reserDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DAO.reserDAO"%>
@@ -15,12 +16,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            reserDAO reser = new reserDAO();
-            ArrayList<reserDTO> r = (ArrayList<reserDTO>) reser.listarReservas();
-            for (reserDTO a:r){
-                out.print(a);
-            }
-        %>
+       //<%
+           // FacadePersonas facadeP = new FacadePersonas();
+           // reserDAO reser = new reserDAO();
+            //ArrayList<reserDTO> r = (ArrayList<reserDTO>) facadeP.listarReservas();
+            //for (reserDTO a:r){
+               // out.print(a);
+            //}
+       // %>
     </body>
 </html>

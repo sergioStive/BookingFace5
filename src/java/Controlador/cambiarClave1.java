@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "cambiarClave1", urlPatterns = {"/cambiarClave1"})
 public class cambiarClave1 extends HttpServlet {
-
+FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,7 +43,7 @@ public class cambiarClave1 extends HttpServlet {
             pdto.setIdPersona(Long.parseLong(request.getParameter("id")));
             pdto.setContraseña(request.getParameter("con"));
             
-            String mensaje = pdao.actualizarContraseña(pdto);
+            String mensaje = facadeP.actualizarContraseña(pdto);
             response.sendRedirect("menu1.jsp?msg="+mensaje);
         }
     }

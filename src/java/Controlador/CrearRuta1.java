@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CrearRuta1", urlPatterns = {"/CrearRuta1"})
 public class CrearRuta1 extends HttpServlet {
-
+ FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,10 +54,10 @@ public class CrearRuta1 extends HttpServlet {
                             objRuta.setidReserva(Integer.parseInt(request.getParameter("Reserva")));
                             objRuta.setIdEstadoRuta(1);
                             
-          int ru = cRuta.validarruta(Integer.parseInt(request.getParameter("Tipo")));
+          int ru = facadeP.validarruta(Integer.parseInt(request.getParameter("Tipo")));
                             if (ru == 0) {
                                 
-                              msj = cRuta.crearRuta(objRuta);
+                              msj = facadeP.crearRuta(objRuta);
                                   response.sendRedirect ("CreaRuta1.jsp?msj=" + msj);
                              
                             } else if (ru == 1) {

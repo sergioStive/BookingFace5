@@ -29,22 +29,20 @@ import java.util.logging.Logger;
 public class reserDAO {
 
     //definimos variables globales
-    private Connection cnn = null;
+   // private Connection cnn = null;
     private PreparedStatement pstmt;
     ResultSet rs = null;
-    /* inicializo el contructor para garantizar la conexion al crear el objeto
-     30 *
-     31 */
+    
     String msgSalida; // almacena el msg de salida al usuario
     int rtdo; // almacena el resultado de la ejecución en la BD
 
-    public reserDAO() {
-        //cnn = Conexion.getConnection();
-       cnn = reserConex.getInstance();
-    }
+    //public reserDAO() {
+       //cnn = Conexion.getConnection();
+       //cnn = reserConex.getInstance();
+   // }
 
 
-    public String actualizarReserva(reserDTO resert) {
+    public String actualizarReserva(reserDTO resert, Connection cnn) {
 
         try {
 
@@ -72,7 +70,7 @@ public class reserDAO {
         return msgSalida;
     }
 
-    public String eliminar(int idReserva) {
+    public String eliminarReserva(int idReserva, Connection cnn) {
         try {
             /*
              * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre
@@ -97,7 +95,7 @@ public class reserDAO {
         return msgSalida;
     }
 
-    public String insertar(reserDTO rdto) throws SQLException {
+    public String insertar(reserDTO rdto, Connection cnn) throws SQLException {
         String salida = "";
         try {
             /*
@@ -138,7 +136,7 @@ public class reserDAO {
 
     }
 
-    public List<reserDTO> listarReservas() throws SQLException {
+    public List<reserDTO> listarReservas(Connection cnn) throws SQLException {
         ArrayList<reserDTO> listarReservas = new ArrayList();
 
         try {
@@ -167,7 +165,7 @@ public class reserDAO {
         }
         return listarReservas;
     }
-    public List<reserDTO> listarReservaPer(long id) throws SQLException {
+    public List<reserDTO> listarReservaPer(long id, Connection cnn) throws SQLException {
         ArrayList<reserDTO> listarReservas = new ArrayList();
 
         try {
@@ -203,7 +201,7 @@ public class reserDAO {
         return listarReservas;
     }
 
-    public List<reserDTO> Paginacion(int pg, int limited) throws SQLException {
+    public List<reserDTO> Paginacion(int pg, int limited, Connection cnn) throws SQLException {
         ArrayList<reserDTO> Paginacion = new ArrayList();
 
         try {
@@ -233,7 +231,7 @@ public class reserDAO {
         return Paginacion;
     }
 
-    public reserDTO ListarUnaReserva(int idReserva) throws SQLException {
+    public reserDTO ListarUnaReserva(int idReserva, Connection cnn) throws SQLException {
         reserDTO Rdao = new reserDTO();
         try {
             pstmt = cnn.prepareStatement("select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable, fechaReserva, horaReserva, direccionDestino from reservas where idReserva=?;");
@@ -260,7 +258,7 @@ public class reserDAO {
         return Rdao;
     }
 
-    public String getHTMLAll(String Id) throws SQLException {
+    public String getHTMLAll(String Id, Connection cnn) throws SQLException {
         String HTMLTipos = "<option value='0' " + (Id == "0" ? "selected" : "") + " > Seleccione reserva </option>";
         try {
 
@@ -283,7 +281,7 @@ public class reserDAO {
 
     }
 
-    public int contarRegistros() {
+    public int contarRegistros(Connection cnn) {
         int registros = 0;
         try {
             pstmt = cnn.prepareStatement("SELECT * FROM reservas;");
@@ -301,7 +299,7 @@ public class reserDAO {
         }
         return registros;
     }
-    public long validarReservas(long idpersona) throws SQLException {
+    public long validarReservas(long idpersona, Connection cnn) throws SQLException {
        int clave=0;
        try {         
            
