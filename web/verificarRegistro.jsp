@@ -150,10 +150,6 @@ $(document).ready(function(){
 </div>
 </div>
      <br>
-     <div class="busqueda">
-			<span style="font-weight:bold;">Búsqueda:&nbsp;</span>
-			<input id="inputFiltro" type="text" />
-		</div>
       <table border="1" border="6" class="paginated" id="divTabla" >
           <thead>
           <tr id="titulo">

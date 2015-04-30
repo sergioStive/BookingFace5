@@ -136,7 +136,7 @@
                                 </td>
                                 <td> 
                                     <select id="Tipo" name="Tipo" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext"  >
-                                        <%=facadeP.getHTMLAll("0")%>
+                                        <%=facadeP.seleccionTipoV("0")%>
                                     </select>
                                 </td>
                             </tr>
@@ -162,7 +162,7 @@
                             </td>
                             <td> 
                                 <select id="Conductor" name="Conductor" type="text" style="width:250px; height:30px " autofocus   required class="form-control inputtext"  >
-                                    <%=facadeP.getHTMLAll("0")%>
+                                    <%=facadeP.conductores("0")%>
                                 </select>
                             </td>
                             </tr>
@@ -174,7 +174,7 @@
                                 </td>
                                 <td> 
                                     <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  required class="form-control inputtext" >
-                                        <%=facadeP.getHTMLAll("0")%>
+                                        <%=facadeP.reservaPorRuta("0")%>
                                     </select>
                                 </td>
                             </tr>

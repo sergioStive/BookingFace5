@@ -258,7 +258,7 @@ public class reserDAO {
         return Rdao;
     }
 
-    public String getHTMLAll(String Id, Connection cnn) throws SQLException {
+    public String reservaPorRuta(String Id, Connection cnn) throws SQLException {
         String HTMLTipos = "<option value='0' " + (Id == "0" ? "selected" : "") + " > Seleccione reserva </option>";
         try {
 

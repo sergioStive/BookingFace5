@@ -59,7 +59,7 @@
          <tr>
             <td>
                 <br>
-                <strong>Nombre</strong><font color="#FF0000">*</font>
+                <strong>Pais</strong><font color="#FF0000">*</font>
                 <br>
             </td>
             <td> <input type="text" name="nombre"  class="form-control inputtext"/></td>
@@ -67,7 +67,7 @@
          <tr>
             <td>
                 <br>
-                <strong>Pais</strong><font color="#FF0000">*</font>
+                <strong>Nombre</strong><font color="#FF0000">*</font>
                 <br>
             </td>
             <td><input type="text" name="pais" class="form-control inputtext"/></td>

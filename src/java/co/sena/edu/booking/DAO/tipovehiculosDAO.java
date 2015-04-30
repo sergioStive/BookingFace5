@@ -157,7 +157,7 @@ tiposervi = pstmt.executeUpdate();
         return msgSalida;
     }
  
- public String getHTMLAll(String Id, Connection cnn) throws SQLException {
+ public String selecionTipoV(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +" > Seleccione Tipo </option>";   
      try {
 

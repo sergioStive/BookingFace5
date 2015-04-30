@@ -85,7 +85,7 @@
                                 <%
                                     nacionalidadesDAO cdao = new nacionalidadesDAO();
                                     ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList)facadeP.ListarNacionalidades();
+                                    Ciud = (ArrayList)facadeP.listarNacionalidades();
                                     for (nacionalidadesDTO cdto : Ciud) {
                                 %>   
                                 <option value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>

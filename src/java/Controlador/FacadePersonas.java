@@ -58,6 +58,15 @@ public  FacadePersonas() {
         
         
     }
+public String reservaPorRuta(String Id) throws SQLException{
+    return reser.reservaPorRuta(Id, cnn);
+}
+public String conductores(String Id) throws SQLException{
+    return con.conductores(Id, cnn);
+}
+public String seleccionTipoV(String Id) throws SQLException{
+    return tipov.selecionTipoV(Id, cnn);
+}
 public List  Paginacion(int pg , int limited) throws SQLException{
     return pers.Paginacion(pg, limited, cnn);
 }
@@ -69,10 +78,8 @@ public int contarRegistros(){
 }
 public LinkedList ListarCiudades(int Nacionalidad){
    return nac.listarCiudades(Nacionalidad,cnn);
- }
-public String getTMLAll(String Id) throws SQLException{
-    return tipov.getHTMLAll(Id, cnn);
 }
+
 public rutasDTO ListarUnaRuta(int idRuta) throws SQLException{
     return ru.ListarUnaRuta(idRuta, cnn);
 }
@@ -96,12 +103,6 @@ return pers.contarNumerosdeRegistros(cnn);
 }
 public List listarPersonas(personasDTO p) throws SQLException{
     return pers.listarPersonas(p,cnn);
-}
-public String getHTMLll(String Id) throws SQLException{
-  return reser.getHTMLAll(Id, cnn);
-}
-public String getHTMLAl(String Id) throws SQLException{
-    return con.getHTMLAll(Id, cnn);
 }
 public String getHTMLAll(String Id) throws SQLException{
     return pers.getHTMLAll(Id, cnn);

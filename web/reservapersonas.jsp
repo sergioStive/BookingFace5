@@ -108,7 +108,7 @@ $(document).ready(function(){
 
 <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
     
-<form name="add" id="add" role="form" action="reservapersonas.html">
+    <form name="add" id="add" role="form" action="menuCliente.jsp">
 <table width="744" align="center" id="registro">
     <tr>
         <td><label for="nombrePer" class="labele">Numero Registro Asociado</label><br></td>

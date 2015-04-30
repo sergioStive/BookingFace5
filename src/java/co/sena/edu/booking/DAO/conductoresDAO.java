@@ -211,7 +211,7 @@ public List <conductoresDTO> listarCoductores (Connection cnn) throws SQLExcepti
 
         return mgSalida;
     }
- public String getHTMLAll(String Id, Connection cnn) throws SQLException {
+ public String conductores(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +"> Seleccione Conductor </option>";   
      try {
 
