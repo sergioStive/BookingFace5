@@ -48,6 +48,14 @@
         <servlet-name>GestionCorreos</servlet-name>
         <servlet-class>Controlador.GestionCorreos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Contactanos</servlet-name>
+        <servlet-class>Controlador.Contactanos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>contactenos</servlet-name>
+        <servlet-class>Controlador.contactenos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>GestionCorreos</servlet-name>
         <url-pattern>/GestionCorreos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Contactanos</servlet-name>
+        <url-pattern>/Contactanos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contactenos</servlet-name>
+        <url-pattern>/contactenos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

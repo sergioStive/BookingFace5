@@ -51,23 +51,12 @@
                     </div>
             
             
-            <form name="" action="GestionCorreo" method="post" id="form1" class="contacto"> 
+            <form name="" action="contactenos" method="post" id="form1" class="contacto"> 
 
-                <table width="744" align="center"><br>
-                
-                    <tr>
-                    <td><label for="nombre" class="labele"><strong>Tu Nombre :<font color="#FF0000">*</strong></label></font></td>
-                    <td><input name="nombre" type="text" style="width:250px; height:25px " autofocus id="nombre" placeholder="Nombre" required class="form-control" tabindex="1">
-                        </td>
-                    </tr>
+                <table width="744" align="center"><br
                     <tr>
                         <td><label for="emal" class="labele"><strong>Tu Email :<font color="#FF0000">*</strong></label></font></td>
                         <td><input name="emal" type="email" style="width:250px; height:30px" autofocus id="doc" placeholder="Correo" required class="form-control inputtext"  minlenght=8 tabindex="2"></td>    
-                    </tr>
-                    <tr>
-                        <td><label for="cAsunto" class="labele"><strong>Asunto :<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="cAsunto" type="text" style="width:250px; height:25px " autofocus id="Asunto" placeholder="Asunto" required class="form-control" tabindex="3">
-                        </td>
                     </tr>
                     <tr>
                         <td><label for="cCuerpo" class="labele"><strong>Mensaje<font color="#FF0000" >* </strong></label></font></td>
