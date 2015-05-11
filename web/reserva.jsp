@@ -86,7 +86,7 @@ $(document).ready(function(){
 
         %>
 <div class="ba">
-    <h1><center>Generar Reservas</center></h1>
+<h1><center>Generar Reservas</center></h1>
 </div>
 <br>
  <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
@@ -110,6 +110,9 @@ $(document).ready(function(){
 <tr>    
 <td><label for="doc" class="labele"><strong>Documento del usuario</strong></label></font></td>
 <td><input name="doc" type="text" id="res" value="<%=persona.getIdPersona()%>" style="width:250px; height:25px" readonly="readonly" autofocus required class="form-control inputtext"></td>
+
+<td><label for="registros" class="labele">Numero de personas</label><br></td>
+<td><input name="registros" type="text" id="registros" style="width:250px; height:25px" class="form-control"/></td>
 </tr>
 <tr>
 <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>

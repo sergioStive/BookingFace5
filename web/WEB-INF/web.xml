@@ -56,6 +56,10 @@
         <servlet-name>contactenos</servlet-name>
         <servlet-class>Controlador.contactenos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>registroReservas</servlet-name>
+        <servlet-class>Controlador.registroReservas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>contactenos</servlet-name>
         <url-pattern>/contactenos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registroReservas</servlet-name>
+        <url-pattern>/registroReservas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,3 +1,8 @@
+<%@page import="co.sena.edu.booking.DAO.personareservaDAO"%>
+<%@page import="co.sena.edu.booking.DTO.personareservaDTO"%>
+<%@page import="co.sena.edu.booking.DTO.empresatransportesDTO"%>
+<%@page import="co.sena.edu.booking.DAO.reserDAO"%>
+<%@page import="co.sena.edu.booking.DTO.reserDTO"%>
 <%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
 <%@page import="co.sena.edu.booking.DTO.personasDTO"%>
@@ -87,20 +92,29 @@ $(document).ready(function(){
                    </tr>
                </table>
          </center>
-        <%
+    <%
             HttpSession misesion = request.getSession(false);
 
             if (misesion.getAttribute("logueado") != null) {
-                personasDTO pdto = null;
-                personasDTO persona = null;
-                personasDAO pdao = new personasDAO();
+                personasDTO pdto = null;                
+                
+                personareservaDTO per = new personareservaDTO();                
                 FacadePersonas facadeP = new FacadePersonas();
+                personasDAO pdao = new personasDAO();
                 pdto =(personasDTO) misesion.getAttribute("logueado");
-               //String mgs =misesion.getAttribute("logueado").toString();
-                persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
-
-
+                ArrayList<personareservaDTO> p = new ArrayList();
+                p= (ArrayList)facadeP.listarReservasPersonas(pdto.getIdPersona());
+          
+                pdto = facadeP.ListarUnaPersona(pdto.getIdPersona());
+                for(personareservaDTO prv : p){
+    
+                         %>
+                         <span><%=prv.getRe().getIdReserva()%></span>
+                         <span><%=prv.getPer().getIdPersona()%></span>
+                         <%
+                
         %>
+       
 <div class="ba">
     <h1><center>Agregar Persona a la reserva</center></h1>
 </div>
@@ -108,12 +122,16 @@ $(document).ready(function(){
 
 <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
     
-    <form name="add" id="add" role="form" action="menuCliente.jsp">
+ <form name="add" id="add" role="form" action="registroReservas">
 <table width="744" align="center" id="registro">
-    <tr>
-        <td><label for="nombrePer" class="labele">Numero Registro Asociado</label><br></td>
-        <td><input name="doc" type="text" id="res" style="width:250px; height:25px" value="<%=persona.getIdPersona()%>" readonly="readonly" class="form-control" required/></td>
-
+     <tr>
+    <td><label for="registro" class="labele">Numero Reserva</label><br></td>
+    <td><input name="registro" type="text" id="registro" style="width:250px; height:25px" value="<%=prv.getRe().getIdReserva()%>" readonly="readonly" class="form-control" required/></td>
+   </tr>
+     <tr>
+    <td><label for="doc" class="labele">Numero Registro Asociado</label><br></td>
+    <td><input name="doc" type="text" id="doc" style="width:250px; height:25px" value="<%=prv.getPer().getIdPersona()%>" readonly="readonly" class="form-control" required/></td>
+      
     <td><label for="tel" class="labele">Telefono</label><br></td>
     <td><input type="text" id="apellidoPer" name="tel" style="width:250px; height:25px" class="form-control" required/></td>
 </tr>
@@ -125,23 +143,17 @@ $(document).ready(function(){
     <td><input type="text" id="apellidoPer" name="apellidoPer" style="width:250px; height:25px" class="form-control" required/></td>
 </tr>
 <tr>
-    <td><label for="paisnac" class="labele">Nacionalidad</label><br></td>                     
-    <td><select id="paises" name="paisnac" id="paisnac" autofocus required class="form-control inputtext" style="width:250px; height:30px" list="paises" tabindex="8" onchange="getCiudades(this.value);">
-                                <option value="0" >------</option>
-
-                                <%
-                                    nacionalidadesDAO cdao = new nacionalidadesDAO();                                    
-                                    ArrayList<nacionalidadesDTO> Ciud = new ArrayList();
-                                    Ciud = (ArrayList) facadeP.listarNacionalidades();
-                                    for (nacionalidadesDTO cdto : Ciud) {
-                                %>   
-                                <option value="<%=cdto.getIdNacionalidad()%>"> <%=cdto.getNacionalidad()%></option>
-                                <%
-                                    }
-                                %>
-                            </select>                     
-    </td>
-
+<td><label for="ser" class="labele">Nacionalidad</label></td>
+<td><select  id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px">
+<option value="">Escoja su nacionalidad</option>      
+      <option value="1">Colombia</option>
+      <option value="2">España</option>
+      <option value="3">Peru</option>
+      <option value="4">Japon</option>
+      <option value="5">Ecuador</option>
+      <option value="6">Alemania</option>      
+      </select> 
+ </td>
     <td><label for="fechNac" class="labele">Fecha de Nacimiento</label></td>
     <td><input type="date" name="fechNac" style="width:250px; height:25px" id="fechNac" class="form-control" required></td>
 </tr>
@@ -151,7 +163,8 @@ $(document).ready(function(){
 </table>
 </form>
                                <%
-                         }
+                }//fin del for
+            }
                         %>
 </div>
 </body>

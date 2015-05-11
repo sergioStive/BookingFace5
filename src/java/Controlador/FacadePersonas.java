@@ -12,6 +12,7 @@ import co.sena.edu.booking.DAO.ciudadesDAO;
 import co.sena.edu.booking.DAO.conductoresDAO;
 import co.sena.edu.booking.DAO.nacionalidadesDAO;
 import co.sena.edu.booking.DAO.paisesDAO;
+import co.sena.edu.booking.DAO.personareservaDAO;
 import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DAO.personaxreservasDAO;
 import co.sena.edu.booking.DAO.reserDAO;
@@ -21,6 +22,7 @@ import co.sena.edu.booking.DTO.ciudadesDTO;
 import co.sena.edu.booking.DTO.conductoresDTO;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
 import co.sena.edu.booking.DTO.paisesDTO;
+import co.sena.edu.booking.DTO.personareservaDTO;
 import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.personaxreservasDTO;
 import co.sena.edu.booking.DTO.reserDTO;
@@ -43,6 +45,7 @@ public class FacadePersonas {
     reserDAO reser;
     rutasDAO ru;
     tipovehiculosDAO tipov;
+    personareservaDAO  pereser;
     
 
 public  FacadePersonas() {
@@ -53,11 +56,17 @@ public  FacadePersonas() {
         reser= new reserDAO();
         ru = new rutasDAO();
         tipov= new tipovehiculosDAO();
+        pereser= new personareservaDAO();
        //cnn = Conexion.getConnection();
-        cnn = reserConex.getInstance();
-        
+        cnn = reserConex.getInstance();       
         
     }
+public List listarReservasPersonas(long p) throws SQLException{
+    return pereser.listarReservasPersonas(p, cnn);
+}
+public String creaReser(personareservaDTO reseper) throws SQLException{
+    return pereser.creaReser(reseper, cnn);
+}
 public String reservaPorRuta(String Id) throws SQLException{
     return reser.reservaPorRuta(Id, cnn);
 }

@@ -100,10 +100,17 @@ public class reserDTO {
     public void setEmpre(empresatransportesDTO empre) {
         this.empre = empre;
     }
+     public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
 
     @Override
     public String toString() {
-        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + '}';
+        return "reserDTO{" + "idReserva=" + idReserva + ", idEstadoReserva=" + idEstadoReserva + ", idServicio=" + idServicio + ", idTransporteLlegada=" + idTransporteLlegada + ", responsable=" + responsable + ", fechaReserva=" + fechaReserva + ", horaReserva=" + horaReserva + ", direccionDestino=" + direccionDestino + ", idpersona=" + idpersona + ", ser=" + ser + ", empre=" + empre + ", cupo=" + cupo + '}';
     }
 
     private int idReserva;
@@ -117,5 +124,9 @@ public class reserDTO {
     private long idpersona;
     private serviciosDTO ser;
     private empresatransportesDTO empre;
+    private int cupo;
+
+   
+   
 
 }

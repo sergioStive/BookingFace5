@@ -23,7 +23,8 @@
 			</staticText>
 			<image>
 				<reportElement x="49" y="9" width="169" height="50" uuid="b6a6d764-1a1b-4564-a3b6-cc35f596fa0e"/>
-				<imageExpression><![CDATA["C:\\Users\\Sergio\\Documents\\NetBeansProjects\\BookingUltimo\\web\\ImajenesRepor\\BookingRepo.png.gif"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\fabian\\Documents\\BookingFase5\\web\\ImajenesRepor\\BookingRepo.png.gif"
+]]></imageExpression>
 			</image>
 		</band>
 	</title>

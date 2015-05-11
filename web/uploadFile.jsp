@@ -15,24 +15,24 @@
 <%
 String ubicacionArchivo = "C:/Users/Sergio/Documents/NetBeansProjects/BookingRoutersFase4B/web/Archivos";
 
-DiskFileItemFactory factory = new DiskFileItemFactory();
-factory.setSizeThreshold(1024); 
-factory.setRepository(new File(ubicacionArchivo));
+//DiskFileItemFactory factory = new DiskFileItemFactory();
+//factory.setSizeThreshold(1024); 
+//factory.setRepository(new File(ubicacionArchivo));
 
-ServletFileUpload upload = new ServletFileUpload(factory);
+//ServletFileUpload upload = new ServletFileUpload(factory);
 
 try
 {
-List<FileItem> partes = upload.parseRequest(request);
+//List<FileItem> partes = upload.parseRequest(request);
 
-for(FileItem item : partes){
-File file = new File( ubicacionArchivo, item.getName() );
-item.write(file);
+//for(FileItem item : partes){
+//File file = new File( ubicacionArchivo, item.getName() );
+//item.write(file);
 }
-out.write("El archivo se a subido correctamente") ;
+//out.write("El archivo se a subido correctamente") ;
 }
-catch(FileUploadException ex)
+//catch(FileUploadException ex)
 {
-out.write("Error al subir archivo "+ex.getMessage());
+//out.write("Error al subir archivo "+ex.getMessage());
 }
 %>
