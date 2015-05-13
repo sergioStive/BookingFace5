@@ -112,7 +112,16 @@ $(document).ready(function(){
 <td><input name="doc" type="text" id="res" value="<%=persona.getIdPersona()%>" style="width:250px; height:25px" readonly="readonly" autofocus required class="form-control inputtext"></td>
 
 <td><label for="registros" class="labele">Numero de personas</label><br></td>
-<td><input name="registros" type="text" id="registros" style="width:250px; height:25px" class="form-control"/></td>
+<td><select  id="registros" name="registros" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
+<option value="0">Ninguna ---></option>      
+      <option value="1">1 Persona</option>
+      <option value="2">2 Personas</option>
+      <option value="3">3 Personas</option>
+      <option value="4">4 Personas</option>
+      <option value="5">5 Personas</option>
+      <option value="6">6 Personas</option>
+      
+      </select> </td>
 </tr>
 <tr>
 <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>

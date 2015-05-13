@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador;
-
 
 import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DAO.reserDAO;
@@ -29,7 +27,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Reserva", urlPatterns = {"/Reserva"})
 public class Reserva extends HttpServlet {
-FacadePersonas facadeP = new FacadePersonas();
+
+    FacadePersonas facadeP = new FacadePersonas();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,37 +40,43 @@ FacadePersonas facadeP = new FacadePersonas();
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException, SQLException {
-           response.setContentType("text/html;charset=UTF-8");
-           if (request.getParameter("registroR") != null) {
+            throws ServletException, IOException, SQLException {
+        response.setContentType("text/html;charset=UTF-8");
+        if (request.getParameter("registroR") != null) {
 
-           reserDTO to = new reserDTO();
-           reserDAO dao = new reserDAO();
-           long t =facadeP.validarReservas(Integer.parseInt(request.getParameter("doc")));
-           if(t>=5){
-            response.sendRedirect("reserva.jsp?noo="+ t);  
-           }else if(t<5){
-           to.setIdpersona(Integer.parseInt(request.getParameter("doc")));
-           to.setIdEstadoReserva(1);
-           to.setIdServicio(Integer.parseInt(request.getParameter("ser")));
-           to.setIdTransporteLlegada(Integer.parseInt(request.getParameter("aer")));
-           to.setResponsable(request.getParameter("res"));
-           to.setFechaReserva(request.getParameter("fecNac"));
-           to.setHoraReserva(request.getParameter("hora"));
-           to.setDireccionDestino(request.getParameter("aerop"));
-           to.setCupo(request.getParameter("registros")==null?0:Integer.parseInt(request.getParameter("registros")));
-           
-            String mensaje = facadeP.insertar(to);
-            personasDAO persona = new personasDAO();
-            personasDTO pdto = new personasDTO();
-            pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("doc")));
-            String asunto = "Datos Reserva";
-            String cuerpomsj ="<html>\"<body>\"<img src=\"imagenes/Logo.png\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "Señor(a)"+pdto.getNombres()+" "+pdto.getApellidos()+"ha hecho una reserva para el dia "+request.getParameter("fecNac");
-            String para = pdto.getCorreoElectronico();
-            Correo.sendMail(asunto, cuerpomsj, para);
-            response.sendRedirect("reservapersonas.jsp?msgSalida="+mensaje);
+            reserDTO to = new reserDTO();
+            reserDAO dao = new reserDAO();
+            long t = facadeP.validarReservas(Integer.parseInt(request.getParameter("doc")));
+            if (t >= 5) {
+                response.sendRedirect("reserva.jsp?noo=" + t);
+            } else if (t < 5) {
+                to.setIdpersona(Integer.parseInt(request.getParameter("doc")));
+                to.setIdEstadoReserva(1);
+                to.setIdServicio(Integer.parseInt(request.getParameter("ser")));
+                to.setIdTransporteLlegada(Integer.parseInt(request.getParameter("aer")));
+                to.setResponsable(request.getParameter("res"));
+                to.setFechaReserva(request.getParameter("fecNac"));
+                to.setHoraReserva(request.getParameter("hora"));
+                to.setDireccionDestino(request.getParameter("aerop"));
+                to.setCupo(Integer.parseInt(request.getParameter("registros")));
+
+                String mensaje = facadeP.insertar(to);
+                int idReserva = facadeP.obtenerUltimaReserva(Integer.parseInt(request.getParameter("doc")));
+                personasDAO persona = new personasDAO();
+                personasDTO pdto = new personasDTO();
+                pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("doc")));
+                String asunto = "Datos Reserva";
+                String cuerpomsj = "<html>\"<body>\"<img src=\"imagenes/Logo.png\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "Señor(a)" + pdto.getNombres() + " " + pdto.getApellidos() + "ha hecho una reserva para el dia " + request.getParameter("fecNac");
+                String para = pdto.getCorreoElectronico();
+                Correo.sendMail(asunto, cuerpomsj, para);
+                if (Integer.parseInt(request.getParameter("registros")) == 0) {
+                    response.sendRedirect("menuCliente.jsp");
+                } else {
+                    response.sendRedirect("reservapersonas.jsp?msgSalida=" + mensaje + "&idReserva=" + idReserva);
+                }
+
+            }
         }
-    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

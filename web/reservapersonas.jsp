@@ -103,15 +103,12 @@ $(document).ready(function(){
                 personasDAO pdao = new personasDAO();
                 pdto =(personasDTO) misesion.getAttribute("logueado");
                 ArrayList<personareservaDTO> p = new ArrayList();
-                p= (ArrayList)facadeP.listarReservasPersonas(pdto.getIdPersona());
+                p= (ArrayList)facadeP.listarReservasPersonas(pdto.getIdPersona(),Integer.parseInt(request.getParameter("idReserva")));
           
                 pdto = facadeP.ListarUnaPersona(pdto.getIdPersona());
                 for(personareservaDTO prv : p){
     
-                         %>
-                         <span><%=prv.getRe().getIdReserva()%></span>
-                         <span><%=prv.getPer().getIdPersona()%></span>
-                         <%
+                         
                 
         %>
        
