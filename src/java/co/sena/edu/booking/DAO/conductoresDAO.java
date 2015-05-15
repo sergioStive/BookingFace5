@@ -216,7 +216,7 @@ public List <conductoresDTO> listarCoductores (Connection cnn) throws SQLExcepti
      try {
 
             String query = "select idConductor , concat(idConductor,'- ',nombres,' ',apellidos) as conductor" +
-                 " from conductores c inner join personas p on c.idPersona = p.idPersona"; 
+                 " from conductores c inner join personas p on c.idPersona = p.idPersona where idestadousuarios= 4"; 
             pstm = cnn.prepareStatement(query);
             rs = pstm.executeQuery();
 

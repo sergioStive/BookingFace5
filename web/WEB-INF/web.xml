@@ -9,6 +9,10 @@
         <servlet-class>Controlador.modificarRol</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>buscarConductores</servlet-name>
+        <servlet-class>Controlador.buscarConductores</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modificarReserva</servlet-name>
         <servlet-class>Controlador.modificarReserva</servlet-class>
     </servlet>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>modificarReserva</servlet-name>
         <url-pattern>/modificarReserva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarConductores</servlet-name>
+        <url-pattern>/buscarConductores</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modificarRerserva</servlet-name>

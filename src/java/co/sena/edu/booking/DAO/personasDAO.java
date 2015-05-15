@@ -13,6 +13,7 @@ package co.sena.edu.booking.DAO;
 import cao.sena.edu.booking.util.Conexion;
 import co.sena.edu.booking.DTO.ciudadesDTO;
 import co.sena.edu.booking.DTO.empresatransportesDTO;
+import co.sena.edu.booking.DTO.listarConductoresDTO;
 import co.sena.edu.booking.DTO.listarPerDTO;
 import co.sena.edu.booking.DTO.listarPersonasDTO;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
@@ -111,7 +112,7 @@ public class personasDAO {
 
             }
         } catch (SQLException sqle) {
-            msgSalida = "Ocurrió la siguiente exception popo : " + sqle.getMessage();
+            msgSalida = "Ocurrió la siguiente exception  : " + sqle.getMessage();
         } finally {
             try {
                 pstmt.close();
@@ -353,7 +354,7 @@ public String getHTMLAll(String Id, Connection cnn) throws SQLException {
      String HTMLTipos = "<option value='0' "+ (Id.equals("0") ? "selected":"") +" > Seleccione Cliente </option>";   
      try {
 
-            String query = "select idPersona as Id, concat(nombres ,'  ', apellidos )  as cliente " +" from personas" ;
+            String query = "select idPersona as Id, concat(nombres ,'  ', apellidos )  as cliente " +" from personas idusuarios where idestadousuarios = 1" ;
             pstmt = cnn.prepareStatement(query);
             rs = pstmt.executeQuery();
             
@@ -586,4 +587,52 @@ public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) thro
         }
         return listarPersonas;
     }
+
+  public List<listarConductoresDTO> filtroConductores(String responsable, String direccionDestino, String fechaReserva, Connection cnn ) throws SQLException{
+        ArrayList<listarConductoresDTO> filtroConductores = new ArrayList();
+
+        try {
+         StringBuilder sb = new StringBuilder("select p.nombres,p.apellidos, r.responsable, r.fechaReserva, r.direccionDestino, "
+                 + "s.servicio from servicios s inner join reservas r on s.idServicio = r.idServicio "
+                 + "inner join personas p on r.idpersona = p.idpersona ");
+
+            if (responsable != null) {
+                sb.append("AND r.responsable LIKE'").append(responsable).append("%'");
+            }
+            if (direccionDestino!= null) {
+                sb.append("AND r.direccionDestino LIKE'").append(direccionDestino).append("%'");
+            }
+            
+            if (fechaReserva != null) {
+                sb.append("AND r.fechaReserva LIKE'").append(fechaReserva).append("%'");
+            }
+         
+         
+         
+         pstmt = cnn.prepareStatement(sb.toString());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                listarConductoresDTO Rdao = new listarConductoresDTO();
+                
+                
+                Rdao.setNombres(rs.getString("nombres"));
+                Rdao.setApellidos(rs.getString("apellidos"));
+                Rdao.setResponsable(rs.getString("responsable")); 
+                Rdao.setFechaReserva(rs.getString("fechaReserva"));
+                Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                Rdao.setServicio(rs.getString("servicio"));
+                filtroConductores.add(Rdao);
+
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return filtroConductores;
+    }
+
+    
 }

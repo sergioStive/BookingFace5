@@ -69,8 +69,8 @@
         <th st-ratio="20" st-sort="apellidos">Apellido</th>
         <th st-ratio="20" st-sort="telefono">Telefono</th>
         <th st-ratio="20" st-sort="fechaNac">FechaNacimiento</th>
-        <th st-ratio="20" st-sort="Modificar">Eliminar</th>
-        <th>id</th>
+        <th st-ratio="20" st-sort="Modificar">Modificar</th>
+        
     </tr>
     <%
       for(personareservaDTO so: misReservas){      
@@ -83,7 +83,7 @@
         
         <td class="danger"><a href="modificarAcompanantes.jsp?idreservaPorPersona=<%=so.getIdreservaPorPersona()%>&nombres=<%=so.getNombres()%>&apellidos=<%=so.getApellidos()%>&telefono=<%=so.getTelefono()%>&fechaNac=<%=so.getFechaNaci()%>"
         class="btn btn-success" title="Modificar datos de acompañantes">Modificar</a></td>
-        <td><%=so.getIdreservaPorPersona()%></td>
+      
         
     </tr> 
     <%

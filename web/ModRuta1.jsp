@@ -17,6 +17,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <link rel="shortcut icon" href="imagenes/br.ico" />
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 	<script  src="jquery/jquery.js"></script>

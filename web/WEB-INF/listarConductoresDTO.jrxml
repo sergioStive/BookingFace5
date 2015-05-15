@@ -5,21 +5,21 @@
 	<property name="ireport.y" value="0"/>
 	<field name="nombres" class="java.lang.String"/>
 	<field name="apellidos" class="java.lang.String"/>
-	<field name="correoElectronico" class="java.lang.String"/>
-	<field name="ciudad" class="java.lang.String"/>
-	<field name="nacionalidad" class="java.lang.String"/>
-	<field name="idioma" class="java.lang.String"/>
+	<field name="responsable" class="java.lang.String"/>
+	<field name="fechaReserva" class="java.lang.String"/>
+	<field name="direccionDestino" class="java.lang.String"/>
+	<field name="servicio" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="59" splitType="Stretch">
 			<staticText>
-				<reportElement x="288" y="9" width="238" height="37" forecolor="#000033" uuid="6078e721-80e2-48f9-a8f7-9500592f9fe6"/>
+				<reportElement x="288" y="9" width="290" height="37" forecolor="#000033" uuid="6078e721-80e2-48f9-a8f7-9500592f9fe6"/>
 				<textElement>
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Reporte general de Usuarios ]]></text>
+				<text><![CDATA[Reporte general de Conductores]]></text>
 			</staticText>
 			<image>
 				<reportElement x="49" y="9" width="169" height="50" uuid="b6a6d764-1a1b-4564-a3b6-cc35f596fa0e"/>
@@ -51,28 +51,28 @@
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Correo Electronico]]></text>
+				<text><![CDATA[Responsable]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="383" y="2" width="100" height="20" forecolor="#000099" uuid="cc4966a2-4c76-4552-87f5-c2cdd8746cdb"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Ciudad]]></text>
+				<text><![CDATA[Fecha Reserva]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="501" y="0" width="100" height="20" forecolor="#0000CC" uuid="e8c179b7-c874-4644-aca2-7953d63ce7df"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nacionalidad]]></text>
+				<text><![CDATA[Direccion Destino]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="630" y="2" width="100" height="20" forecolor="#000099" uuid="1f76500c-ec48-4ce4-936c-c04e8a0208e3"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Idioma]]></text>
+				<text><![CDATA[Servicio]]></text>
 			</staticText>
 			<line>
 				<reportElement x="-10" y="22" width="716" height="1" uuid="fbe77d5c-10f6-477f-a0cc-393a84ea0779"/>
@@ -91,19 +91,19 @@
 			</textField>
 			<textField>
 				<reportElement x="243" y="0" width="118" height="20" uuid="72f794bb-cd34-41d0-a175-4d95586d08ba"/>
-				<textFieldExpression><![CDATA[$F{correoElectronico}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="383" y="0" width="100" height="20" uuid="ed17f64d-48dc-4a64-b1e8-c6da58102e01"/>
-				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fechaReserva}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="501" y="0" width="100" height="20" uuid="f7c905f0-56bd-4733-9569-1325d6bb3a53"/>
-				<textFieldExpression><![CDATA[$F{nacionalidad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{direccionDestino}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="630" y="0" width="100" height="20" uuid="cdcd2dd2-3844-4c20-ad5b-8927cb6fe15b"/>
-				<textFieldExpression><![CDATA[$F{idioma}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{servicio}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

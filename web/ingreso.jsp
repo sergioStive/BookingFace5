@@ -92,7 +92,7 @@ $(document).ready(function(){
  if(request.getParameter("invalida") != null  ) {
 %>
 <div class="error mensajes" >
-    <b> sus datos no son validos</b>
+    <b> Usted no esta registrado </b>
 </div>
 <%
  }

@@ -60,7 +60,7 @@
             <td> 
                 <select id="Tipo" name="Tipo" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  >
                     <%= 
-                        facadeP.getTMLAll(Integer.toString( ruDTO.getIdtipoVehiculo()))
+                        facadeP.seleccionTipoV(Integer.toString( ruDTO.getIdtipoVehiculo()))
                     %>
                 </select>
             </td>
@@ -90,7 +90,7 @@
                 <td> 
                 <select id="Conductor" name="Conductor" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext"  >
                     <%= 
-                     facadeP.getHTMLAl(ruDTO.getIdConductor())
+                     facadeP.conductores(ruDTO.getIdConductor())
                     %>
                 </select>
             </td>
@@ -104,7 +104,7 @@
                 <td> 
                 <select id="Reserva" name="Reserva" type="text" style="width:250px; height:30px " autofocus  placeholder="usuario" required class="form-control inputtext" >
                     <%= 
-                       facadeP.getHTMLAll(Integer.toString( ruDTO.getidReserva()))
+                       facadeP.reservaPorRuta(Integer.toString( ruDTO.getidReserva()))
                     %>
                 </select>
             </td>

@@ -158,6 +158,10 @@ public class FacadePersonas {
     public List contarPersonas(String nacionalidad, String nombres) {
         return pers.contarPersonas(nacionalidad, nombres, cnn);
     }
+    public List filtroConductores(String responsable,String direccionDestino,String fechaReserva) throws SQLException {
+        return pers.filtroConductores(responsable, direccionDestino,fechaReserva, cnn);
+    }
+    
 
     public List filtroPersonas(String nacionalidad, String nombres, String ciudad) throws SQLException {
         return pers.filtroPersonas(nacionalidad, nombres, ciudad, cnn);
