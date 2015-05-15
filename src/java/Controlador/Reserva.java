@@ -70,7 +70,7 @@ public class Reserva extends HttpServlet {
                 String para = pdto.getCorreoElectronico();
                 Correo.sendMail(asunto, cuerpomsj, para);
                 if (Integer.parseInt(request.getParameter("registros")) == 0) {
-                    response.sendRedirect("menuCliente.jsp");
+                    response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);
                 } else {
                     response.sendRedirect("reservapersonas.jsp?msgSalida=" + mensaje + "&idReserva=" + idReserva);
                 }

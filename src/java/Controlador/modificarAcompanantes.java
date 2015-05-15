@@ -6,15 +6,9 @@
 
 package Controlador;
 
-import co.sena.edu.booking.DAO.personareservaDAO;
 import co.sena.edu.booking.DTO.personareservaDTO;
-import co.sena.edu.booking.DTO.personasDTO;
-import co.sena.edu.booking.DTO.reserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author fabian
  */
-public class registroReservas extends HttpServlet {
+public class modificarAcompanantes extends HttpServlet {
 FacadePersonas facadeP = new FacadePersonas();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,32 +30,20 @@ FacadePersonas facadeP = new FacadePersonas();
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        if (request.getParameter("registroR") != null) {
-            personareservaDTO per = new  personareservaDTO();
-            personareservaDAO p = new  personareservaDAO();
+            throws ServletException, IOException {
+           response.setContentType("text/html;charset=UTF-8");
+           if (request.getParameter("registroR") != null) {
+           personareservaDTO to = new personareservaDTO();           
+           to.setIdreservaPorPersona(Integer.parseInt(request.getParameter("id")));
+           to.setNombres(request.getParameter("nombrePer"));
+           to.setApellidos(request.getParameter("apellidoPer"));
+           to.setTelefono(request.getParameter("tel"));
+           to.setFechaNaci(request.getParameter("fechNac"));        
             
-                    
-            per.setIdPersona(Long.parseLong(request.getParameter("doc")));
-            per.setNombres(request.getParameter("nombrePer"));
-            per.setApellidos(request.getParameter("apellidoPer"));
-            per.setTelefono(request.getParameter("tel"));
-            per.setNacionalidad(request.getParameter("nacio"));
-            per.setFechaNaci(request.getParameter("fechNac"));
-            per.setIdReserva(Integer.parseInt(request.getParameter("registro")));
+            String mensaje = facadeP.actualizarReservaAcompañante(to);
+            response.sendRedirect("listarAcompanates.jsp?msgSalida="+mensaje);
             
-            int disponible=facadeP.contarRegistrosReservas(per.getIdReserva());
-            int cupo=facadeP.contarCupos(per.getIdReserva());
-           
-            if(disponible<cupo){
-           String mensaje = facadeP.creaReser(per);
-           //response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje+"&disponible"+disponible+"$cupos"+cupo);
-            response.sendRedirect("reservapersonas.jsp?msgSalida="+mensaje+"&idReserva="+per.getIdReserva());
-       }else{
-               response.sendRedirect("reservapersonas.jsp?noo="+"&idReserva="+per.getIdReserva());
-            }
-        }
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -76,11 +58,7 @@ FacadePersonas facadeP = new FacadePersonas();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    try {
         processRequest(request, response);
-    } catch (SQLException ex) {
-        Logger.getLogger(registroReservas.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }
 
     /**
@@ -94,11 +72,7 @@ FacadePersonas facadeP = new FacadePersonas();
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    try {
         processRequest(request, response);
-    } catch (SQLException ex) {
-        Logger.getLogger(registroReservas.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }
 
     /**

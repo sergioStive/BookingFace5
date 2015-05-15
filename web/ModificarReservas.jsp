@@ -61,7 +61,9 @@
         <th st-ratio="20" st-sort="fechaReserva">FechaReserva</th>
         <th st-ratio="20" st-sort="horaReserva">HoraReserva</th>
         <th st-ratio="20" st-sort="direccionDestino">DireccionDestino</th>
+        <th st-ratio="20" st-sort="cupo">Acompañantes</th>
         <th st-ratio="20" st-sort="Modificar">Modificar</th>
+        <th st-ratio="20" st-sort="Modificar">Acompañantes</th>
     </tr>
     <%
       for(reserDTO so: misReservas){      
@@ -74,10 +76,12 @@
         <td><%=so.getFechaReserva()%></td>
         <td><%=so.getHoraReserva()%></td>
         <td><%=so.getDireccionDestino()%></td>
+        <td><%=so.getCupo()%></td>
         
         <td><a href="modificarReserva.jsp?idReserva=<%=so.getIdReserva()%>&idServicio=<%=so.getIdServicio()%>&IdTransporteLlegada=<%=so.getIdTransporteLlegada()%>
-               &Responsable=<%=so.getResponsable()%>&FechaReserva=<%=so.getFechaReserva()%>&HoraReserva=<%=so.getHoraReserva()%>&DireccionDestino=<%=so.getDireccionDestino()%>"> <img src="imagenes/Modificar.png" align="middle" width="32" height="32" title="Verificar"></a></td>
-    
+        &Responsable=<%=so.getResponsable()%>&FechaReserva=<%=so.getFechaReserva()%>&HoraReserva=<%=so.getHoraReserva()%>&DireccionDestino=<%=so.getDireccionDestino()%>&cupo=<%=so.getCupo()%>"> <img src="imagenes/Modificar.png" align="middle" width="32" height="32" title="Verificar"></a></td>
+       
+        <td class="danger"><a href="listarAcompanates.jsp?idReserva=<%=so.getIdReserva()%>" class="btn btn-success" title="Modificar datos de acompañantes">Modificar</a></td>
     </tr>
     <%
     }

@@ -21,7 +21,7 @@
     var fechaSolicitud=new Date(y[0],y[1]-1,y[2]); // se forma la fecha que viene del formulario
     var fechaActual = new Date();   //Fecha actual
     var ftemp = new Date(); // Variable con la fecha actual
-     var ftemp2 = new Date();
+    var ftemp2 = new Date();
     var fechaMinima = new Date(ftemp.getTime() + (5 * 24 * 3600 * 1000));   //Sumo 5 dias a la fecha actual para obtener la fecha mínima
     var fechaMaxima = new Date (ftemp2.getTime() + (30 * 24 * 3600 * 1000));  // sumo 30 días a la fecha actual para
 
@@ -31,7 +31,7 @@
         document.getElementById("result").innerHTML="Esta seleccionando una fecha anterior a la actual";
         document.getElementById("fecNac").focus();
     } else if (fechaSolicitud >= fechaActual && fechaSolicitud <fechaMinima){
-        document.getElementById("result").innerHTML="En ese tiempo no se alcanzaa tenr el pedido";
+        document.getElementById("result").innerHTML="La reserva no esta disponible para esta fecha";
         document.getElementById("fecNac").focus();
     }else if(fechaSolicitud >=fechaMaxima){
        document.getElementById("result").innerHTML="NO hacemos pedidos con tanta Anticipacicion";
@@ -127,7 +127,7 @@ $(document).ready(function(){
 <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>
 <td>   
     <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
-<option value="">Escoja su el servicio que decea ---></option>      
+<option value="">Escoja su el servicio que desea ---></option>      
       <option value="1">Aeropuerto y Centros de aviación Jet</option>
       <option value="2">Puerto y barco de cruceros de Transporte</option>
       <option value="3">Hotel y museo</option>

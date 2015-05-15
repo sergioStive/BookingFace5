@@ -60,7 +60,21 @@ public class FacadePersonas {
         cnn = reserConex.getInstance();
 
     }
-
+    public personareservaDTO ListarUnaReservaAcompanante(int idreservaPorPersona) throws SQLException{
+        return pereser.ListarUnaReservaAcompanante(idreservaPorPersona, cnn);
+    }
+    public String actualizarReservaAcompañante(personareservaDTO resert){
+        return pereser.actualizarReservaAcompañante(resert, cnn);
+    }
+    public List listarAcompañantes(int idReserva) throws SQLException{
+       return pereser.listarAcompañantes(idReserva, cnn);
+    }
+    public int contarCupos(int idReserva) throws SQLException{
+       return pereser.contarCupos(idReserva, cnn);
+    }
+    public int contarRegistrosReservas(int idReserva) throws SQLException{
+       return pereser.contarRegistrosReservas(idReserva, cnn);
+}
     public List listarReservasPersonas(long p, int idReserva) throws SQLException {
         return pereser.listarReservasPersonas(p, idReserva, cnn);
     }

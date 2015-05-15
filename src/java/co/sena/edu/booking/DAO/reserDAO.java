@@ -48,7 +48,7 @@ public class reserDAO {
 
             pstmt = cnn.prepareStatement("UPDATE reservas SET idServicio=?, idTransporteLlegada=?, Responsable=?"
                     + ", horaReserva=?, fechaReserva=?"
-                    + ",direccionDestino=?  WHERE IdReserva = ?; ");
+                    + ",direccionDestino=?, cupo=?  WHERE IdReserva = ?; ");
 
             pstmt.setInt(1, resert.getIdServicio());
             pstmt.setInt(2, resert.getIdTransporteLlegada());
@@ -57,6 +57,7 @@ public class reserDAO {
             pstmt.setString(5, resert.getFechaReserva());
             pstmt.setString(6, resert.getDireccionDestino());
             pstmt.setInt(7, resert.getIdReserva());
+            pstmt.setInt(8, resert.getCupo());
 
             rtdo = pstmt.executeUpdate();
             if (rtdo > 0) {
@@ -170,7 +171,7 @@ public class reserDAO {
         ArrayList<reserDTO> listarReservas = new ArrayList();
 
         try {
-            String query = " select r.idreserva, s.servicio, t.nombreEmpresaTransporte, r.responsable, r.fechaReserva,\n" +
+            String query = " select r.idreserva, s.servicio, t.nombreEmpresaTransporte, r.responsable, r.cupo, r.fechaReserva,\n" +
            "r.horaReserva,r.direccionDestino from reservas r inner join servicios s on r.idServicio=s.idServicio\n" +
             "inner join transportellegadas em on em.idTransporteLlegada=r.idTransporteLlegada\n" +
             "inner join empresatransportes t on t.idEmpresaTransporte=em.idEmpresaTransporte where idpersona=? ";
@@ -186,6 +187,7 @@ public class reserDAO {
                 se.setServicio(rs.getString("servicio"));               
                 t.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte"));                
                 Rdao.setResponsable(rs.getString("responsable"));
+                Rdao.setCupo(rs.getInt("cupo"));
                 Rdao.setFechaReserva(rs.getString("fechaReserva"));
                 Rdao.setHoraReserva(rs.getString("horaReserva"));
                 Rdao.setDireccionDestino(rs.getString("direccionDestino"));
@@ -235,7 +237,7 @@ public class reserDAO {
     public reserDTO ListarUnaReserva(int idReserva, Connection cnn) throws SQLException {
         reserDTO Rdao = new reserDTO();
         try {
-            pstmt = cnn.prepareStatement("select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable, fechaReserva, horaReserva, direccionDestino from reservas where idReserva=?;");
+            pstmt = cnn.prepareStatement("select idReserva, idEstadoReserva, idServicio, idTransporteLlegada, responsable, fechaReserva, horaReserva, direccionDestino, cupo from reservas where idReserva=?;");
             pstmt.setInt(1, idReserva);
             pstmt.executeQuery();
 
@@ -251,6 +253,7 @@ public class reserDAO {
                 Rdao.setFechaReserva(rs.getString("fechaReserva"));
                 Rdao.setHoraReserva(rs.getString("horaReserva"));
                 Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                Rdao.setCupo(rs.getInt("cupo"));
 
             }
         } catch (SQLException ex) {
@@ -317,5 +320,6 @@ public class reserDAO {
                msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();
            }
        return clave;
-       }       
+       } 
 }
+                          

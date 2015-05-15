@@ -69,12 +69,24 @@
                 <tr>
                     <td><label for="reser" class="labele"><strong>idReserva<font color="#FF0000">*</strong></label></font></td>
                     <td><input name="reser" type="text" id="reser" value="<%= miReserva.getIdReserva()%>" style="width:250px; height:25px"  readonly="readonly"  placeholder="Responsable" autofocus  required class="form-control inputtext"></td>   
+                    
+                    <td><label for="registros" class="labele">Numero de personas</label><br></td>
+                    <td><select  id="registros" name="registros" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
+                    <option value="0">Ninguna ---></option>      
+                    <option value="1"<% if (miReserva.getCupo() == 1) out.print("selected"); %>>1 Persona</option>
+                    <option value="2"<% if (miReserva.getCupo() == 2) out.print("selected"); %> >2 Personas</option>
+                    <option value="3"<% if (miReserva.getCupo() == 3) out.print("selected"); %> >3 Personas</option>
+                    <option value="4"<% if (miReserva.getCupo() == 4) out.print("selected"); %> >4 Personas</option>
+                    <option value="5"<% if (miReserva.getCupo() == 5) out.print("selected"); %> >5 Personas</option>
+                    <option value="6"<% if (miReserva.getCupo() == 6) out.print("selected"); %> >6 Personas</option>
+      
+      </select> </td>
                 </tr>    
                 <tr>
                     <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></font></td>
                     <td>
 
-                       <select  id="servis" name="ser" value="" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">     
+                       <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="11" style="width:250px; height:35px">     
                            <option value="">Escoja su el servicio que desea ---></option>      
                            <option value="1" <% if (miReserva.getIdServicio() == 1) out.print("selected"); %>>Aeropuerto y Centros de aviación Jet</option>
                             <option value="2"<% if (miReserva.getIdServicio() == 2) out.print("selected"); %> >Puerto y barco de cruceros de Transporte</option>

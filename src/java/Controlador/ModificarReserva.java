@@ -48,6 +48,7 @@ FacadePersonas facadeP = new FacadePersonas();
            to.setFechaReserva(request.getParameter("fec"));
            to.setHoraReserva(request.getParameter("hora"));
            to.setDireccionDestino(request.getParameter("aerop"));
+           to.setCupo(Integer.parseInt(request.getParameter("registros")));
             
             String mensaje = facadeP.actualizarReserva(to);
             response.sendRedirect("menuCliente.jsp?msgSalida="+mensaje);

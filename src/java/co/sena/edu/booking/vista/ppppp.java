@@ -13,14 +13,19 @@ import java.util.ArrayList;
  *
  * @author user
  */
-//public class ppppp {
-//    public static void main(String[] args)throws SQLException{
-//    personareservaDTO p = new personareservaDTO();
-//    personareservaDAO pe = new personareservaDAO();
-//    FacadePersonas facadeP = new FacadePersonas();
-//    ArrayList<personareservaDTO> misPersonas= new ArrayList();
-//    misPersonas= (ArrayList<personareservaDTO>) facadeP.listarReservasPersonas(1023010113);
-//    for(int i=0; i< misPersonas.size();i++){
-//        System.out.println(misPersonas.get(i).getIdReserva());   
-//    }
-//    } }
+public class ppppp {
+    public static void main(String[] args)throws SQLException{
+    personareservaDTO p = new personareservaDTO();
+    personareservaDAO pe = new personareservaDAO();
+    FacadePersonas facadeP = new FacadePersonas();
+    int yi = facadeP.contarRegistrosReservas(45);
+        System.out.println(yi);
+         ArrayList<personareservaDTO> misReservas = new ArrayList();      
+     misReservas= (ArrayList<personareservaDTO>) facadeP.listarAcompañantes(45);
+      for (personareservaDTO e : misReservas) {
+                    System.out.println("\n" + e);
+                }
+    } 
+    
+      
+}

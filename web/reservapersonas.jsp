@@ -17,14 +17,14 @@
 	<script  src="jquery/jquery.js"></script>
 	<script src="jquery/jquery.validate.js"></script>
 	<script src="jquery/additional-methods.js"></script>
-         <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>        
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
 });
 </script>
-<link rel="shortcut icon" href="img/br.ico" />
 <meta charset="utf-8">
+<link rel="shortcut icon" href="img/br.ico" />
 <title>..::Booking Routers::..</title>
 </head>
 <body>
@@ -116,7 +116,17 @@ $(document).ready(function(){
     <h1><center>Agregar Persona a la reserva</center></h1>
 </div>
 <br>
-
+ <center>
+    <%
+                        if(request.getParameter("noo") != null) {
+                        %>
+                        <div>
+                            <b <div class="alert alert-danger mensajes" role="alert">Ha alcanzado el maximo de cupos.</b>
+                      </div>
+                        <%
+                         }
+                        %>  
+                        </center>
 <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
     
  <form name="add" id="add" role="form" action="registroReservas">
@@ -155,7 +165,9 @@ $(document).ready(function(){
     <td><input type="date" name="fechNac" style="width:250px; height:25px" id="fechNac" class="form-control" required></td>
 </tr>
 <tr>
-   <td><input type="submit" name="registroR"  id="registro" class="btn btn-success"  value="Agregar Persona" onclick="validar(registro)"style="position:relative; left:200px"></td>
+   
+<td><input type="submit" name="registroR"  id="registro" class="btn btn-success"  value="Agregar Persona" onclick="validar(registro)"style="position:relative; left:200px"></td>
+
 </tr>
 </table>
 </form>

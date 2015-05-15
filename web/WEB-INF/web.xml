@@ -60,6 +60,10 @@
         <servlet-name>registroReservas</servlet-name>
         <servlet-class>Controlador.registroReservas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>modificarAcompanantes</servlet-name>
+        <servlet-class>Controlador.modificarAcompanantes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>registroReservas</servlet-name>
         <url-pattern>/registroReservas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modificarAcompanantes</servlet-name>
+        <url-pattern>/modificarAcompanantes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
