@@ -11,7 +11,7 @@ function getCiudades(idNac) {
         xmlHttp = new XMLHttpRequest();
     }
     else if (window.ActiveXObject) {
-        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");       
     } else {
         alert("El navegador no soporta Ajax!");
         return;

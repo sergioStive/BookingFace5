@@ -12,7 +12,8 @@
         <link type="text/css" rel="stylesheet" href="css/css.css" />
         <link type="text/css" rel="stylesheet" href="font-awesome.css">
         <link rel="shortcut icon" href="imagenes/br.ico" />
-        <script src="scripts/registro.js" type="text/javascript"></script>
+        <script src="scripts/bookclien.js" type="text/javascript"></script>
+          <script src="scripts/registro.js" type="text/javascript"></script>
         <script src="scripts/AjaxCiudades.js" type="text/javascript"></script>
     </head>
     <body>
@@ -45,7 +46,7 @@
                     <tr>
 
                         <td><label for="nombres" class="labele"><strong>Nombres<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="validacion(nombres)">
+                        <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="requisitos(nombres)" onkeypress="return validLetter(event)" tabindex="1" >
                         </td>
                         <td><label for="ape" class="labele"><strong>Apellidos<font color="#FF0000">*</strong></label></font></td>
                         <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)">
@@ -53,13 +54,13 @@
                     </tr>
                     <tr>
                         <td><label for="doc" class="labele"><strong>Documento <font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="doc" type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" minlenght=8></td>    
+                        <td><input name="doc" type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" minlenght=8 onkeypress="return validNumber(event)"></td>    
                         <td><label for="date" class="labele"><strong>Fecha Nacimiento<font color="#FF0000">* </strong></label></font></td>
                         <td><input name="date" type="date" id="date" style="width:250px; height:25px" required class="form-control inputtext" tabindex="4" onChange="edad(date)"></td>    
                     </tr>
                     <tr>
                         <td><label for="tel" class="labele"><strong> Teléfono <font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="tel" type="text" id="tel" style="width:250px; height:25px" placeholder="Telefono" autofocus  required class="form-control inputtext" tabindex="6" onChange="requisitos(tel)"></td>   
+                        <td><input name="tel" type="text" id="tel" style="width:250px; height:25px" placeholder="Telefono" autofocus  required class="form-control inputtext" tabindex="6" onChange="requisitos(tel)" onkeypress="return validNumber(event)"></td>   
                         <td><label for="cor" class="labele"><strong>Correo<font color="#FF0000">*</strong></label></font></td>
                         <td><input name="cor" type="email" id="cor" style="width:250px; height:25px" placeholder="asldj@misena.edu.co" autofocus required class="form-control inputtext" tabindex="7" onChange="requisitos(cor)"></td>
                     </tr>    
@@ -67,7 +68,7 @@
                         <td><label for="paisnac" class="labele"><strong>País <font color="#FF0000">* </strong></label></font></td>
                         <td>
                             <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select id="paises" name="paisnac" id="paisnac" style="width:250px; height:35px" autofocus required class="form-control inputtext" list="paises" tabindex="8" onchange="getCiudades(this.value);">
+                            <select id="paises" name="paisnac" id="paisnac" style="width:250px; height:35px"  autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="getCiudades(this.value);">
                                 <option value="0" >------</option>
 
                                 <%
@@ -103,7 +104,7 @@
                         <td><label for="pSexo" class="labele"><strong>Sexo<font color="#FF0000">* </strong></label></font></td>
                         <td>
                             <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select name="pSexo" required id="pSexo" class="form-control">
+                            <select name="pSexo" required id="pSexo" class="form-control" onChange="requisitos(pSexo)" tabindex="9">
                                     <option value="">Seleccione su sexo</option>
                                     <option value="1">Mujer</option>
                                     <option value="0">Hombre</option>

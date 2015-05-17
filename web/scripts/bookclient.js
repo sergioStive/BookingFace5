@@ -6,7 +6,7 @@ function requisitos(idelemento)
 		war.hidden=false;
 	}	
 	else if (idelemento!==""){
-		idelemento.style.border="1px solid gray";
+		idelemento.style.border="1px solid green";
 		war.hidden=true;
 		}
 	}

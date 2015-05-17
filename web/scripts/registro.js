@@ -1,4 +1,15 @@
-   
+   function requisitos(idelemento)
+{
+	if (idelemento.value=="") {
+		//idelemento.placeholder="Debe registrar este campo";
+		idelemento.style.border="1px solid red";
+		war.hidden=false;
+	}	
+	else if (idelemento!==""){
+		idelemento.style.border="1px solid green";
+		war.hidden=true;
+		}
+	}
 function edad() {
 var fecNac = new Date(date.value);
 var hoy = new Date();
@@ -43,6 +54,7 @@ else {
 	con.value ="";
 	vcon.value="";
 }
+
 }
 function Eliminar(){
 if(eliminar.value=="")
@@ -54,17 +66,36 @@ if(eliminar.value=="")
 
 
 function validar(){
-	if (nombres.value==""){		
+var x=con.value;
+var y=vcon.value;
+if ((x==y)&&(x!="")&&(y!=""))
+{
+alert('Clave Valida!!');
+	con.style.border="1px solid green";
+	vcon.style.border="1px solid green";        
+}   
+else {
+    alert('Clave Invalida!!\nLas clave no son iguales!!');
+        con.style.border="1px solid red";
+        vcon.style.border="1px solid red";
+	con.value ="";
+	vcon.value="";
+}
+if(vcon&&con.value==""){
+    con.style.border="1px solid red";
+        vcon.style.border="1px solid red";
+}
+	 if (nombres.value==""){		
 		nombres.style.border="1px solid red";
 		nombres.value="";
 	}
 	else {
 	nombres.style.border="1px solid green";
 	}
-	if (apellidos.value==""){
+                if (apellidos.value==""){
 		apellidos.style.border="1px solid red";
 		apellidos.value="";
-	}
+	}        
 	else {
 	apellidos.style.border="1px solid green";
 	}
@@ -74,6 +105,11 @@ function validar(){
 	}
         else if(doc.value.length<=6){     
          alert ('Para registrar su documento debe ingresar mas de 6 digitos');
+          doc.style.border="1px solid red";
+          doc.value="";
+        }
+        else if(doc.value.length>13){     
+         alert ('Para registrar su documento debe ingresar menos de 13 digitos');
           doc.style.border="1px solid red";
           doc.value="";
         }
@@ -91,8 +127,8 @@ function validar(){
 		tel.style.border="1px solid red";
 		tel.value="";
 	}
-	else if(tel.value.length>9){     
-         alert ('Para registrar su telefono debe ingresar menos de 9 digitos');
+	else if(tel.value.length<5){     
+         alert ('Para registrar su telefono debe ingresar mas de 6 digitos');
           tel.style.border="1px solid red";
           tel.value="";
 	}
@@ -116,9 +152,31 @@ function validar(){
 	}
 	else {
 	ciunac.style.border="1px solid green";
+	}	
+        if (pSexo.value==""){		
+		pSexo.style.border="1px solid red";
+		pSexo.value="";
 	}
-	
-        
-      
+	else {
+	pSexo.style.border="1px solid green";
+	}
 	 }
+
+function validNumber(e) {
+var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+return ((tecla > 47 && tecla < 58) || tecla == 8);
+}
+
+function validLetter(e) {
+var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+var especiales = [8, 32, 13];/*back, space, enter */
+
+for (var i in especiales) {
+if (tecla == especiales[i]) { return true;/*break; */}
+}
+return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 8);
+}
+
+
+
    

@@ -127,15 +127,14 @@ $(document).ready(function(){
      pg=Integer.valueOf(request.getParameter("pg"));
      }
      misPersonas =(ArrayList<personasDTO>) facadeP.Paginacion(pg,3);      
-     %>  
-      
+     %>     
 
      
 <div class="ba">
 <h1><center>Registrados</center></h1>
 </div>
  <br>     
-     <div class="lateral">
+ <div class="lateral">
  <h4>Bienvenido</h4>
 <div class="nombre">
 <td><input type="text" value="Yilber Fabian" style="width:166px; height:25px; text-align:center; text-transform:uppercase;"  autofocus disabled  class="form-control inputtext">
@@ -149,10 +148,13 @@ $(document).ready(function(){
 </td>
 </div>
 </div>
-     <br>
+ <div class="busqueda">
+ <span style="font-weight:bold;">Búsqueda:&nbsp;</span>
+ <input id="inputFiltro" type="text" />
+ </div>
       <table border="1" border="6" class="paginated" id="divTabla" >
-          <thead>
-          <tr id="titulo">
+        <thead>
+        <tr id="titulo">
         <th st-ratio="20" st-sort="cedula">CEDULA</th>
         <th st-ratio="20" st-sort="nombres">NOMBRES</th>
         <th st-ratio="20" st-sort="apellidos">APELLIDOS</th>
@@ -160,8 +162,8 @@ $(document).ready(function(){
         <th st-ratio="20" st-sort="pais">PAIS</th>
         <th st-ratio="20" st-sort="telefono">TELEFONO</th>
         <th st-ratio="20" st-sort="correo">CORREO</th>
-        <th>ELIMINAR</th>
-        <th>VERIFICAR</th>
+        <th>ELIMINAR REGISTRO</th>
+        <th>VERIFICAR REGISTRO</th>
     </tr>
     </thead>
     <%
@@ -179,7 +181,7 @@ $(document).ready(function(){
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
         <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
-        <td><a href="Controlador?idPersona=<%=so.getIdPersona()%>"><img src="imagenes/user.jpg" align="middle" width="32" height="32" title="Verificar" onclick="contrase()"></a></td>
+        <td><a href="Controlador?idPersona=<%=so.getIdPersona()%>"class="btn btn-success" title="Modificar datos de acompañantes"><img src="imagenes/user.jpg" align="middle" width="32" height="32" title="Verificar" onclick="contrase()"></a></td>
     </tr>
      </tbody>
 <%

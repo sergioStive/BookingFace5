@@ -17,7 +17,9 @@
 	<script  src="jquery/jquery.js"></script>
 	<script src="jquery/jquery.validate.js"></script>
 	<script src="jquery/additional-methods.js"></script>
-        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>        
+        <script src="scripts/reserPersona.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>   
+        <link rel="shortcut icon" href="img/br.ico" />
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
@@ -140,18 +142,18 @@ $(document).ready(function(){
     <td><input name="doc" type="text" id="doc" style="width:250px; height:25px" value="<%=prv.getPer().getIdPersona()%>" readonly="readonly" class="form-control" required/></td>
       
     <td><label for="tel" class="labele">Telefono</label><br></td>
-    <td><input type="text" id="apellidoPer" name="tel" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="tel" name="tel" style="width:250px; height:25px" class="form-control" required onChange="requisitos(tel)"/></td>
 </tr>
 <tr>
     <td><label for="nombrePer" class="labele">Nombres</label><br></td>
-    <td><input type="text" id="nombrePer" name="nombrePer" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="nombrePer" name="nombrePer" style="width:250px; height:25px" class="form-control" required onChange="requisitos(nombrePer)"/></td>
 
     <td><label for="apellidoPer" class="labele">Apellidos</label><br></td>
-    <td><input type="text" id="apellidoPer" name="apellidoPer" style="width:250px; height:25px" class="form-control" required/></td>
+    <td><input type="text" id="apellidoPer" name="apellidoPer" style="width:250px; height:25px" class="form-control" required onChange="requisitos(apellidoPer)" /></td>
 </tr>
 <tr>
 <td><label for="ser" class="labele">Nacionalidad</label></td>
-<td><select  id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px">
+<td><select  id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px" onChange="requisitos(nacio)">
 <option value="">Escoja su nacionalidad</option>      
       <option value="1">Colombia</option>
       <option value="2">España</option>
@@ -162,7 +164,7 @@ $(document).ready(function(){
       </select> 
  </td>
     <td><label for="fechNac" class="labele">Fecha de Nacimiento</label></td>
-    <td><input type="date" name="fechNac" style="width:250px; height:25px" id="fechNac" class="form-control" required></td>
+    <td><input type="date" name="fechNac" style="width:250px; height:25px" id="fechNac" class="form-control" required onChange="requisitos(fechNac)"></td>
 </tr>
 <tr>
    

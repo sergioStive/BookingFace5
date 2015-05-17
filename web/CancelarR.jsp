@@ -71,7 +71,6 @@
        background-image: url('img/error.png');
 }
 </style>
-<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
@@ -122,30 +121,31 @@ $(document).ready(function(){
                     <%}%>
                     <%}%> 
       </td>
-  </tr>
-  </table>
- </center>     
-      <div class="ba">
-      <h1>Cancelar Reservas</h1>
-      </div>
-     <table border="1" class="paginated" id="divTabla">
-    <tr>
-        <th st-ratio="20" st-sort="idReserva">NumeroReserva</th>
-        <th st-ratio="20" st-sort="idServicio">Servicio</th>
-        <th st-ratio="20" st-sort="idTrasnporteLlegada">TrasnporteLlegada</th>
-        <th st-ratio="20" st-sort="responsable">Responsable</th>
-        <th st-ratio="20" st-sort="fechaReserva">FechaReserva</th>
-        <th st-ratio="20" st-sort="horaReserva">HoraReserva</th>
-        <th st-ratio="20" st-sort="direccionDestino">DireccionDestino</th>
-        <th st-ratio="20" st-sort="Modificar">Eliminar</th>
+</tr>
+ </table>
+ </center>
+ <div class="ba">
+ <h1>Cancelar Reservas</h1>
+ </div>
+ <table border="1" class="paginated" id="divTabla">
+        <thead>
+ <tr>       
+        <th st-ratio="20" st-sort="idServicio">SERVICIO</th>
+        <th st-ratio="20" st-sort="idTrasnporteLlegada">AEROLINEA</th>
+        <th st-ratio="20" st-sort="responsable">RESPONSABLE</th>
+        <th st-ratio="20" st-sort="fechaReserva">FECHARESERVA</th>
+        <th st-ratio="20" st-sort="horaReserva">HORA RESERVA</th>
+        <th st-ratio="20" st-sort="direccionDestino">DESTINO</th>
+        <th st-ratio="20" st-sort="Modificar">ELIMINAR</th>
     </tr>
+       </thead>
     <%
       for(reserDTO so: misReservas){
           
       
     %>
-    <tr>
-        <td><%=so.getIdReserva()%></td>       
+     <tbody>
+    <tr>            
         <td><%=so.getSer().getServicio()%></td>
         <td><%=so.getEmpre().getNombreEmpresaTransporte()%></td>
         <td><%=so.getResponsable()%></td>
@@ -154,8 +154,8 @@ $(document).ready(function(){
         <td><%=so.getDireccionDestino()%></td>
         
         <td><a href="Controlador?idReserva=<%=so.getIdReserva()%>"><img src="imagenes/Eliminar.png" align="middle" width="32" height="32" title="Eliminar" onclick="return comfirmar()"></a></td>
-    
-    </tr>
+   </tr>
+    </tbody>
     <%
     }
     %>

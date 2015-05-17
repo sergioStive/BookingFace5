@@ -1,9 +1,9 @@
 
 function validarForm () {
 //alert("validando");
-	var verificar = true;
-	var exRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-	var formulario=document.getElementById("form1");
+    var verificar = true;
+    var exRegEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    var formulario=document.getElementById("form1");
     var nombres=document.getElementById("nombres");
     var apellidos=document.getElementById("apellidos");
     var doc=document.getElementById("doc");
