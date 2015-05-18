@@ -1,5 +1,5 @@
 <%-- 
-    Document   : Filtro
+    Document   : Filtro1
     Created on : 6/03/2015, 09:52:44 AM
     Author     : Usuraio
 --%>
@@ -35,14 +35,14 @@
             
             <nav>
   <ul id="main">
-  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span>Management routes</a>
   <ul class="submain">
-  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
-  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creation of routes</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modification of routes</a> </li>
   </ul>
   </div>  
   </li>  
-  <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Registros</a> 
+  <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>Records</a> 
   </li>
  <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</li></a>
  </ul>
@@ -51,15 +51,15 @@
             <br>
         
             <center>
-                <div class="col-md-6" ><h2>Búsqueda de Usuarios</h2></div>
+                <div class="col-md-6" ><h2>Search for users</h2></div>
                
-                <form action="buscarPersona" method="post">
+                <form action="buscarPersonaIngles" method="post">
                     <table>
         
          <tr>
             <td>
                 <br>
-                <strong>Pais</strong><font color="#FF0000">*</font>
+                <strong>Country</strong><font color="#FF0000">*</font>
                 <br>
             </td>
             <td> <input type="text" name="nombre"  class="form-control inputtext"/></td>
@@ -67,7 +67,7 @@
          <tr>
             <td>
                 <br>
-                <strong>Nombre</strong><font color="#FF0000">*</font>
+                <strong>Name</strong><font color="#FF0000">*</font>
                 <br>
             </td>
             <td><input type="text" name="pais" class="form-control inputtext"/></td>
@@ -75,19 +75,19 @@
         <tr>
             <td>
                 <br>
-                <strong>Ciudad</strong><font color="#FF0000">*</font>
+                <strong>City</strong><font color="#FF0000">*</font>
                 <br>
             </td>
             <td> <input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
         </tr>   
                     </table>
                    
-        <input type="submit" name="buscar" value="Buscar" class="btn btn-success">
-                   <input type="submit"name="generar"value="Generar Reporte"class="btn btn-success">
+        <input type="submit" name="buscar" value="Search" class="btn btn-success">
+                   <input type="submit"name="generar"value="Generate Report"class="btn btn-success">
                <br><br mofos>
                 </form>
                 <form action="exportarPDF.jsp" method="post">
-                    <input type="submit" name="generar" value="Generar Reporte PDF" class="btn btn-success">
+                    <input type="submit" name="generar" value="Generate Report PDF" class="btn btn-success">
                 </form>
 
             </center>
@@ -107,7 +107,7 @@
             <br>
             <center>
             <div class="row text-right">
-                <div class="col-md-6 alert alert-info"><h2 class="text-center">Lo sentimos, no hay resultados</h2></div>
+                <div class="col-md-6 alert alert-info"><h2 class="text-center">Sorry, no results found</h2></div>
 
             </div>  
          
@@ -134,17 +134,17 @@
                 %>
 
                 <center>
-                        <div class="col-md-6"><h2>Resultados de la búsqueda</h2></div>                         
+                        <div class="col-md-6"><h2>The search results</h2></div>                         
                 </center>
                 <br>
                 <table class="table table-bordered table-striped table-hover"> 
                     <thead>
-                    <td>Nombres</td>
-                    <td>apellidos</td>
-                    <td>Correo Electronico</td>
-                    <td>Ciudad</td>
-                    <td>Nacionalidad</td>
-                    <td>Idioma</td>
+                    <td>Names</td>
+                    <td>Surnames</td>
+                    <td>Email</td>
+                    <td>City</td>
+                    <td>Nationality</td>
+                    <td>Language</td>
                     </thead>
                     <%                    
                     for (listarPerDTO nombre : person) {
@@ -200,11 +200,11 @@
 
          <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
         <span>Booking Routers &copy; 2015</span><br>
-        Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
+        Members:<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbina
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="Filtro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Filtro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+        <img src="imagenes/dddd.png"><a href="CreaRuta1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="CreaRuta.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
 </div>
 

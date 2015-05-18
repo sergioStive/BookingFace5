@@ -4,10 +4,10 @@
     Author     : Usuraio
 --%>
 
+<%@page import="co.sena.edu.booking.DTO.listarConductoresDTO"%>
 <%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
-<%@page import="co.sena.edu.booking.DTO.listarPerDTO"%>
-<%@page import="co.sena.edu.booking.DTO.personasDTO"%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
         <script src="scripts/ingreso.js" type="text/javascript"></script>
         <script src="scripts/bookasp.js" type="text/javascript"></script>
 
-        <title>Filtro Multicriterio</title>
+        <title>Drivers filter</title>
 
     </head>
     <body>
@@ -35,59 +35,59 @@
             
             <nav>
   <ul id="main">
-  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span>Management routes</a>
   <ul class="submain">
-  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
-  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creation of routes</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modification of routes</a> </li>
   </ul>
   </div>  
   </li>  
-  <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Registros</a> 
+  <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>Records</a> 
   </li>
- <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar sesion</li></a>
+ <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Close session</li></a>
  </ul>
   </nav>
             
             <br>
         
             <center>
-                <div class="col-md-6" ><h2>Búsqueda de Usuarios</h2></div>
+                <div class="col-md-6" ><h2>Search for Drivers</h2></div>
                
-                <form action="buscarPersona" method="post">
+                <form action="buscarConductoresIngles" method="post">
                     <table>
         
          <tr>
             <td>
                 <br>
-                <strong>Pais</strong><font color="#FF0000">*</font>
+                <strong>Responsible for</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td> <input type="text" name="nombre"  class="form-control inputtext"/></td>
+            <td> <input type="text" name="responsable"  class="form-control inputtext"/></td>
         </tr>
          <tr>
             <td>
                 <br>
-                <strong>Nombre</strong><font color="#FF0000">*</font>
+                <strong>Destination address</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td><input type="text" name="pais" class="form-control inputtext"/></td>
+            <td><input type="text" name="direccionDestino" class="form-control inputtext"/></td>
         </tr>     
         <tr>
             <td>
                 <br>
-                <strong>Ciudad</strong><font color="#FF0000">*</font>
+                <strong>Date reservation</strong><font color="#FF0000">*</font>
                 <br>
             </td>
-            <td> <input type="tex" placeholder="Ejem Bogota" name="ciudad" class="form-control inputtext"/></td>
+            <td> <input type="tex" placeholder="Ejem Bogota" name="fechaReserva" class="form-control inputtext"/></td>
         </tr>   
                     </table>
                    
-        <input type="submit" name="buscar" value="Buscar" class="btn btn-success">
-                   <input type="submit"name="generar"value="Generar Reporte"class="btn btn-success">
+        <input type="submit" name="buscar" value="Search" class="btn btn-success">
+                   <input type="submit"name="generarEcxel"value="Generate Report"class="btn btn-success">
                <br><br mofos>
                 </form>
-                <form action="exportarPDF.jsp" method="post">
-                    <input type="submit" name="generar" value="Generar Reporte PDF" class="btn btn-success">
+                <form action="exportarPDFConductores.jsp" method="post">
+                    <input type="submit" name="generar" value="Generate Report PDF" class="btn btn-success">
                 </form>
 
             </center>
@@ -97,17 +97,17 @@
 
                 HttpSession miSession = request.getSession(false);
 
-                if (miSession.getAttribute("nombres") != null) {
-                    ArrayList<listarPerDTO> person = (ArrayList<listarPerDTO>) miSession.getAttribute("nombres");
+                if (miSession.getAttribute("conductores") != null) {
+                    ArrayList<listarConductoresDTO> conduc = (ArrayList<listarConductoresDTO>) miSession.getAttribute("conductores");
 
-                    if (person.size() == 0) {
+                    if (conduc.size() == 0) {
             %>
 
             <br>
             <br>
             <center>
             <div class="row text-right">
-                <div class="col-md-6 alert alert-info"><h2 class="text-center">Lo sentimos, no hay resultados</h2></div>
+                <div class="col-md-6 alert alert-info"><h2 class="text-center">Sorry, no results found</h2></div>
 
             </div>  
          
@@ -118,9 +118,9 @@
             <center>    
 
                 <%
-                    listarPerDTO per = new listarPerDTO();
+                    listarConductoresDTO per = new listarConductoresDTO();
                     FacadePersonas facadeP = new FacadePersonas();
-                    ArrayList<listarPerDTO> perso = new ArrayList();
+                    ArrayList<listarConductoresDTO> perso = new ArrayList();
                     int numreg = facadeP.contarNumerosdeRegistros(null);
                     int numero = numreg / 5;
                     int pg = 0;
@@ -129,35 +129,35 @@
                     } else {
                         pg = Integer.valueOf(request.getParameter("pg"));
                     }
-                    perso = (ArrayList<listarPerDTO>) facadeP.Paginacio2(pg, 5);
+                    perso = (ArrayList<listarConductoresDTO>) facadeP.Paginacio2(pg, 5);
 
                 %>
 
                 <center>
-                        <div class="col-md-6"><h2>Resultados de la búsqueda</h2></div>                         
+                        <div class="col-md-6"><h2>The search Results</h2></div>                         
                 </center>
                 <br>
                 <table class="table table-bordered table-striped table-hover"> 
                     <thead>
-                    <td>Nombres</td>
-                    <td>apellidos</td>
-                    <td>Correo Electronico</td>
-                    <td>Ciudad</td>
-                    <td>Nacionalidad</td>
-                    <td>Idioma</td>
+                    <td>Names</td>
+                    <td>Surnames</td>
+                    <td>Responsible</td>
+                    <td>Date reservation</td>
+                    <td>Destination address</td>
+                    <td>Service</td>
                     </thead>
                     <%                    
-                    for (listarPerDTO nombre : person) {
+                    for (listarConductoresDTO nombre : conduc) {
                     %>
 
                     <tr>
 
                         <td><%=nombre.getNombres()%></td>
                         <td><%=nombre.getApellidos()%></td>
-                        <td><%=nombre.getCorreoElectronico()%></td>
-                        <td><%=nombre.getCiudad()%></td>
-                        <td><%=nombre.getNacionalidad()%></td>
-                        <td><%=nombre.getIdioma()%></td>
+                        <td><%=nombre.getResponsable()%></td>
+                        <td><%=nombre.getFechaReserva()%></td>
+                        <td><%=nombre.getDireccionDestino()%></td>
+                        <td><%=nombre.getServicio()%></td>
                     </tr>
                     <%
                         }
@@ -204,11 +204,8 @@
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbina
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="Filtro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Filtro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+        <img src="imagenes/dddd.png"><a href="filtroConductores1.jsp" style=" color: #ffffff; text-decoration: none;" >English</a> --  <img src="imagenes/original.jpg"><a href="filtroConductores.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
 
 </div>
-
-
-
-    </body>
+  </body>
 </html>

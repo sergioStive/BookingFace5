@@ -8,10 +8,20 @@
         <servlet-name>modificarRol</servlet-name>
         <servlet-class>Controlador.modificarRol</servlet-class>
     </servlet>
+<servlet>
+        <servlet-name>buscarConductoresIngles</servlet-name>
+        <servlet-class>Controlador.buscarConductoresIngles</servlet-class>
+    </servlet>   
     <servlet>
         <servlet-name>buscarConductores</servlet-name>
         <servlet-class>Controlador.buscarConductores</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>buscarPersonaIngles</servlet-name>
+        <servlet-class>Controlador.buscarPersonaIngles</servlet-class>
+    </servlet>
+    
+    
     <servlet>
         <servlet-name>modificarReserva</servlet-name>
         <servlet-class>Controlador.modificarReserva</servlet-class>
@@ -77,6 +87,10 @@
         <url-pattern>/modificarRol</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>buscarConductoresIngles</servlet-name>
+        <url-pattern>/buscarConductoresIngles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>modificarReserva</servlet-name>
         <url-pattern>/modificarReserva</url-pattern>
     </servlet-mapping>
@@ -103,6 +117,10 @@
     <servlet-mapping>
         <servlet-name>buscarPersona</servlet-name>
         <url-pattern>/buscarPersona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscarPersonaIngles</servlet-name>
+        <url-pattern>/buscarPersonaIngles</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EnviarCorreos</servlet-name>
