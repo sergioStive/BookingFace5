@@ -71,7 +71,7 @@ $(document).ready(function(){
                                   -->
                                   <a href="registro.jsp" style="color: black; text-decoration: none;">Ingreso</a>
      </div><br>
-<form name="form1" action="Controlador" method="post" >      
+<form name="form1" action="login" method="post" >      
 <label for="usu" class="labele"><strong>Cedúla<font color="#FF0000">*</strong></label></font>
 <input name="idPersona" type="text" style="width:250px; height:25px " autofocus id="usu" placeholder="usuario" required class="form-control inputtext"  onChange="requisitos(nombre)" minlenght=3>
 

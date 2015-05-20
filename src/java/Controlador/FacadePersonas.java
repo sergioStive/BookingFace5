@@ -60,6 +60,12 @@ public class FacadePersonas {
         cnn = reserConex.getInstance();
 
     }
+    public synchronized int getRol(personasDTO idPersona) throws SQLException{
+        return pers.getRol(idPersona, cnn);
+    }
+    public long login(String contraseña, long idPersona) throws SQLException{
+        return pers.login(contraseña, idPersona, cnn);
+    }
     public personareservaDTO ListarUnaReservaAcompanante(int idreservaPorPersona) throws SQLException{
         return pereser.ListarUnaReservaAcompanante(idreservaPorPersona, cnn);
     }

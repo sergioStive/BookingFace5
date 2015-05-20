@@ -29,6 +29,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 /**
  *
@@ -633,6 +636,52 @@ public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) thro
         }
         return filtroConductores;
     }
-
+public synchronized long login(String contraseña, long idPersona, Connection conexion) throws SQLException  {
+        long cc = 0;
+        try{
+            pstmt = conexion.prepareStatement("SELECT idPersona "
+                    + "from personas where idPersona= ? and contraseña=?");
+            
+           pstmt.setLong(1, idPersona);
+           pstmt.setString(2, contraseña);
+            rs = pstmt.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    cc = rs.getLong("idPersona");
+                }
+            }
+         } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        }
+        return cc;    
     
+    }
+public synchronized int getRol(personasDTO idPersona,Connection conexion) throws SQLException {
+        int rol = 0;
+        try {
+            //preparamos la consulta 
+            pstmt = conexion.prepareStatement("SELECT ususarioIdUsuario," +
+                   " rolesIdRol FROM rolusuario " +
+                    " WHERE ususarioIdUsuario =?;");
+            pstmt.setLong(1, idPersona.getIdPersona());
+            rs = pstmt.executeQuery();
+            //mientras halla registros
+            while (rs.next()) {
+                rol = rs.getInt("rolesIdRol");
+            }
+
+        } catch (SQLException ex) {
+            throw new SQLException("Error obteniendo rol", ex);
+        }
+//        finally{
+//            try{
+//                statement.close();
+//            }catch (SQLException ex) {
+//            throw new MiExcepcion("Error obteniendo rol", ex);
+//        }
+//        }
+        //devolvemos el usuario que se encontro
+        return rol;
+    }
+
 }
