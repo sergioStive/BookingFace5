@@ -17,7 +17,7 @@
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
     <ul id="main"> 
@@ -59,7 +59,7 @@
 <a href="#" title="Nosotros te llevamos"><img src="imagenes/miami3.jpg" alt="miami-cityscapes-landscapes-2792901-1920x1080"/>1</a>
 <a href="#" title="Disfruta y Conoce"><img src="imagenes/miami2.jpg" alt="o-PAISAJES-MIAMI-facebook"/>2</a>
 <a href="#" title="Bienvenidos a Florida"><img src="imagenes/miami1.png" alt="Bienvenidos a Florida"/>3</a>
-</div></div></a>
+</div></div>
 	<div class="ws_shadow"></div>
 	</div>
 	<script type="text/javascript" src="engine1//wowslider.js"></script>
@@ -72,10 +72,10 @@
 <div class="idioma1">
         <span>Booking Routers &copy; 2015</span><br>
         Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-        <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="Index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+        <img src="imagenes/dddd.png"><a href="index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
     
 </div>
     </body>

@@ -30,7 +30,7 @@
 
         <div class ="contenedor">
             <div class="banner"> 
-                <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+                <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
             </div>
             
             <nav>
@@ -44,7 +44,7 @@
   </li>  
   <li><div align="center"><a href="verificarRegistro.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span>Records</a> 
   </li>
- <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Close session</li></a>
+ <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span>Close session</a></li>
  </ul>
   </nav>
             

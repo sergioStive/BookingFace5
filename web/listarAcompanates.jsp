@@ -3,6 +3,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DTO.personareservaDTO"%>
 <%@page import="Controlador.FacadePersonas"%>
+<%
+if(request.getSession() != null){
+    %>
 <html>
 <head>
     
@@ -15,11 +18,11 @@
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-    <p><a href="Index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+    <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
     <nav>
 <ul id="main">
-    <li><a href="Index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</li></a>
+    <li><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
         <li><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="reserva.jsp" style="text-decoration: none;">Solicita Reserva</a></li>
@@ -80,8 +83,9 @@
         <td><%=so.getApellidos()%></td>
         <td><%=so.getTelefono()%></td>
         <td><%=so.getFechaNaci()%></td>
-        
-        <td class="danger"><a href="modificarAcompanantes.jsp?idreservaPorPersona=<%=so.getIdreservaPorPersona()%>&nombres=<%=so.getNombres()%>&apellidos=<%=so.getApellidos()%>&telefono=<%=so.getTelefono()%>&fechaNac=<%=so.getFechaNaci()%>"
+       
+         
+        <td class="danger"><a href="modificarAcompanantes.jsp?idreservaPorPersona=<%=so.getIdreservaPorPersona()%>&nombres=<%=so.getNombres()%>&apellidos=<%=so.getApellidos()%>&telefono=<%=so.getTelefono()%>&idReserva=<%=so.getIdReserva()%>&fechaNac=<%=so.getFechaNaci()%>"
         class="btn btn-success" title="Modificar datos de acompañantes">Modificar</a></td>
       
         
@@ -102,3 +106,6 @@
 </div>
 </body>
 </html>
+<%
+}
+%>

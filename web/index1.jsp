@@ -17,7 +17,7 @@
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index1.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index1.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
     <ul id="main"> 
@@ -34,7 +34,7 @@
     
 </div>
     <br>
-<div id="cont"><font size="+1"><center>¡Let's contact!</center></font>
+<div id="cont"><font size="+1"><center>Â¡Let's contact!</center></font>
     <img src="imagenes/sobre.png" onMouseOver="this.width=26;this.height=38" onMouseOut="this.width=20;this.height=29" Title="Pulse para enviarnos sus comentarios" >
     <img src="imagenes/you.png" onMouseOver="this.width=40;this.height=38" onMouseOut="this.width=28;this.height=27"Title="Pulse para visitar el sitio web youtube">
     <img src="imagenes/twi.png" onMouseOver="this.width=38;this.height=39" onMouseOut="this.width=27;this.height=28" title="Pulse para visitar el stio web Twitter">
@@ -71,7 +71,7 @@
         <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="Index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+        <img src="imagenes/dddd.png"><a href="index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
     
 </div>
     </body>

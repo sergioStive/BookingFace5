@@ -23,11 +23,11 @@
     <body>
         <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index1.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index1.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
                 <nav> 
                     <ul id="main">  
-                        <li><div align="center"><a href="Index1.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Home</a></div></li>
+                        <li><div align="center"><a href="index1.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Home</a></div></li>
                         <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservations</a></div>
                             <ul class="submain">
                                 <li><a href="reserva1.jsp" style="text-decoration: none;">Request reservations </a></li>
@@ -40,7 +40,7 @@
                         <li><div align="center"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a>
                             </div>
                                 <ul class="submain">
-                                <li><a align="center"  href="#" style="text-decoration: none;">Reservations</a> </li>
+                                <li><a align="center"  href="#" style="text-decoration: none;">Reservations</a></li>
                             </ul>
                         </li>                        
                         <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list"></span> Main</a> 
@@ -48,7 +48,7 @@
                         </li>
                        
    		<li>
-			<a href="index.html"><span class="glyphicon glyphicon-remove-sign"></span> Exit</a>
+			<a href="index1.jsp"><span class="glyphicon glyphicon-remove-sign"></span> Exit</a>
         </li>
                   
                     
@@ -137,7 +137,7 @@
                                      <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
                                          <span>Booking Routers &copy; 2015</span><br>
                                          Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-                                         <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+                                         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
                                          <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
                                          <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
                                          <img src="imagenes/dddd.png"><a href="#" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="asignarRol.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>

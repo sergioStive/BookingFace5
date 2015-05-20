@@ -68,11 +68,11 @@
     <body>
         <div class ="contenedor">
             <div class="banner"> 
-                <p><a href="Index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="100%" height="150" title="Forget the rest, call the best"  /></a></p>
+                <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="100%" height="150" title="Forget the rest, call the best"  /></a></p>
             </div>
             <nav>
                 <ul id="main">
-                    <li><a href="Index.jsp">Inicio</li></a>
+                    <li><a href="index.jsp">Inicio</a></li>
 
                     <li><a align="center" href="#" style="text-decoration: none;">Gestion de Rutas</a>
                         <ul class="submain">
@@ -234,7 +234,7 @@
                 }else {
                 misesion.removeAttribute("logueado");
                 misesion.invalidate();
-                response.sendRedirect("Index.html");
+                response.sendRedirect("index.jsp");
             }
             %>
 
@@ -243,4 +243,8 @@
 
     </body>
 </html>
+
+
+
+
 

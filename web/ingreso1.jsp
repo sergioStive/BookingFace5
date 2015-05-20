@@ -10,11 +10,11 @@
 <body>
  <div class ="contenedor">
  <div class="banner">
- <p><a href="Index1.html"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best" /></a></p>
+ <p><a href="index1.html"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best" /></a></p>
  </div>
 <nav> 
      <ul id="main">
-<li> <div align="center"> <a href="Index1.html"><span class="glyphicon glyphicon-home"></span> Home</a>
+<li> <div align="center"> <a href="index1.html"><span class="glyphicon glyphicon-home"></span> Home</a>
 </li>
 <li>
 <div align="center"> <a href="recuperarContraseña.html">¡Forgot password!</a>

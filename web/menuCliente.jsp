@@ -68,11 +68,11 @@ $(document).ready(function(){
     <body>
         <div class ="contenedor">
             <div class="banner"> 
-                <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+                <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
             </div>
             <nav> 
                 <ul id="main">
-                    <li><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                    <li><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                     <li><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                         <ul class="submain">
                             <li><a href="reserva.jsp" style="text-decoration: none;">Solicitar Reserva</a></li>
@@ -87,18 +87,9 @@ $(document).ready(function(){
                             <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li>
 
                         </ul>
-                    </li>  
-                    <center>
-                        <table>
-
-                        </table>
-                    </center>
-
-
-                </ul>
-                </ul> 
+                    </li>
+                </ul>                 
             </nav> 
-
         </div>                        
         <br>
 
@@ -164,7 +155,7 @@ $(document).ready(function(){
         <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
             <span>Booking Routers &copy; 2015</span><br>
             Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-            <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+            <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
             <img src="imagenes/dddd.png"><a href="menu1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="menu.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
@@ -174,7 +165,7 @@ $(document).ready(function(){
             } else {
                 misesion.removeAttribute("logueado");
                 misesion.invalidate();
-                response.sendRedirect("Index.html");
+                response.sendRedirect("index.jsp");
             }
         %>
     </body>

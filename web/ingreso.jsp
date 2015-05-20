@@ -47,11 +47,11 @@ $(document).ready(function(){
 <body>
 <div class ="contenedor"></div>
  <div class="banner">
-     <p><a href="Index.jsp"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best" /></a></p>
+     <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best" /></a></p>
  </div>
 <nav> 
 <ul id="main"> 
-    <li> <div align="center"> <a href="Index.jsp" style="text-decoration:none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+    <li> <div align="center"> <a href="index.jsp" style="text-decoration:none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
  </div>
 </li>
 <li>
@@ -67,7 +67,7 @@ $(document).ready(function(){
 <h1>Ingreso Usuarios Registrados</h1>
 </div>
      <div style=" background:#DDDDDD;  text-align: center; border-radius: 15; padding-top: 5px; border-radius: 15px; ">
-                                  <a href="Index.html" style="color:black; text-decoration: none;">Inicio</a>
+                                  <a href="index.jsp" style="color:black; text-decoration: none;">Inicio</a>
                                   -->
                                   <a href="registro.jsp" style="color: black; text-decoration: none;">Ingreso</a>
      </div><br>

@@ -15,7 +15,7 @@ function cerrar() {
     hideDiv('caso3');hideDiv('caso4');hideDiv('caso4x');hideDiv('caso6');hideDiv('caso6x');hideDiv('caso7');hideDiv('caso7x');hideDiv('servicios');hideDiv('reserva');hideDiv('reservam');
 }
 function abrirVentana() {
-    window.open("Index.html");
+    window.open("index.jsp");
 }
 function cerrarVentana() {
     window.close();

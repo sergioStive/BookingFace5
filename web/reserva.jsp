@@ -29,11 +29,11 @@ $(document).ready(function(){
    
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
 <ul id="main">
-    <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+    <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
             <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
         %>
 <div class="ba">
-<h1><center>Generar Reservas</center></h1>
+<center><h1>Generar Reservas</h1></center>
 </div>
 <br>
  <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
@@ -161,7 +161,7 @@ $(document).ready(function(){
             } else {
                 misesion.removeAttribute("logueado");
                 misesion.invalidate();
-                response.sendRedirect("Index.html?msg= Sesion cerrada");
+                response.sendRedirect("index.jsp?msg= Sesion cerrada");
             }
         %>
 </body>

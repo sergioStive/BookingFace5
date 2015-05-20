@@ -30,7 +30,7 @@
 <h3>The Page cannot be found</h3>
 </center>
 <center><div style="; height:100%; width:100%; padding:1%; float:left;  margin:auto" >
-<a href="Index.html"><img src="imagenes/back.png" height="100px"></a>
+<a href="index.jsp"><img src="imagenes/back.png" height="100px"></a>
 </div>
 </center>
 </div>

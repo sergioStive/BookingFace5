@@ -34,7 +34,7 @@ else {
 }
 function cerrarVentana() {
     window.close("registro.jsp");
-    window.open("Index.html");
+    window.open("index.jsp");
 }
 
 function contrase(){

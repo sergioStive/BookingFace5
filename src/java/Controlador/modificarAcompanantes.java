@@ -41,7 +41,7 @@ FacadePersonas facadeP = new FacadePersonas();
            to.setFechaNaci(request.getParameter("fechNac"));        
             
             String mensaje = facadeP.actualizarReservaAcompañante(to);
-            response.sendRedirect("listarAcompanates.jsp?msgSalida="+mensaje);
+            response.sendRedirect("listarAcompanates.jsp?msgSalida="+mensaje+"&idReserva="+to.getIdReserva());
             
     }
     }

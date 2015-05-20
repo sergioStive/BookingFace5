@@ -26,12 +26,12 @@
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-    <p><a href="Index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+    <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
     <ul id="main"> 
 <li>
-    <div align="center" ><a href="Index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+    <div align="center" ><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
 </div>
 </li>	
 </ul>
@@ -45,7 +45,7 @@
                         <h1><center>Contactenos</center></h1>
                     </div>
             <div style=" background: #DDDDDD;  text-align: center; border-radius: 15; padding-top: 5px; border-radius: 15px; " class="popo">
-                        <a href="Index.html" style="color:black; text-decoration: none;">Inicio</a>
+                        <a href="index.jsp" style="color:black; text-decoration: none;">Inicio</a>
                         -->
                         <a href="registro.jsp" style="color: black; text-decoration: none;">Contactenos</a>
                     </div>
@@ -81,7 +81,7 @@
         <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
-        <img src="imagenes/dddd.png"><a href="Index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
+        <img src="imagenes/dddd.png"><a href="index1.html" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="Index.html" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
     
 </div>    
 </body>

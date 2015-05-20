@@ -165,7 +165,7 @@ public class personareservaDAO {
         ArrayList<personareservaDTO> listarReservas = new ArrayList();
 
         try {
-            String query = "select idreservaPorPersona, nombres, apellidos, telefono, fechaNaci from reservaporpersona where idReserva=?;";
+            String query = "select idreservaPorPersona, nombres, apellidos, telefono, idReserva, fechaNaci from reservaporpersona where idReserva=?;";
             pstm = cnn.prepareStatement(query);
             pstm.setInt(1, idReserva);
             rs = pstm.executeQuery();
@@ -175,7 +175,8 @@ public class personareservaDAO {
                Rdao.setIdreservaPorPersona(rs.getInt("idreservaPorPersona"));
                Rdao.setNombres(rs.getString("nombres"));                
                Rdao.setApellidos(rs.getString("apellidos"));               
-               Rdao.setTelefono(rs.getString("telefono"));                
+               Rdao.setTelefono(rs.getString("telefono"));  
+               Rdao.setIdReserva(rs.getInt("idReserva"));
                Rdao.setFechaNaci(rs.getString("fechaNaci"));                               
                listarReservas.add(Rdao);
             }
@@ -224,7 +225,7 @@ public class personareservaDAO {
                Rdao.setIdreservaPorPersona(rs.getInt("idreservaPorPersona")); 
                Rdao.setNombres(rs.getString("nombres"));                
                Rdao.setApellidos(rs.getString("apellidos"));               
-               Rdao.setTelefono(rs.getString("telefono"));                
+               Rdao.setTelefono(rs.getString("telefono"));             
                Rdao.setFechaNaci(rs.getString("fechaNaci")); 
 
             }

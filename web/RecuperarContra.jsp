@@ -54,12 +54,12 @@ $(document).ready(function(){
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
     <ul id="main"> 
 <li>
-    <div align="center" ><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+    <div align="center" ><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
 </div>
 </li>	
 </ul>
@@ -91,6 +91,5 @@ $(document).ready(function(){
   </table>
  </center>     
 </form>
-</center>
-    
+</center>    
 </html>

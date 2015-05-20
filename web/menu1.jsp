@@ -16,12 +16,12 @@
 <body>
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index1.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index1.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav>
 <nav> 
     <ul id="main">
-    <li><div align="center" style="text-decoration: none;"><a href="Index1.html"><span class="glyphicon glyphicon-home"></span> Home</li></a>
+    <li><div align="center" style="text-decoration: none;"><a href="index1.jsp"><span classhtmls="glyphicon glyphicon-home"></span> Home</a></li>
             <li><div align="center" style="text-decoration: none;"><a href="#"><span class="glyphicon glyphicon-plane"></span> Reservations</a>
                             <ul class="submain">
                                 <li><a href="reserva1.jsp" style="text-decoration: none;">New Reservation</a></li>
@@ -96,7 +96,7 @@
  <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
         <span>Booking Routers &copy; 2015</span><br>
         Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-        <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+        <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
         <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
         <img src="imagenes/dddd.png"><a href="menu1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="menu.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>

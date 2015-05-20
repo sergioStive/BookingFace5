@@ -112,7 +112,7 @@ FacadePersonas facadeP = new FacadePersonas();
             HttpSession sesion = request.getSession(false);
             sesion.removeAttribute("logueado");
             sesion.invalidate();
-            response.sendRedirect("Index.html");
+            response.sendRedirect("index.jsp");
 
         }
 

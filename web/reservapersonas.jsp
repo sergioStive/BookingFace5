@@ -64,11 +64,11 @@ $(document).ready(function(){
 </style>
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
 <ul id="main">
-    <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+    <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
             <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
@@ -115,7 +115,7 @@ $(document).ready(function(){
         %>
        
 <div class="ba">
-    <h1><center>Agregar Persona a la reserva</center></h1>
+    <center> <h1>Agregar Persona a la reserva</h1></center>
 </div>
 <br>
  <center>
@@ -123,7 +123,7 @@ $(document).ready(function(){
                         if(request.getParameter("noo") != null) {
                         %>
                         <div>
-                            <b <div class="alert alert-danger mensajes" role="alert">Ha alcanzado el maximo de cupos.</b>
+                            <div class="alert alert-danger mensajes" role="alert"><b>Ha alcanzado el maximo de cupos.</b>
                       </div>
                         <%
                          }
@@ -153,7 +153,7 @@ $(document).ready(function(){
 </tr>
 <tr>
 <td><label for="ser" class="labele">Nacionalidad</label></td>
-<td><select  id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px" onChange="requisitos(nacio)">
+<td><select id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px" onChange="requisitos(nacio)">
 <option value="">Escoja su nacionalidad</option>      
       <option value="1">Colombia</option>
       <option value="2">España</option>
