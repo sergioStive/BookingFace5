@@ -12,6 +12,7 @@ package co.sena.edu.booking.DAO;
 
 import cao.sena.edu.booking.util.Conexion;
 import co.sena.edu.booking.DTO.ciudadesDTO;
+import co.sena.edu.booking.DTO.conductoresDTO;
 import co.sena.edu.booking.DTO.empresatransportesDTO;
 import co.sena.edu.booking.DTO.listarConductoresDTO;
 import co.sena.edu.booking.DTO.listarPerDTO;
@@ -636,6 +637,30 @@ public List<listarPerDTO> Paginacion2(int pg , int limited, Connection cnn) thro
         }
         return filtroConductores;
     }
+  public conductoresDTO correoConductores(int idConductor ,Connection cnn){
+     conductoresDTO cond = new conductoresDTO();
+     try {
+            String query = "select nombres,apellidos,telefono from personas  p\n" +
+" inner join conductores c on p.idpersona= c.idPersona where c.idConductor=?;";
+            pstmt = cnn.prepareStatement(query);  
+            pstmt.setInt(1,idConductor);
+            rs = pstmt.executeQuery();
+
+               while (rs.next()) {              
+              personasDTO per = new personasDTO();
+              per.setNombres(rs.getString("nombres"));
+              per.setApellidos(rs.getString("apellidos"));
+              cond.setTelContacto(rs.getInt("telefono"));
+              cond.setConductores(per);
+               }
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return cond;
+}
+
 public synchronized long login(String contraseña, long idPersona, Connection conexion) throws SQLException  {
         long cc = 0;
         try{

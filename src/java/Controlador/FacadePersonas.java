@@ -48,7 +48,7 @@ public class FacadePersonas {
     personareservaDAO pereser;
 
     public FacadePersonas() {
-        ciu = new ciudadesDAO();
+         ciu = new ciudadesDAO();
         con = new conductoresDAO();
         nac = new nacionalidadesDAO();
         pers = new personasDAO();
@@ -59,6 +59,9 @@ public class FacadePersonas {
         //cnn = Conexion.getConnection();
         cnn = reserConex.getInstance();
 
+    }
+    public conductoresDTO correoConductores(int idConductor)throws SQLException{
+        return pers.correoConductores(idConductor, cnn);
     }
     public synchronized int getRol(personasDTO idPersona) throws SQLException{
         return pers.getRol(idPersona, cnn);

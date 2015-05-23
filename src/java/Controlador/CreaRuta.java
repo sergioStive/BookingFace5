@@ -7,6 +7,8 @@ package Controlador;
 
 import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DAO.rutasDAO;
+import co.sena.edu.booking.DTO.conductoresDTO;
+import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.rutasDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,6 +58,15 @@ public class CreaRuta extends HttpServlet {
 
                             objRuta.setidReserva(Integer.parseInt(request.getParameter("Reserva")));
                             objRuta.setIdEstadoRuta(1);
+                            
+                             personasDTO pdto = new personasDTO();
+                conductoresDTO cdto = new conductoresDTO();
+                cdto= facadeP.correoConductores(Integer.parseInt(objRuta.getIdConductor()));
+                pdto = facadeP.ListarUnaPersona(Long.parseLong(request.getParameter("Cliente")));
+                String asunto = "Datos Conductor";
+                String cuerpomsj = "<html>\"<body>\"<img src=\"C:\\Users\\andres\\Desktop\\BookingFase5\\web\\imagenes\" alt=\"Booking Routers\" width=\"1360\" height=\"126\" title=\"Forget the rest, call the best\"  />\"</body>\"<html>" + "su conductor es (a)" +cdto.getConductores().getNombres()+" " + cdto.getConductores().getApellidos()+ " "+"su numero de telefono por alguna eventualidad es  " + cdto.getTelContacto();
+                String para = pdto.getCorreoElectronico();
+                Correo.sendMail(asunto, cuerpomsj, para);    
 
                             int ru = facadeP.validarruta(Integer.parseInt(request.getParameter("Tipo")));
                             if (ru == 0) {

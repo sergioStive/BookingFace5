@@ -13,7 +13,7 @@ public class conductoresDTO {
     private int idConductor;
     private int idpersona;
     private int telContacto;
-  
+  private personasDTO conductores; 
  
    
     
@@ -68,6 +68,20 @@ public class conductoresDTO {
      */
     public void setIdConductor(int idConductor) {
         this.idConductor = idConductor;
+    }
+
+    /**
+     * @return the conductores
+     */
+    public personasDTO getConductores() {
+        return conductores;
+    }
+
+    /**
+     * @param conductores the conductores to set
+     */
+    public void setConductores(personasDTO conductores) {
+        this.conductores = conductores;
     }
 
 }
