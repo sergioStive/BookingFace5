@@ -181,7 +181,7 @@ $(document).ready(function(){
         <td data-sortable="true"><%=so.getNac().getNacionalidad()%></td>
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
-        <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
+        <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return Eliminar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
         <td><a href="Controlador?idPersona=<%=so.getIdPersona()%>"class="btn btn-success" title="Modificar datos de acompañantes"><img src="imagenes/user.jpg" align="middle" width="32" height="32" title="Verificar" onclick="contrase()"></a></td>
     </tr>
      </tbody>

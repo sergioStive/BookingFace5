@@ -1,6 +1,5 @@
 <%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.nacionalidadesDTO"%>
-<%@page import="co.sena.edu.booking.DTO.ciudadesDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.sena.edu.booking.DAO.nacionalidadesDAO"%>
 <!doctype html>
@@ -10,23 +9,43 @@
         <title>Booking Routers</title>
         <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
         <link type="text/css" rel="stylesheet" href="css/css.css" />
+        <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
+        <script src="sweetalert-master/dist/sweetalert.min.js"></script>
+    
         <link type="text/css" rel="stylesheet" href="font-awesome.css">
         <link rel="shortcut icon" href="imagenes/br.ico" />
-        <script src="scripts/bookclien.js" type="text/javascript"></script>
-          <script src="scripts/registro.js" type="text/javascript"></script>
+        <script src="scripts/registro.js" type="text/javascript"></script>
         <script src="scripts/AjaxCiudades.js" type="text/javascript"></script>
+  <script>
+function validNumber(e) {
+var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+return ((tecla > 47 && tecla < 58) || tecla == 8);
+}
+</script>
+ <script>
+function validLetter(e) {
+var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
+var especiales = [8, 32, 13];/*back, space, enter */
+
+for (var i in especiales) {
+if (tecla == especiales[i]) { return true;/*break; */}
+}
+return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 8);
+}
+</script>
+
     </head>
     <body>
 
         <div class ="contenedor">
             <div class="banner"> 
 
-                <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best"/></a></p>
+                <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best"/></a></p>
             </div>
             <nav> 
                 <ul id="main"> 
                     <li>
-                        <div align="center"> <a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>    
+                        <div align="center"> <a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>    
                         </div>
                     </li>
                 </ul>
@@ -46,15 +65,15 @@
                     <tr>
 
                         <td><label for="nombres" class="labele"><strong>Nombres<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="requisitos(nombres)" onkeypress="return validLetter(event)" tabindex="1" >
+                        <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="validacion(nombres)" onkeypress="return validLetter(event);">
                         </td>
                         <td><label for="ape" class="labele"><strong>Apellidos<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)">
+                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos) onkeypress="return validLetter(event);"">
                         </td>
                     </tr>
                     <tr>
                         <td><label for="doc" class="labele"><strong>Documento <font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="doc" type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" minlenght=8 onkeypress="return validNumber(event)"></td>    
+                        <td><input name="doc" type="text" style="width:250px; height:30px" autofocus id="doc" placeholder="Doc Identidad" required class="form-control inputtext" tabindex="3" onChange="requisitos(doc)" onkeypress="return validNumber(event)" minlenght=8></td>    
                         <td><label for="date" class="labele"><strong>Fecha Nacimiento<font color="#FF0000">* </strong></label></font></td>
                         <td><input name="date" type="date" id="date" style="width:250px; height:25px" required class="form-control inputtext" tabindex="4" onChange="edad(date)"></td>    
                     </tr>
@@ -68,7 +87,7 @@
                         <td><label for="paisnac" class="labele"><strong>País <font color="#FF0000">* </strong></label></font></td>
                         <td>
                             <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select id="paises" name="paisnac" id="paisnac" style="width:250px; height:35px"  autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="getCiudades(this.value);">
+                            <select id="paises" name="paisnac" id="paisnac" style="width:250px; height:35px" autofocus required class="form-control inputtext" list="paises" tabindex="8" onchange="getCiudades(this.value);">
                                 <option value="0" >------</option>
 
                                 <%
@@ -104,7 +123,7 @@
                         <td><label for="pSexo" class="labele"><strong>Sexo<font color="#FF0000">* </strong></label></font></td>
                         <td>
                             <%--<input name="paisnac" id="paisnac" style="width:250px; height:35px" placeholder="Seleccione país" autofocus required class="form-control inputtext" list="paises" tabindex="8" onChange="requisitos(paisnac)">--%>
-                            <select name="pSexo" required id="pSexo" class="form-control" onChange="requisitos(pSexo)" tabindex="9">
+                            <select name="pSexo" required id="pSexo" class="form-control">
                                     <option value="">Seleccione su sexo</option>
                                     <option value="1">Mujer</option>
                                     <option value="0">Hombre</option>
@@ -121,7 +140,7 @@
                     </tr>
                     <tr>
                         <td><input name="submit11" class="btn btn-success" type="button" id="ccon" tabindex="19" onClick="contrase()" value="Validar contraseña" style="position:relative; left:290px"></td>
-                        <td><input type="submit" name="registro"  id="registro" class="btn btn-success"  value="Registrar" onclick="validar(registro)" style="position:relative; left:280px">
+                        <td><input type="submit" name="registro"  id="registro" class="btn btn-success"  value="Registrar" onclick="validar(registro)"   style="position:relative; left:280px">
 
 
                     </tr>
@@ -136,7 +155,7 @@
         <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
             <span>Booking Routers &copy; 2015</span><br>
             Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-            <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+            <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
             <img src="imagenes/dddd.png"><a href="registro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="registro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>

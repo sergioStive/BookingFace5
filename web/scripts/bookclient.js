@@ -79,12 +79,12 @@ var x=con.value;
 var y=vcon.value;
 if ((x==y)&&(x!="")&&(y!=""))
 {
-	alert('Contraseña Valida!!');
+	sweetAlert('Contraseña Valida!!');
 	con.style.border="1px solid gray";
 	vcon.style.border="1px solid gray";
 }
 else {
-    alert('Contraseña Invalida!!\nLas contraseñas no son iguales!!');
+    sweetAlert('Contraseña Invalida!!\nLas contraseñas no son iguales!!');
 	con.value ="";
 	vcon.value="";
 }

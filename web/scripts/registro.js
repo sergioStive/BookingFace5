@@ -25,7 +25,7 @@ var dif = hoyx-fecNacx;
 var difx = dif/365;
 if (difx<18){
 //alert('Usted es Menor de edad!!!\n'+'Fecha Nacimiento'+fecNacx+'\n'+'Hoy'+hoyx+'\n'+'Edad'+difx);
-alert('Usted es menor de edad!!!\nEl sistema no permite registrar menores de edad!\n');
+swal("USTED ES MENOR DE EDAD!", "BOOKING ROUTERS NO PERMITE MENORES DE EDAD!", "error")
 date.value="";
 }
 else {
@@ -42,13 +42,13 @@ var x=con.value;
 var y=vcon.value;
 if ((x==y)&&(x!="")&&(y!=""))
 {
-	alert('Clave Valida!!');
+	swal("MUY BIEN!", "CONTRASE\u00d1A VALIDA!", "success")
 	con.style.border="1px solid green";
 	vcon.style.border="1px solid green";
         
 }
 else {
-    alert('Clave Invalida!!\nLas clave no son iguales!!');
+    swal("ERROR!", "CONTRASE\u00d1A INVALIDA!", "error")
         con.style.border="1px solid red";
         vcon.style.border="1px solid red";
 	con.value ="";
