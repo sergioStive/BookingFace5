@@ -96,11 +96,11 @@ $(document).ready(function(){
         <%
             HttpSession misesion = request.getSession(false);
 
-            if (misesion.getAttribute("usr") != null) {
+            if (misesion.getAttribute("logueado") != null) {
                 personasDTO pdto = null;
                 personasDTO persona = null;
                 FacadePersonas facadeP = new FacadePersonas();
-                pdto =(personasDTO) misesion.getAttribute("usr");
+                pdto =(personasDTO) misesion.getAttribute("logueado");
                //String mgs =misesion.getAttribute("logueado").toString();
                 persona = facadeP.ListarUnaPersona(pdto.getIdPersona());
             

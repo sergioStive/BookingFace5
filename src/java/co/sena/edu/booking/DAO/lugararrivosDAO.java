@@ -192,6 +192,26 @@ public String eliminar(lugararrivosDTO lugarArrivo) {
         return msgSalida;
     }
 
-
+public List <lugararrivosDTO> listarAerpuertos () throws SQLException{
+    ArrayList <lugararrivosDTO> listarLugarArrivos = new ArrayList ();
+    
+    try {
+        String query = " select idLugarArrivo, nombrePuerto from lugararrivos";
+       pstmt = cnn.prepareStatement(query);
+       rs = pstmt.executeQuery();
+       
+       while (rs.next()){
+           lugararrivosDTO reser = new lugararrivosDTO();
+               reser.setIdLugarArrivo(rs.getInt("idLugarArrivo"));
+                   reser.setNombrePuerto(rs.getString("nombrePuerto"));
+                   listarLugarArrivos.add(reser);
+       }
+       
+    }catch (SQLException slqE){
+        System.out.println("Ocurrio un error" + slqE.getMessage());
+    }finally {
+        
+    }return listarLugarArrivos;
+}
 
 }

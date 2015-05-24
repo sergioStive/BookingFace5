@@ -153,7 +153,7 @@ $(document).ready(function(){
 </tr>
 <tr>
 <td><label for="ser" class="labele">Nacionalidad</label></td>
-<td><select id="nacio" name="nacio" id="ser" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px" onChange="requisitos(nacio)">
+<td><select id="nacio" name="nacio" autofocus required class="form-control inputtext" list="servis" style="width:250px; height:35px" onChange="requisitos(nacio)">
 <option value="">Escoja su nacionalidad</option>      
       <option value="1">Colombia</option>
       <option value="2">España</option>

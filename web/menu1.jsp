@@ -21,7 +21,7 @@
 <nav>
 <nav> 
     <ul id="main">
-    <li><div align="center" style="text-decoration: none;"><a href="index1.jsp"><span classhtmls="glyphicon glyphicon-home"></span> Home</a></li>
+    <li><div align="center" style="text-decoration: none;"><a href="index1.jsp"><span classhtmls="glyphicon glyphicon-home"></span></a>< Home</li>
             <li><div align="center" style="text-decoration: none;"><a href="#"><span class="glyphicon glyphicon-plane"></span> Reservations</a>
                             <ul class="submain">
                                 <li><a href="reserva1.jsp" style="text-decoration: none;">New Reservation</a></li>

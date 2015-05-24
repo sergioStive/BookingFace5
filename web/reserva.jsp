@@ -21,8 +21,8 @@
 <link type="text/css" rel="stylesheet" href="sweetalert-master/dist/sweetalert.css" />
 <script src="css/styles/glDatePicker.min.js" ></script>
 <script src="css/styles/glDatePicker.js" ></script>
-        <script src="sweetalert-master/dist/sweetalert.min.js"></script>
-<script src="scripts/registro.js" type="text/javascript"></script>
+<script src="sweetalert-master/dist/sweetalert.min.js"></script>
+
 <style type="text/css">
     
     .errormsg {
@@ -34,38 +34,10 @@
     
     
 </style> 
-
-<script src="js/Funciones.js" type="text/javascript">
-    
-    function validarFecha() {
-    var temp = document.getElementById("fecNac").value;
-    var y = temp.split("-")
-    var fechaSolicitud=new Date(y[0],y[1]-1,y[2]); // se forma la fecha que viene del formulario
-    var fechaActual = new Date();   //Fecha actual
-    var ftemp = new Date(); // Variable con la fecha actual
-    var ftemp2 = new Date();
-    var fechaMinima = new Date(ftemp.getTime() + (5 * 24 * 3600 * 1000));   //Sumo 5 dias a la fecha actual para obtener la fecha mínima
-    var fechaMaxima = new Date (ftemp2.getTime() + (30 * 24 * 3600 * 1000));  // sumo 30 días a la fecha actual para
-
-   //alert("Actual  : "+fechaActual + "  fecha calendario : "+fechaSolicitud+ "la fecha mínima es : "+fechaMinima);
-
-    if (fechaSolicitud < fechaActual){
-         
-        document.getElementById("result").innerHTML="Esta seleccionando una fecha anterior a la actual";
-        document.getElementById("fecNac").focus();
-    } else if (fechaSolicitud >= fechaActual && fechaSolicitud <fechaMinima){
-        document.getElementById("result").innerHTML="La reserva no esta disponible para esta fecha";
-        document.getElementById("fecNac").focus();
-    }else if(fechaSolicitud >=fechaMaxima){
-       document.getElementById("result").innerHTML="NO hacemos pedidos con tanta Anticipacicion";
-       document.getElementById("fecNac").focus();
-    }else{
-        document.getElementById("result").innerHTML="ok";
-    }
-
-}
-</script>
+ <script src="scripts/reservas.js" type="text/javascript"></script>
+<script src="js/Funciones.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+ <script src="scripts/reservas.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 3500); 
@@ -79,11 +51,11 @@ $(document).ready(function(){
    
 <div class ="contenedor">
 <div class="banner"> 
-<p><a href="Index.html"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
+<p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
 <nav> 
 <ul id="main">
-    <li><div align="center"><a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+    <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
             <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservas</a>
                             <ul class="submain">
                                 <li><a href="CancelarR.jsp" style="text-decoration: none;">Cancelar Reserva</a></li>
@@ -136,14 +108,15 @@ $(document).ready(function(){
           
       ></td>
 <td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></td>
-<td><input name="res" type="text" id="res" style="width:250px; height:25px" placeholder="Responsable" autofocus  required class="form-control inputtext">    
+<td><input name="res" type="text" id="res" style="width:250px; height:25px" onChange="requisitos(res)" autofocus  required class="form-control inputtext" >    
    </td>   
 </tr>
 
 <tr>
 <td><label for="OrigenPais" class="labele"><strong>Origen Pais<font color="#FF0000">*</strong></label></td>
 <td>   
-    <select  id="OrigenPais" name="OrigenPais" id="OrigenPais" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">   
+    <select  id="OrigenPais" name="OrigenPais" id="OrigenPais" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(OrigenPais)">   
+      <option value="">Escoja su país</option>
       <option value="Colombia">Colombia</option>
       <option value="Argentina">Argentina</option>
       <option value="Brazil">Brazil</option>
@@ -162,7 +135,7 @@ $(document).ready(function(){
 </select>                                        
 <td><label for="DestinoPais" class="labele"><strong>Destino Pais<font color="#FF0000">*</strong></label></td>
 <td>   
-      <select name="DestinoPais" id="DestinoPais" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
+      <select name="DestinoPais" id="DestinoPais" style="width:250px; height:35px" autofocus required class="form-control inputtext" list="aero" onChange="requisitos(DestinoPais)">
           
           <option value="Florida">Florida</option>
  
@@ -173,7 +146,7 @@ $(document).ready(function(){
 <tr>                                       
 <td><label for="aer" class="labele"><strong>Aerolineas<font color="#FF0000">*</strong></label></td>
 <td>   
-      <select name="aer" id="aer" style="width:250px; height:35px" id="aero" autofocus required class="form-control inputtext" list="aero">
+      <select name="aer" id="aer" style="width:250px; height:35px" autofocus required class="form-control inputtext" list="aero" onChange="requisitos(aer)">
           <option value=""></option>
           <%
                                     empresatransportesDAO cdao = new empresatransportesDAO();
@@ -188,7 +161,7 @@ $(document).ready(function(){
       </select> 
  </td>
  </td><td><label for="NumeroV" class="labele"><strong>Numero Vuelo</strong></label></font></td>
-<td><input name="NumeroV" type="text" id="NumeroV" style="width:250px; height:25px"  autofocus required class="form-control inputtext"></td>
+<td><input name="NumeroV" type="text" id="NumeroV" style="width:250px; height:25px"  autofocus required class="form-control inputtext" onChange="requisitos(NumeroV)"></td>
 </tr>
 
 
@@ -198,7 +171,7 @@ $(document).ready(function(){
 
 <td><label for="aerop" class="labele">Aeropuesto Destino<font color="#FF0000">*</label></td>
 <td>
-    <select type="time" name="aerop" id="aerop" style="width:250px; height:30px"  autofocus  required class="form-control inputtext">
+    <select type="time" name="aerop" id="aerop" style="width:250px; height:30px"  autofocus  required class="form-control inputtext" onChange="requisitos(aerop)">
         <option value=""></option>
         <%
                                     lugararrivosDAO cda = new lugararrivosDAO();
@@ -216,8 +189,9 @@ $(document).ready(function(){
 </td>
 
 <td><label for="registros" class="labele">Numero de personas</label><br></td>
-<td><select  id="registros" name="registros" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
-<option value="0">Ninguna ---></option>      
+<td><select  id="registros" name="registros"  autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(registros)">
+      <option value="">---></option>  
+      <option value="0">Ninguna ---></option>      
       <option value="1">1 Persona</option>
       <option value="2">2 Personas</option>
       <option value="3">3 Personas</option>
@@ -229,8 +203,9 @@ $(document).ready(function(){
 
 </tr>
 <td><label for="NumeroEquipaje" class="labele">Numero de Equipaje</label><br></td>
-<td><select  id="NumeroEquipaje" name="NumeroEquipaje" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
-<option value="0">Ninguna ---></option>      
+<td><select  id="NumeroEquipaje" name="NumeroEquipaje" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(NumeroEquipaje)">
+      <option value=""> ---></option>
+      <option value="0">Ninguna ---></option>      
       <option value="1">1 Maleta</option>
       <option value="2">2 Maletas</option>
       <option value="3">3 Maletas</option>
@@ -242,8 +217,8 @@ $(document).ready(function(){
       
       <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>
 <td>   
-    <select  id="servis" name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px">
-<option value="">Escoja su el servicio que desea ---></option>      
+    <select name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(ser)">
+      <option value="">Escoja su el servicio que desea ---></option>      
       <option value="1">Aeropuerto y Centros de aviación Jet</option>
       <option value="2">Puerto y barco de cruceros de Transporte</option>
       <option value="3">Hotel y museo</option>
@@ -252,15 +227,14 @@ $(document).ready(function(){
       <option value="6">Turs</option>
       <option value="7">Vacaciones </option>
       </select> 
- </td>
-      
+ </td>      
 <tr>    
 
 <td><label for="fechNac" class="labele">Fecha de Reserva<font color="#FF0000">*</label></td>
-<td><input type="date" id="fecNac" name="fecNac" style="width:250px; height:25px"  required="" value="30-12-1900" class="form-control inputtext" tabindex="4" onblur="javascript:validarFecha()"><br></td>
+<td><input type="date" id="fecNac" name="fecNac" style="width:250px; height:25px"  required="" value="30-12-1900" class="form-control inputtext" tabindex="4" onChange="requisitos(fecNac)" onblur="javascript:validarFecha()"><br></td>
 <div id="result" class="mensajegError"></div>
 <td><label for="hora" class="labele">Hora de Vuelo<font color="#FF0000">*</label></td>
-<td><input type="time" name="hora" id="hora" style="width:250px; height:25px" class="form-control" required></td>
+<td><input type="time" name="hora" id="hora" style="width:250px; height:25px" class="form-control" required onChange="requisitos(hora)"></td>
 </tr> 
 <tr>
 
@@ -276,7 +250,7 @@ $(document).ready(function(){
 <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
                                 <span>Booking Routers &copy; 2015</span><br>
                                 Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-                                <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+                                <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
                                 <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
                                 <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
                                 <img src="imagenes/dddd.png"><a href="reserva1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="reserva.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>
@@ -286,7 +260,7 @@ $(document).ready(function(){
             } else {
                 misesion.removeAttribute("logueado");
                 misesion.invalidate();
-                response.sendRedirect("Index.html?msg= Sesion cerrada");
+                response.sendRedirect("index.jsp?msg= Sesion cerrada");
             }
         %>
 

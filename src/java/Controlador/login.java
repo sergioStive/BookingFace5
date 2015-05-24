@@ -50,7 +50,7 @@ FacadePersonas facadeP = new FacadePersonas();
                     if(datosUsuario.getNombres() !=null && numerorol==2 ){ 
                         
                         HttpSession miSesion = request.getSession(true);
-                        miSesion.setAttribute("usr", datosUsuario);
+                        miSesion.setAttribute("logueado", datosUsuario);
                         miSesion.setAttribute("rol", numerorol);
                         response.sendRedirect("menuCliente.jsp?msg="+cc); 
                     }else{

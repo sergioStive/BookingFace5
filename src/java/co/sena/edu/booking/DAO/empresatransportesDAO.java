@@ -188,6 +188,28 @@ public String  ListarEmpresa (empresatransportesDTO empt) throws SQLException{
 
         return mgSalida;
     }
+ public List <empresatransportesDTO> listarEmpresaTransportesPais () throws SQLException{
+    ArrayList <empresatransportesDTO> listarEmpresaTransportes = new ArrayList ();
+    
+    try {
+        String query = " select idEmpresaTransporte, nombreEmpresaTransporte from empresatransportes";
+       pstmt = cnn.prepareStatement(query);
+       rs = pstmt.executeQuery();
+       
+       while (rs.next()){
+           empresatransportesDTO empt = new empresatransportesDTO();
+               empt.setIdEmpresaTransporte(rs.getString("idEmpresaTransporte"));
+                   empt.setNombreEmpresaTransporte(rs.getString("nombreEmpresaTransporte"));
+                   listarEmpresaTransportes.add(empt);
+       }
+       
+    }catch (SQLException slqE){
+        System.out.println("Ocurrio un error" + slqE.getMessage());
+    }finally {
+        
+    }
+    return listarEmpresaTransportes;
+ }
 
 }
     

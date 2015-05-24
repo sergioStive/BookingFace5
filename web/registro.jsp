@@ -40,12 +40,12 @@ return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 
         <div class ="contenedor">
             <div class="banner"> 
 
-                <p><a href="Index.html"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best"/></a></p>
+                <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Bookin Routers" width="1360" height="126" title="Forget the rest, call the best"/></a></p>
             </div>
             <nav> 
                 <ul id="main"> 
                     <li>
-                        <div align="center"> <a href="Index.html" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>    
+                        <div align="center"> <a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Inicio</a>    
                         </div>
                     </li>
                 </ul>
@@ -58,7 +58,7 @@ return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 
                         <h1><center>Registro de Usuarios</center></h1>
                     </div>
                     <div style=" background:#DDDDDD;  text-align: center; border-radius: 15; padding-top: 5px; border-radius: 15px; ">
-                        <a href="Index.html" style="color:black; text-decoration: none;">Inicio</a>
+                        <a href="index.jsp" style="color:black; text-decoration: none;">Inicio</a>
                         -->
                         <a href="registro.jsp" style="color: black; text-decoration: none;">Registro Usuario</a>
                     </div> 
@@ -68,7 +68,7 @@ return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 
                         <td><input name="nombres" type="text" style="width:250px; height:25px " autofocus id="nombres" placeholder="Nombres" required class="form-control" onChange="validacion(nombres)" onkeypress="return validLetter(event);">
                         </td>
                         <td><label for="ape" class="labele"><strong>Apellidos<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos) onkeypress="return validLetter(event);"">
+                        <td><input name="apellidos" type="text" style="width:250px; height:25px" autofocus id="apellidos" placeholder="Apellidos" required class="form-control inputtext"tabindex="2" onChange="requisitos(apellidos)" onkeypress="return validLetter(event);">
                         </td>
                     </tr>
                     <tr>
@@ -155,7 +155,7 @@ return (((tecla > 96 && tecla < 123) || (tecla > 64 && tecla < 91)) || tecla == 
         <div style="width:100%; background: #0C4391; height: 30px; margin-top:10px; padding-top:5px; border-radius:3px;color:#e2c60f; margin-bottom:1%; float:left; text-align: center;height:70px;color:white;">
             <span>Booking Routers &copy; 2015</span><br>
             Integrantes :<span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Yilber Hernandez 
-            <span classs="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
+            <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Cristian Moreno 
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Sergio Stiven Urbiba
             <span class="glyphicon glyphicon-user" style="padding-top: 4px;"></span> Andres Feipe Guerrero<br>
             <img src="imagenes/dddd.png"><a href="registro1.jsp" style=" color: #ffffff; text-decoration: none;"  >English</a> --  <img src="imagenes/original.jpg"><a href="registro.jsp" style=" color: #ffffff; text-decoration: none;" >Spanish</a>

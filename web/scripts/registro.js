@@ -1,6 +1,7 @@
    function requisitos(idelemento)
 {
 	if (idelemento.value=="") {
+             swal("ERROR!", "DEBE LLENAR TODOS LOS CAMPOS DEL FORMULARIO!", "error")
 		//idelemento.placeholder="Debe registrar este campo";
 		idelemento.style.border="1px solid red";
 		war.hidden=false;
@@ -42,13 +43,13 @@ var x=con.value;
 var y=vcon.value;
 if ((x==y)&&(x!="")&&(y!=""))
 {
-	swal("MUY BIEN!", "CONTRASE\u00d1A VALIDA!", "success")
+	swal("MUY BIEN!", "CLAVE VALIDA!", "success")
 	con.style.border="1px solid green";
 	vcon.style.border="1px solid green";
         
 }
 else {
-    swal("ERROR!", "CONTRASE\u00d1A INVALIDA!", "error")
+    swal("ERROR!", "CLAVE INVALIDA!", "error")
         con.style.border="1px solid red";
         vcon.style.border="1px solid red";
 	con.value ="";
@@ -58,7 +59,7 @@ else {
 }
 function Eliminar(){
 if(eliminar.value=="")
-	alert('Decea Eliminar Este Usuario!!');
+	alert('Desea Eliminar Este Usuario!!');
 	con.style.border="1px solid green";
 	vcon.style.border="1px solid green";
         
@@ -66,16 +67,19 @@ if(eliminar.value=="")
 
 
 function validar(){
+  
 var x=con.value;
 var y=vcon.value;
 if ((x==y)&&(x!="")&&(y!=""))
 {
-alert('Clave Valida!!');
+//alert('Clave Valida!!');
+        swal("MUY BIEN!", "CLAVE VALIDA!", "success")
 	con.style.border="1px solid green";
 	vcon.style.border="1px solid green";        
 }   
 else {
-    alert('Clave Invalida!!\nLas clave no son iguales!!');
+    swal("ERROR!", "CLAVE INVALIDA!", "error")
+   // alert('Clave Invalida!!\nLas clave no son iguales!!');
         con.style.border="1px solid red";
         vcon.style.border="1px solid red";
 	con.value ="";
@@ -103,13 +107,15 @@ if(vcon&&con.value==""){
 		doc.style.border="1px solid red";
 		doc.value="";
 	}
-        else if(doc.value.length<=6){     
-         alert ('Para registrar su documento debe ingresar mas de 6 digitos');
+        else if(doc.value.length<=6){  
+         swal("ERROR!","Para registrar su documento debe ingresar mas de 6 digitos!", "error")
+        // alert ('Para registrar su documento debe ingresar mas de 6 digitos');
           doc.style.border="1px solid red";
           doc.value="";
         }
-        else if(doc.value.length>13){     
-         alert ('Para registrar su documento debe ingresar menos de 13 digitos');
+        else if(doc.value.length>13){  
+            swal("ERROR!","Para registrar su documento debe ingresar menos de 13 digitos!", "error")
+         //alert ('Para registrar su documento debe ingresar menos de 13 digitos');
           doc.style.border="1px solid red";
           doc.value="";
         }
@@ -127,8 +133,9 @@ if(vcon&&con.value==""){
 		tel.style.border="1px solid red";
 		tel.value="";
 	}
-	else if(tel.value.length<5){     
-         alert ('Para registrar su telefono debe ingresar mas de 6 digitos');
+	else if(tel.value.length<5){   
+          swal("ERROR!","Para registrar su telefono debe ingresar mas de 6 digitos!", "error")
+         //alert ('Para registrar su telefono debe ingresar mas de 6 digitos');
           tel.style.border="1px solid red";
           tel.value="";
 	}
@@ -160,8 +167,9 @@ if(vcon&&con.value==""){
 	else {
 	pSexo.style.border="1px solid green";
 	}
+        
 	 }
-
+         
 function validNumber(e) {
 var tecla = document.all ? tecla = e.keyCode : tecla = e.which;
 return ((tecla > 47 && tecla < 58) || tecla == 8);
