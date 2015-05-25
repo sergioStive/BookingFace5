@@ -11,22 +11,26 @@ function validarFecha() {
    //alert("Actual  : "+fechaActual + "  fecha calendario : "+fechaSolicitud+ "la fecha m�nima es : "+fechaMinima);
      if (fechaSolicitud < fechaActual){      
         fecNac.style.border="1px solid red";
-        alert ('ESTA SELECCIONANDO UNA FECHA ANTERIOR A LA ACTUAL');
+        swal("ERROR!", "ESTA SELECCIONANDO UNA FECHA ANTERIOR A LA ACTUAL!", "error")
+        //alert ('ESTA SELECCIONANDO UNA FECHA ANTERIOR A LA ACTUAL');
         document.getElementById("fecNac").focus();
         
        
     } else if (fechaSolicitud >= fechaActual && fechaSolicitud <fechaMinima){
         fecNac.style.border="1px solid red";
-        alert ('EN ESE TIEMPO NO SE ALCANZAMOS A GESTIONAR LA RESERVA');
+        swal("ERROR!", "EN ESE TIEMPO NO SE ALCANZAMOS A GESTIONAR LA RESERVA!", "error")
+        //alert ('EN ESE TIEMPO NO SE ALCANZAMOS A GESTIONAR LA RESERVA');
         document.getElementById("fecNac").focus();
         
     }else if (fechaSolicitud >= fechaMaxima) {
         fecNac.style.border="1px solid red";
-        alert('NO HAEMOS PEDIDOS CON TANTA ANTICIPACION');
+        swal("ERROR", "NO HAEMOS PEDIDOS CON TANTA ANTICIPACION!", "error")
+        //alert('NO HAEMOS PEDIDOS CON TANTA ANTICIPACION');
         document.getElementById("fecNac").focus();
        
     }else {
-        alert('FECHA VALIDA');
+        //alert('FECHA VALIDA');
+        swal("MUY BIEN!", "FECHA VALIDA!", "success")
       
     }
 

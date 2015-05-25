@@ -15,6 +15,8 @@
             response.setHeader("Cache-Control", "no-store");
             response.setDateHeader("Expires", 0);
         %>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
 <link type="text/css" rel="stylesheet" href="css/styles/glDatePicker.default.css">
@@ -22,7 +24,11 @@
 <script src="css/styles/glDatePicker.min.js" ></script>
 <script src="css/styles/glDatePicker.js" ></script>
 <script src="sweetalert-master/dist/sweetalert.min.js"></script>
-
+<script src="scripts/reservas.js" type="text/javascript"></script>
+<script src="js/Funciones.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script src="scripts/reservas.js" type="text/javascript"></script>
+<script src="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
 <style type="text/css">
     
     .errormsg {
@@ -31,24 +37,33 @@
   color: #dd4b39;
   line-height: 17px;
   }
-    
-    
+    span:hover{
+        cursor:pointer
+    } 
+    span.ayuda{       
+        position:relative;
+        left:270px;
+        top:-20px;
+    }
+    span.ayudas{       
+        position:relative;
+        left:30px;
+        top:40px;
+    }
 </style> 
- <script src="scripts/reservas.js" type="text/javascript"></script>
-<script src="js/Funciones.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/jquery-1.2.6.js"></script>
- <script src="scripts/reservas.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 3500); 
 });
 </script>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="imagenes/br.ico" />
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
 <title>..::Booking Routers::..</title>
 </head>
-<body>
-   
+<body>   
 <div class ="contenedor">
 <div class="banner"> 
 <p><a href="index.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
@@ -84,7 +99,7 @@ $(document).ready(function(){
 <h1><center>Generar Reservas</center></h1>
 </div>
 <br>
- <div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
+<div class="col2" style="border:#AB9C9D solid; border-radius:15px; box-shadow: 2px  3px 3px#332727">  
 <form name="form1" action="Reserva" method="post" > 
 <table width="744" align="center" id="registro">
 
@@ -104,12 +119,12 @@ $(document).ready(function(){
                         <br>
 <tr>    
 <td><label for="doc" class="labele"><strong>Documento del usuario</strong></label></font></td>
-<td><input name="doc" type="text" id="res" value="<%=persona.getIdPersona()%>" style="width:250px; height:25px" readonly="readonly" autofocus required class="form-control inputtext"
-          
-      ></td>
+<td><input name="doc" type="text" id="res" value="<%=persona.getIdPersona()%>" style="width:250px; height:25px" readonly="readonly" autofocus required class="form-control inputtext">
 <td><label for="res" class="labele"><strong>Titular de la Reserva<font color="#FF0000">*</strong></label></td>
 <td><input name="res" type="text" id="res" style="width:250px; height:25px" onChange="requisitos(res)" autofocus  required class="form-control inputtext" >    
-   </td>   
+<span class="glyphicon glyphicon-question-sign ayuda" data-container="body"data-toggle="popover"data-placement="bottom"data-content="Persona responsable de la reserva"></span></td>
+</span>
+</td>   
 </tr>
 
 <tr>
@@ -161,7 +176,8 @@ $(document).ready(function(){
       </select> 
  </td>
  </td><td><label for="NumeroV" class="labele"><strong>Numero Vuelo</strong></label></font></td>
-<td><input name="NumeroV" type="text" id="NumeroV" style="width:250px; height:25px"  autofocus required class="form-control inputtext" onChange="requisitos(NumeroV)"></td>
+<td><input name="NumeroV" type="text" id="NumeroV" style="width:250px; height:25px"  autofocus required class="form-control inputtext" onChange="requisitos(NumeroV)">
+    
 </tr>
 
 
@@ -188,7 +204,7 @@ $(document).ready(function(){
 
 </td>
 
-<td><label for="registros" class="labele">Numero de personas</label><br></td>
+<td><label for="registros" class="labele">Numero de Acompañantes</label><br></td>
 <td><select  id="registros" name="registros"  autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(registros)">
       <option value="">---></option>  
       <option value="0">Ninguna ---></option>      
@@ -202,7 +218,8 @@ $(document).ready(function(){
       </select> </td>
 
 </tr>
-<td><label for="NumeroEquipaje" class="labele">Numero de Equipaje</label><br></td>
+<td><span class="glyphicon glyphicon-question-sign ayudas" data-container="body"data-toggle="popover"data-placement="bottom"data-content="Cantidad total de equipaje incluyento el de acompañanantes"></span>
+<label for="NumeroEquipaje" class="labele">Numero de Equipajes</label><br></td>
 <td><select  id="NumeroEquipaje" name="NumeroEquipaje" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(NumeroEquipaje)">
       <option value=""> ---></option>
       <option value="0">Ninguna ---></option>      
@@ -216,17 +233,17 @@ $(document).ready(function(){
       </select> </td>
       
       <td><label for="ser" class="labele"><strong>Servicio<font color="#FF0000">*</strong></label></td>
-<td>   
-    <select name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(ser)">
-      <option value="">Escoja su el servicio que desea ---></option>      
+<td><select name="ser" id="ser" autofocus required class="form-control inputtext" list="servis" tabindex="9" style="width:250px; height:35px" onChange="requisitos(ser)">
+    <option value="">Escoja su el servicio que desea ---></option>      
       <option value="1">Aeropuerto y Centros de aviación Jet</option>
       <option value="2">Puerto y barco de cruceros de Transporte</option>
       <option value="3">Hotel y museo</option>
       <option value="4">Trabajo</option>
       <option value="5">Eventos</option>
       <option value="6">Turs</option>
-      <option value="7">Vacaciones </option>
+      <option value="7">Vacaciones </option>      
       </select> 
+    <span class="glyphicon glyphicon-question-sign ayuda" data-container="body"data-toggle="popover"data-placement="bottom"data-content="Escoja el servicio que mas se acomode a su nesecidad"></span>
  </td>      
 <tr>    
 
