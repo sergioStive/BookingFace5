@@ -25,6 +25,7 @@ import co.sena.edu.booking.DTO.personareservaDTO;
 import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.personaxreservasDTO;
 import co.sena.edu.booking.DTO.reserDTO;
+import co.sena.edu.booking.DTO.rolusuarioDTO;
 import co.sena.edu.booking.DTO.rutasDTO;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -46,6 +47,7 @@ public class FacadePersonas {
     rutasDAO ru;
     tipovehiculosDAO tipov;
     personareservaDAO pereser;
+   
 
     public FacadePersonas() {
          ciu = new ciudadesDAO();
@@ -60,6 +62,12 @@ public class FacadePersonas {
         cnn = reserConex.getInstance();
 
     }
+    public String eliminarPersonaReserva(int idReserva){
+        return pereser.eliminarPersonaReserva(idReserva, cnn);
+    }
+   public  String actualizarRol(rolusuarioDTO rol){
+     return  pers.actualizarRol(rol, cnn);
+   }
     public conductoresDTO correoConductores(int idConductor)throws SQLException{
         return pers.correoConductores(idConductor, cnn);
     }

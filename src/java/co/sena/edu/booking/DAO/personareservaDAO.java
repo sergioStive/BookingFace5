@@ -234,4 +234,28 @@ public class personareservaDAO {
         }
         return Rdao;
     }
+      public String eliminarPersonaReserva(int idReserva, Connection cnn) {
+        try {
+            /*
+             * Para el ejemplo ilustativo se ha utilizado unicamente actualizar el nombre
+             * Sin embargo, en las lineas comentadas se ilustra el codigo completo para actualizar todos los campos
+             *
+             */
+            pstm = cnn.prepareStatement("DELETE FROM reservaporpersona WHERE idreservaPorPersona = ?; ");
+            //pstmt= cnn.prepareStatement("UPDATE usuarios SET id_perfil=?, nombres=?, apellidos=?, usuario=? clave = MD5(?) WHERE id_usuario = ?; ");           
+            pstm.setInt(1, idReserva);
+
+            rtdo = pstm.executeUpdate();
+            if (rtdo > 0) {
+                msgSalida = "reserva eliminada";
+            } else {
+                msgSalida = "NO se pudo eliminar  el registro";
+            }
+        } catch (SQLException ex) {
+            msgSalida = "Error al ejecutar la operación : " + ex.getSQLState() + " " + ex.getMessage();
+
+        }
+
+        return msgSalida;
+    }
 }

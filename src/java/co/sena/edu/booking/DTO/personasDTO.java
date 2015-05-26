@@ -11,8 +11,11 @@ package co.sena.edu.booking.DTO;
  */
 public class personasDTO {
 
-    
-   
+    @Override
+    public String toString() {
+        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", ActivarCorreo=" + ActivarCorreo + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + ", roles=" + roles + ", rolus=" + rolus + '}';
+    }
+
     private long idPersona;
     private String correoElectronico;
     private int idCiudad;
@@ -28,6 +31,25 @@ public class personasDTO {
     private int Sexo = 0;
     private ciudadesDTO ciu ;
     private nacionalidadesDTO nac; 
+    private rolesDTO roles;
+    private rolusuarioDTO rolus;
+
+    public rolesDTO getRoles() {
+        return roles;
+    }
+
+    public void setRoles(rolesDTO roles) {
+        this.roles = roles;
+    }
+
+    public rolusuarioDTO getRolus() {
+        return rolus;
+    }
+
+    public void setRolus(rolusuarioDTO rolus) {
+        this.rolus = rolus;
+    }
+   
     
     
     public ciudadesDTO getCiu() {
@@ -217,9 +239,6 @@ public class personasDTO {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-@Override
-    public String toString() {
-        return "personasDTO{" + "idPersona=" + idPersona + ", correoElectronico=" + correoElectronico + ", idCiudad=" + idCiudad + ", idNacionalidad=" + idNacionalidad + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNto=" + fechaNto + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", idestadousuarios=" + idestadousuarios + ", observaciones=" + observaciones + ", ActivarCorreo=" + ActivarCorreo + ", Sexo=" + Sexo + ", ciu=" + ciu + ", nac=" + nac + '}';
-    }
+
    
 }

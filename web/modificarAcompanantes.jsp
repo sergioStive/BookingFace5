@@ -3,19 +3,19 @@
 <%@page import="co.sena.edu.booking.DTO.personareservaDTO"%>
 <html>
 <head>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
-	<script  src="jquery/jquery.js"></script>
-	<script src="jquery/jquery.validate.js"></script>
-	<script src="jquery/additional-methods.js"></script>
-        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>        
+<script  src="jquery/jquery.js"></script>
+<script src="jquery/jquery.validate.js"></script>
+<script src="jquery/additional-methods.js"></script>
+<script type="text/javascript" src="js/jquery-1.2.6.js"></script>        
 <script type="text/javascript">
 $(document).ready(function(){
        setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
 });
 </script>
-<meta charset="utf-8">
-<link rel="shortcut icon" href="img/br.ico" />
 <title>..::Booking Routers::..</title>
 </head>
 <body>

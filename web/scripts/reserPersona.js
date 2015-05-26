@@ -15,13 +15,13 @@ function validar(){
 		tel.style.border="1px solid red";
 		tel.value="";
 	}
-        else if(tel.value.length>12){     
-          alert ('Para registrar su telefono debe ingresar menos de 12 digitos');
+        else if(tel.value.length>12){  
+          swal("ERROR!","Para registrar su telefono debe ingresar menos de 12 digitos!", "error")
           tel.style.border="1px solid red";
           tel.value="";
         }
-         else if(tel.value.length<7){     
-          alert ('Para registrar su telefono debe ingresar mas de 7 digitos');
+         else if(tel.value.length<7){    
+          swal("ERROR!","Para registrar su telefono debe ingresar mas de 7 digitos!", "error")
           tel.style.border="1px solid red";
           tel.value="";
         }

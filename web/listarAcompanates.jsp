@@ -11,10 +11,22 @@ if(request.getSession() != null){
     
 <link type="text/css" rel="stylesheet" href="bootstrap-3.2.0-dist/bootstrap-3.2.0-dist/css/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="css/css.css">
-
 <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <link type="text/css" rel="stylesheet" href="js/jquery.dataTables.min.css">
+<meta charset="utf-8">
+<link rel="shortcut icon" href="imagenes/br.ico" />
+  <script type="text/javascript">
+    function comfirmar()
+    {
+        if(confirm('Esta seguro que desea eliminar esta reserva'))
+            return true;
+        
+        else
+            return  false;
+    }
+    
+</script>
 <body>
 <div class ="contenedor">
 <div class="banner"> 
@@ -47,21 +59,7 @@ if(request.getSession() != null){
 %>
 <span>vacio</span>
 <% }%>
-<center>
-    <table>      
-    <tr>
-    <td colspan="2">
-                    <% if (request.getParameter("msgSalida") != null) {%>
-                    <% if (!request.getParameter("msgSalida").equals("")) {%> 
-                    <div class="exito mensajes" role="alert">
-                    <%= request.getParameter("msgSalida")%>
-                    </div>
-                    <%}%>
-                    <%}%> 
-      </td>
-  </tr>
-  </table>
- </center>     
+   
       <div class="ba">
       <h1>Modificar Reservas</h1>
       </div>
@@ -73,6 +71,7 @@ if(request.getSession() != null){
         <th st-ratio="20" st-sort="telefono">Telefono</th>
         <th st-ratio="20" st-sort="fechaNac">FechaNacimiento</th>
         <th st-ratio="20" st-sort="Modificar">Modificar</th>
+        <th st-ratio="20" st-sort="Eliminar">Eliminar</th>
         
     </tr>
     <%
@@ -84,10 +83,9 @@ if(request.getSession() != null){
         <td><%=so.getTelefono()%></td>
         <td><%=so.getFechaNaci()%></td>
        
-         
         <td class="danger"><a href="modificarAcompanantes.jsp?idreservaPorPersona=<%=so.getIdreservaPorPersona()%>&nombres=<%=so.getNombres()%>&apellidos=<%=so.getApellidos()%>&telefono=<%=so.getTelefono()%>&idReserva=<%=so.getIdReserva()%>&fechaNac=<%=so.getFechaNaci()%>"
         class="btn btn-success" title="Modificar datos de acompañantes">Modificar</a></td>
-      
+       <td><a href="modificarAcompanantes?id=<%=so.getIdreservaPorPersona()%>"><img src="imagenes/Eliminar.png" onclick="return comfirmar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
         
     </tr> 
     <%

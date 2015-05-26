@@ -20,6 +20,8 @@ import co.sena.edu.booking.DTO.listarPersonasDTO;
 import co.sena.edu.booking.DTO.nacionalidadesDTO;
 import co.sena.edu.booking.DTO.personasDTO;
 import co.sena.edu.booking.DTO.reserDTO;
+import co.sena.edu.booking.DTO.rolesDTO;
+import co.sena.edu.booking.DTO.rolusuarioDTO;
 import co.sena.edu.booking.DTO.serviciosDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -85,7 +87,28 @@ public class personasDAO {
         return msgSalida;
 
     }
+public String actualizarRol(rolusuarioDTO rol, Connection cnn) {
+        try {
 
+            pstmt = cnn.prepareStatement("UPDATE rolusuario SET rolesIdRol=? WHERE ususarioIdUsuario=?");
+
+            pstmt.setInt(1, rol.getRolesIdRol());
+            pstmt.setInt(2, rol.getUsuarioIdUsuario());
+            
+            
+            per = pstmt.executeUpdate();
+            if (per != 0) {
+                msgSalida = "Sus datos se modificaron";
+            } else {
+                msgSalida = "NO se pudo actualizar el registro";
+            }
+        } catch (SQLException ex) {
+            msgSalida = "Error al ejecutar la operación : " + ex.getSQLState() + " " + ex.getMessage();
+
+        }
+        return msgSalida;
+
+    }
     public String crearPersona(personasDTO newPersona, Connection cnn) throws SQLException {
         //String salida = "";
         try {
@@ -166,14 +189,19 @@ public class personasDAO {
     public personasDTO ListarUnaPersona(Long cedula, Connection cnn) throws SQLException {
         personasDTO Rdao = null;
         try {
-            pstmt = cnn.prepareStatement("select idPersona, correoElectronico, idCiudad, idNacionalidad, "
-                    + " nombres, apellidos, fechaNto, telefono, contraseña, idestadousuarios, observaciones from personas where idPersona=?;");
+            pstmt = cnn.prepareStatement("select p.idPersona, p.correoElectronico, p.idCiudad, p.idNacionalidad, \n" +
+" p.nombres, p.apellidos, p.fechaNto, p.telefono, p.contraseña, p.idestadousuarios, p.observaciones, r.rolesIdRol\n" +
+"from personas p\n" +
+"inner join rolusuario r\n" +
+"on p.idpersona=r.ususarioIdUsuario\n" +
+"where idPersona=?;");
             pstmt.setLong(1, cedula);
             pstmt.executeQuery();
 
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                rolusuarioDTO r= new rolusuarioDTO();
                 Rdao = new personasDTO();
                 Rdao.setIdPersona(rs.getLong("idPersona"));
                 Rdao.setCorreoElectronico(rs.getString("correoElectronico"));
@@ -186,6 +214,8 @@ public class personasDAO {
                 Rdao.setContraseña(rs.getString("contraseña"));
                 Rdao.setIdestadousuarios(rs.getInt("idestadousuarios"));
                 Rdao.setObservaciones(rs.getString("observaciones"));
+                r.setRolesIdRol(rs.getInt("rolesIdRol"));
+                Rdao.setRolus(r);
             }
         } catch (SQLException ex) {
             msgSalida = "Error " + ex.getMessage() + "Codigo de error" + ex.getErrorCode();

@@ -4,6 +4,8 @@
     Author     : fabian
 --%>
 
+<%@page import="co.sena.edu.booking.DTO.rolusuarioDTO"%>
+<%@page import="co.sena.edu.booking.DTO.rolesDTO"%>
 <%@page import="Controlador.FacadePersonas"%>
 <%@page import="co.sena.edu.booking.DTO.reserDTO"%>
 <%@page import="co.sena.edu.booking.DAO.personasDAO"%>
@@ -25,37 +27,33 @@
 <div class="banner"> 
 <p><a href="index1.jsp"><img src="imagenes/Logo.png" alt="Booking Routers" width="1360" height="126" title="Forget the rest, call the best"  /></a></p>
 </div>
-                <nav> 
-                    <ul id="main">  
-                        <li><div align="center"><a href="index1.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-home"></span> Home</a></div></li>
-                        <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-plane"></span> Reservations</a></div>
-                            <ul class="submain">
-                                <li><a href="reserva1.jsp" style="text-decoration: none;">Request reservations </a></li>
-                                <li><a href="modificarReserva1.jsp" style="text-decoration: none;">Modify reservation</a> </li>
-                                <li><a href="CancelarR1.jsp" style="text-decoration: none;">Cancel reservation</a></li>
-                            </ul>
-                        <nav> 
-                        </li>
-                        
-                        <li><div align="center"><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Reports</a>
-                            </div>
-                                <ul class="submain">
-                                <li><a align="center"  href="#" style="text-decoration: none;">Reservations</a></li>
-                            </ul>
-                        </li>                        
-                        <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list"></span> Main</a> 
-                            </div>
-                        </li>
-                       
-   		<li>
-			<a href="index1.jsp"><span class="glyphicon glyphicon-remove-sign"></span> Exit</a>
-        </li>
+               <nav>
+  <ul id="main">
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-send"></span> Gestion Rutas</a>
+  <ul class="submain">
+  <li><a href="CreaRuta.jsp?msj=" style="text-decoration: none;">Creación de Rutas</a></li>
+  <li><a href="ModRuta.jsp?msj=" style="text-decoration: none;">Modificación de Rutas</a> </li>
+  </ul>
+  </div>  
+  </li>  
+  <li><div align="center"><a href="#" style="text-decoration: none;"><span class="glyphicon glyphicon-folder-open"></span> Reportes</a> 
+  <ul class="submain">  
+  <li><div align="center"><a href="Filtro.jsp" style="text-decoration: none;">Clientes</a></div></li>
+  <li><div align="center"><a href="filtroConductores.jsp" style="text-decoration: none;">Conductores</a></div></li>
+  <li><div align="center"><a href="EnvioCorreoMasivo.jsp" style="text-decoration: none;">Envio de correos masivos</a></div></li>
+
+  </ul>
+</li>
+  <li><a href="Controlador?action=logout" style="text-decoration: none;">Cerrar sesion</a> </li> 
+ </ul>
+  </nav>
                   
                     
       <%
                                     HttpSession misesion = request.getSession(false);
 
                                     if (misesion.getAttribute("logueado") != null) {
+                                        rolusuarioDTO r= new rolusuarioDTO();
                                         personasDTO pdto = null;
                                         personasDTO persona = null;
                                         FacadePersonas facadeP = new FacadePersonas();
@@ -69,7 +67,7 @@
                                  <form id="registro" action="modificarRol" method="post">
                                 <table align="center" id="registro" >
                                  <div class="ba">
-                                       <h1>Verificar Registros</h1>
+                                       <h1>Cambiar Rol</h1>
                                         </div>
                                          <tr>
                                             <td><label for="nombre" class="labele">Nombres</label></td>
@@ -91,38 +89,14 @@
                                         
                                          <td><label for="cor" class="labele">Correo<font color="#ff0000"></label></td>
                                          <td><input name="cor" type="email" id="cor" value="<%=persona.getCorreoElectronico()%>" style="width:250px; height:25px" readonly="readonly"  autofocus required class="form-control inputtext"></td>
-                                         </tr>
-                                         <tr>
-                                         <td><label for="paisnac" class="labele">País<font color="#ff0000"></label></td>
-                                         <td><input name="paisnac" id="paisnac" value="<%=persona.getIdNacionalidad()%>" style="width:250px; height:30px"list="paises" readonly="readonly"  autofocus required class="form-control inputtext"></td>
-                                         <datalist id="paises">
-                                                        <option value="Argentina">Argentina</option>
-                                                        <option value="Brasil">Brasil</option>
-                                                        <option value="Chile">Chile</option>
-                                                        <option value="Colombia">Colombia</option>
-                                                        <option value="Ecuador">Ecuador</option>
-                                                        <option value="Perú">Perú</option>
-                                                        </datalist>                                               
-                                                   
-                                         <td><label for="ciunac" class="labele">Ciudad<font color="#FF0000"></label></td>
-                                         <td><input name="ciunac" id="ciunac"value="<%=persona.getIdCiudad()%>" style="width:250px; height:30px"  list="ciudades" readonly="readonly"  autofocus required class="form-control inputtext"></td>
-                                        <datalist id="ciudades">
-                                                    <option label="BOG">Bogota</option>
-                                                    <option label="CLO">Cali</option>
-                                                    <option label="MED">Medellin</option>
-                                                    <option label="BAR">Barranquilla</option>
-                                                    </datalist>                                     
-                                     </tr>
-                                          
-                         
+                              
                                      <tr>
+                                         <td><label for="rol" class="labele">Rol<font color="#ff0000"></label></td>
+                                         <td><input name="rol" type="text" id="rol" value="<%=persona.getRolus().getRolesIdRol()%>" style="width:250px; height:25px" autofocus required class="form-control inputtext"></td>
                                         </table> 
                                        
                                         <center>
-                                    <label for="obs" class="labele">Observaciones</label>
-                                     <textarea cols=50 rows=3 name="info" value="<%=persona.getObservaciones()%>" autofocus required class="form-control inputtext" style="position:relative; left:50px"></textarea
-                                      <br>
-                                      <br>
+                                    
                                       <input name="submit10" class="btn btn-success" type="submit" id="submit10" value="Guardar Cambios">
                                         </center>                                        
                                                                            

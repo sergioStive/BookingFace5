@@ -17,7 +17,44 @@
 <script src="scripts/registro.js" type="text/javascript"></script>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="imagenes/br.ico" />
-
+<style type="text/css">
+    .info, .exito, .alerta, .error {
+       font-family:Arial, Helvetica, sans-serif; 
+       font-size:13px;
+       border: 1px solid;
+       margin: 10px 0px;
+       padding:15px 10px 15px 50px;
+       background-repeat: no-repeat;
+       background-position: 10px center;
+}
+.info {
+       color: #00529B;
+       background-color: #BDE5F8;
+       background-image: url('img/alerta.png');
+}
+.exito {
+       color: #4F8A10;
+       background-color: #DFF2BF;
+       background-image: url('img/exito.png');
+       width: 1050px;
+}
+.alerta {
+       color: #9F6000;
+       background-color: #FEEFB3;
+       background-image: url('img/alerta.png');
+}
+.error{
+       color: #D8000C;
+       background-color: #FFBABA;
+       background-image: url('img/error.png');
+}
+</style>
+        <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+       setTimeout(function(){ $(".mensajes").fadeIn(800).fadeOut(800);}, 4000); 
+});
+</script>
 <title>..::Booking Routers::..</title>
 </head>
 <body>
@@ -48,7 +85,22 @@
       personasDTO persona = (personasDTO)misesion.getAttribute("logueado");
       ArrayList<reserDTO> misReservas= new ArrayList();      
       misReservas = (ArrayList) facadeP.listarReservaPer(persona.getIdPersona());
-%>    
+%>  
+<center>
+    <table>      
+    <tr>
+    <td colspan="2">
+                    <% if (request.getParameter("msgSalida") != null) {%>
+                    <% if (!request.getParameter("msgSalida").equals("")) {%> 
+                    <div class="exito mensajes" role="alert">
+                    <%= request.getParameter("msgSalida")%>
+                    </div>
+                    <%}%>
+                    <%}%> 
+      </td>
+  </tr>
+  </table>
+ </center>  
 <div class="ba">
       <h1> Mis Reservas</h1>
 </div>
@@ -78,7 +130,7 @@
         <td><%=so.getDireccionDestino()%></td>
         <td><%=so.getCupo()%></td>
         
-        <td><a href="modificarReserva.jsp?idReserva=<%=so.getIdReserva()%>&idServicio=<%=so.getIdServicio()%>&IdTransporteLlegada=<%=so.getIdTransporteLlegada()%>
+        <td><a href="modificarReserva.jsp?idReserva=<%=so.getIdReserva()%>&idServicio=<%=so.getSer().getServicio()%>&IdTransporteLlegada=<%=so.getEmpre().getNombreEmpresaTransporte()%>
         &Responsable=<%=so.getResponsable()%>&FechaReserva=<%=so.getFechaReserva()%>&HoraReserva=<%=so.getHoraReserva()%>&DireccionDestino=<%=so.getDireccionDestino()%>&cupo=<%=so.getCupo()%>"> <img src="imagenes/Modificar.png" align="middle" width="32" height="32" title="Verificar"></a></td>
        
         <td class="danger"><a href="listarAcompanates.jsp?idReserva=<%=so.getIdReserva()%>" class="btn btn-success" title="Modificar datos de acompañantes">Modificar</a></td>

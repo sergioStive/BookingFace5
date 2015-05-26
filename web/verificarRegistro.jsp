@@ -149,6 +149,21 @@ $(document).ready(function(){
 </td>
 </div>
 </div>
+ <center>
+               <table>
+                   <tr>
+                <td colspan="2">
+                    <% if (request.getParameter("msgSalida") != null) {%>
+                    <% if (!request.getParameter("msgSalida").equals("")) {%> 
+                    <div class="alert exito mensajes" role="alert">
+                        <%= request.getParameter("msgSalida")%>
+                    </div>
+                    <%}%>
+                    <%}%> 
+                </td>
+                   </tr>
+               </table>
+         </center>
  <div class="busqueda">
  <span style="font-weight:bold;">Búsqueda:&nbsp;</span>
  <input id="inputFiltro" type="text" />
@@ -182,7 +197,7 @@ $(document).ready(function(){
         <td data-sortable="true"><%=so.getTelefono()%></td>
         <td data-sortable="true"><%=so.getCorreoElectronico()%></td>
         <td><a href="Controlador?id=<%=so.getIdPersona()%>"><img src="imagenes/Eliminar.png"   onclick="return Eliminar()" align="middle" width="32" height="32" title="Eliminar"></a></td>
-        <td><a href="Controlador?idPersona=<%=so.getIdPersona()%>"class="btn btn-success" title="Modificar datos de acompañantes"><img src="imagenes/user.jpg" align="middle" width="32" height="32" title="Verificar" onclick="contrase()"></a></td>
+        <td class="danger"><a href="Controlador?idPersona=<%=so.getIdPersona()%>" class="btn btn-success" title="Verificar Registro">Verificar</a></td>
     </tr>
      </tbody>
 <%

@@ -6,6 +6,7 @@
 
 package Controlador;
 
+import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DTO.personareservaDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,9 +42,13 @@ FacadePersonas facadeP = new FacadePersonas();
            to.setFechaNaci(request.getParameter("fechNac"));        
             
             String mensaje = facadeP.actualizarReservaAcompañante(to);
-            response.sendRedirect("listarAcompanates.jsp?msgSalida="+mensaje+"&idReserva="+to.getIdReserva());
+            response.sendRedirect("ModificarReservas.jsp?msgSalida="+mensaje+"&idReserva="+to.getIdReserva());
             
-    }
+    }else if (request.getParameter("id") != null) {
+            personareservaDTO to = new personareservaDTO(); 
+            String eliminado = facadeP.eliminarPersonaReserva(Integer.parseInt(request.getParameter("id")));
+            response.sendRedirect("ModificarReservas.jsp?msgSalida=" + eliminado+"&idReserva="+to.getIdReserva());
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -43,7 +43,7 @@
                 </li>                       
                 <li><div align="center"><a href="menuCliente.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-list"></span> Menu</a> 
                 </li>
-                <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Salir</a> 
+                <li><div align="center"><a href="index.jsp" style="text-decoration: none;"><span class="glyphicon glyphicon-remove-sign"></span> Cerrar Sesión</a> 
                 </li>
             </ul> 
         </nav>

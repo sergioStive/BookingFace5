@@ -8,6 +8,7 @@ package Controlador;
 
 import co.sena.edu.booking.DAO.personasDAO;
 import co.sena.edu.booking.DTO.personasDTO;
+import co.sena.edu.booking.DTO.rolusuarioDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,26 +34,32 @@ FacadePersonas facadeP = new FacadePersonas();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        response.setContentType("text/html;charset=UTF-8");
-         if (request.getParameter("submit10") != null) {
-
-            personasDTO pdto = new personasDTO();
-            personasDAO pdao = new personasDAO();
-            
-            pdto.setIdPersona(Long.parseLong(request.getParameter("doc")));
-            pdto.setNombres(request.getParameter("nombres"));
-            pdto.setApellidos(request.getParameter("apellidos"));
-            pdto.setCorreoElectronico(request.getParameter("cor"));
-            pdto.setFechaNto(request.getParameter("date"));
-            pdto.setIdNacionalidad(Integer.parseInt(request.getParameter("paisnac")));
-            pdto.setIdCiudad(Integer.parseInt(request.getParameter("ciunac")));
-            pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
-            pdto.setContraseña(request.getParameter("tel"));          
-            pdto.setObservaciones(request.getParameter("info"));
-         
-            
-            String mensaje = facadeP.actualizarRegistro(pdto);
-            response.sendRedirect("verificarRegistro.jsp?msg="+mensaje);
-    }
+//         if (request.getParameter("submit10") != null) {
+//
+//            personasDTO pdto = new personasDTO();
+//            personasDAO pdao = new personasDAO();
+//          
+//            pdto.setIdPersona(Long.parseLong(request.getParameter("doc")));
+//            pdto.setNombres(request.getParameter("nombres"));
+//            pdto.setApellidos(request.getParameter("apellidos"));
+//            pdto.setCorreoElectronico(request.getParameter("cor"));
+//            pdto.setFechaNto(request.getParameter("date"));
+//            pdto.setIdNacionalidad(Integer.parseInt(request.getParameter("paisnac")));
+//            pdto.setIdCiudad(Integer.parseInt(request.getParameter("ciunac")));
+//            pdto.setTelefono(Integer.parseInt(request.getParameter("tel")));
+//            pdto.setContraseña(request.getParameter("tel"));          
+//            pdto.setObservaciones(request.getParameter("info"));
+//           
+//            String mensaje = facadeP.actualizarRegistro(pdto);
+//            //response.sendRedirect("verificarRegistro.jsp?msg="+mensaje);
+//    }
+         if(request.getParameter("submit10") != null) {
+              rolusuarioDTO r= new rolusuarioDTO();
+               personasDAO pdao = new personasDAO();
+              r.setRolesIdRol(Integer.parseInt(request.getParameter("rol")));
+              String m= facadeP.actualizarRol(r);
+              response.sendRedirect("verificarRegistro.jsp?msgSalida="+m);
+         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
