@@ -86,6 +86,10 @@ public class FacadePersonas {
     public List listarAcompañantes(int idReserva) throws SQLException{
        return pereser.listarAcompañantes(idReserva, cnn);
     }
+    public List filtroServicios(String servicio) throws SQLException{
+       return pers.filtroServicios(servicio, cnn);
+    }
+    
     public int contarCupos(int idReserva) throws SQLException{
        return pereser.contarCupos(idReserva, cnn);
     }

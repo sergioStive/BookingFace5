@@ -23,6 +23,7 @@ import co.sena.edu.booking.DTO.reserDTO;
 import co.sena.edu.booking.DTO.rolesDTO;
 import co.sena.edu.booking.DTO.rolusuarioDTO;
 import co.sena.edu.booking.DTO.serviciosDTO;
+import co.sena.edu.booking.DTO.solicitudesServiciosDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -737,6 +738,40 @@ public synchronized int getRol(personasDTO idPersona,Connection conexion) throws
 //        }
         //devolvemos el usuario que se encontro
         return rol;
+    }
+
+public List<solicitudesServiciosDTO> filtroServicios(String servicio,Connection cnn ) throws SQLException{
+        ArrayList<solicitudesServiciosDTO> filtroServicios = new ArrayList();
+
+        try {
+         StringBuilder sb = new StringBuilder("select r.idServicio,s.servicio, r.direccionDestino, "
+                 + "count(r.idServicio) as numeroSolicitudes from reservas r inner join servicios s on "
+                 + "r.idServicio=s.idServicio group by idservicio order by idservicio desc");
+           
+         
+            if (servicio != null) {
+                sb.append("AND r.responsable LIKE'").append(servicio).append("%'");
+            }
+         pstmt = cnn.prepareStatement(sb.toString());
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                solicitudesServiciosDTO Rdao = new solicitudesServiciosDTO();
+                
+                
+                Rdao.setServicio(rs.getString("servicio"));
+                Rdao.setDireccionDestino(rs.getString("direccionDestino"));
+                Rdao.setNumeroSolicitudes(rs.getInt("numeroSolicitudes")); 
+                filtroServicios.add(Rdao);
+
+            }
+
+        } catch (SQLException slqE) {
+            System.out.println("Ocurrio un error" + slqE.getMessage());
+        } finally {
+
+        }
+        return filtroServicios;
     }
 
 }
